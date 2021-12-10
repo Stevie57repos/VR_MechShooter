@@ -27,7 +27,7 @@ public struct JobData
         if (distance > 0 && distance < DesiredSeperationDistance)
         {
             Vector3 oppositeDirection = (CurrentPosition - TargetPosition).normalized;
-            resultDirection = oppositeDirection * TopSpeed * DeltaTime;
+            resultDirection = oppositeDirection * TopSpeed * DeltaTime * 2;
         }
         ResultDirection = resultDirection;
     }
@@ -50,26 +50,20 @@ public class MovementJobSystem : MonoBehaviour
     List<FlockController> _flockList;
     JobHandle _flockSeperateMovementJobParallelJobHandler;
     FlockSeperateMovementJobParallel _flockSeperateMovementJobParallel;
-    NativeArray<JobData> _jobList;
     private Queue<JobData> _jobDataQueue = new Queue<JobData>();
 
     private void Update()
     {
         if (_jobDataQueue.Count == 0) return;
-        _jobList = new NativeArray<JobData>(_jobDataQueue.Count, Allocator.TempJob);
-        
+  
+        NativeArray<JobData> _jobList = new NativeArray<JobData>(_jobDataQueue.Count, Allocator.TempJob);
         for (int i = 0; i < _jobDataQueue.Count; i++)
             _jobList[i] = _jobDataQueue.Dequeue();
-
         _flockSeperateMovementJobParallel = new FlockSeperateMovementJobParallel()
         {
             JobList = _jobList
         };
-        _flockSeperateMovementJobParallelJobHandler = _flockSeperateMovementJobParallel.Schedule(_jobList.Length, 64);           
-    }
-
-    private void LateUpdate()
-    {
+        _flockSeperateMovementJobParallelJobHandler = _flockSeperateMovementJobParallel.Schedule(_jobList.Length, 64);
         _flockSeperateMovementJobParallelJobHandler.Complete();
         for (int i = 0; i < _flockSeperateMovementJobParallel.JobList.Length; i++)
         {
@@ -79,6 +73,7 @@ public class MovementJobSystem : MonoBehaviour
         }
         _jobList.Dispose();
     }
+
     public void SeperateMovementJob(List<FlockController> flockList, FlockController flock, FlockSO flockSO)
     {
         if (flockList.Count == 0) return;
