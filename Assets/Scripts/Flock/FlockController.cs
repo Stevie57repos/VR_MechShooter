@@ -121,7 +121,7 @@ public class FlockController : MonoBehaviour
     public void JobSeperateResult(Vector3 jobResultDireciton)
     {
         _rigidBody.velocity += jobResultDireciton;
-        _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _flockSO.TopSpeed);
+        _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _flockSO.TopSpeed);        
     }
     public void Seperate(Vector3 directionSum)
     {

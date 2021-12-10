@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Flock SO
   m_EditorClassIdentifier: 
   TopSpeed: 8
-  TargetDistanceSlowDown: 3
+  TargetDistanceSlowDown: 7
   DistanceSlowDown: 1
-  DesiredSeperationDistance: 2
+  DesiredSeperationDistance: 4

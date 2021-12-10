@@ -325,16 +325,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
-  _isDebugTarget: 1
+  _isDebugTarget: 0
   _debugTargetPos: {fileID: 1958466996}
   _VRTargetPos: {fileID: 443457951}
   _flockPrefab: {fileID: 2744864886392089145, guid: e32276c6efe868c4bad43c88c8d4d76a, type: 3}
   _jobFlockPrefab: {fileID: 5009054273942431779, guid: 3784636cb32f16a4b8cd668a47e60c90, type: 3}
-  _spawnAmount: 1000
+  _spawnAmount: 300
   _flockList: []
   _flockSO: {fileID: 11400000, guid: 0fb15def7eb5ccc41b00a9722ad9478f, type: 2}
-  _maxNumRequestPerFrame: 40
-  _maxQueueCount: 500
+  _maxNumRequestPerFrame: 300
+  _maxQueueCount: 300
   _spatialPartitioner: {fileID: 381459452}
   _UsingJobs: 1
   _movementJobSystem: {fileID: 381459453}
@@ -351,11 +351,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debugDrawGrid: 1
-  _gridX: 5
+  _gridX: 8
   _gridY: 3
-  _gridZ: 5
-  _gridCubeSize: {x: 3, y: 3, z: 3}
-  _gridStartPosition: {x: -7.74, y: 0, z: -7.24}
+  _gridZ: 8
+  _gridCubeSize: {x: 2, y: 2, z: 2}
+  _gridStartPosition: {x: -7.9, y: 0, z: -7.8}
 --- !u!114 &381459453
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public struct JobData
     }
 }
 
+[BurstCompile]
 public struct FlockSeperateMovementJobParallel : IJobParallelFor
 {
     public NativeArray<JobData> JobList;
@@ -49,13 +50,13 @@ public class MovementJobSystem : MonoBehaviour
     List<FlockController> _flockList;
     JobHandle _flockSeperateMovementJobParallelJobHandler;
     FlockSeperateMovementJobParallel _flockSeperateMovementJobParallel;
+    NativeArray<JobData> _jobList;
     private Queue<JobData> _jobDataQueue = new Queue<JobData>();
 
     private void Update()
     {
         if (_jobDataQueue.Count == 0) return;
-
-        NativeArray<JobData> _jobList = new NativeArray<JobData>(_jobDataQueue.Count, Allocator.TempJob);
+        _jobList = new NativeArray<JobData>(_jobDataQueue.Count, Allocator.TempJob);
         
         for (int i = 0; i < _jobDataQueue.Count; i++)
             _jobList[i] = _jobDataQueue.Dequeue();
@@ -64,7 +65,11 @@ public class MovementJobSystem : MonoBehaviour
         {
             JobList = _jobList
         };
-        _flockSeperateMovementJobParallelJobHandler = _flockSeperateMovementJobParallel.Schedule(_jobList.Length, 1);
+        _flockSeperateMovementJobParallelJobHandler = _flockSeperateMovementJobParallel.Schedule(_jobList.Length, 64);           
+    }
+
+    private void LateUpdate()
+    {
         _flockSeperateMovementJobParallelJobHandler.Complete();
         for (int i = 0; i < _flockSeperateMovementJobParallel.JobList.Length; i++)
         {
@@ -72,13 +77,7 @@ public class MovementJobSystem : MonoBehaviour
             Vector3 resultDirection = _flockSeperateMovementJobParallel.JobList[i].ResultDirection;
             _flockList[UnitID].JobSeperateResult(resultDirection);
         }
-        _jobList.Dispose();     
-    }
-
-    private void LateUpdate()
-    {
-
-
+        _jobList.Dispose();
     }
     public void SeperateMovementJob(List<FlockController> flockList, FlockController flock, FlockSO flockSO)
     {

@@ -56,6 +56,12 @@ public class FlockManager : MonoBehaviour
     {
         _target = _isDebugTarget ? _debugTargetPos : _VRTargetPos;
         SpawnFlock();
+        string display = 
+            $"spawn amount is {_spawnAmount}<br>" +
+            $"jobsystem = {_UsingJobs}<br>" +
+            $"request/frame {_maxNumRequestPerFrame}";
+
+        DebugEditorScreen.Instance.DisplayValue(display);
     }
 
     private void Update()
