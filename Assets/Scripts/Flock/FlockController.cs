@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Profiling;
 
 public class FlockController : MonoBehaviour
 {
@@ -53,10 +54,15 @@ public class FlockController : MonoBehaviour
         {
             if (_isUsingJobs)
             {
+                
                 JobsSeperate(result.FlockList);
             }
             else
+            {
+                Profiler.BeginSample("NoJobs");
                 Seperate(result.FlockList);
+                Profiler.EndSample();
+            }
         }
     }
 

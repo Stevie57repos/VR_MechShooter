@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class FlockRequest
+public struct FlockRequest
 {
     public Action<FlockCallbackResult> ResultCallBack;
     public Vector3 FlockPosition;

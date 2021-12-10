@@ -8,6 +8,7 @@ using Unity.Burst;
 using Unity.Jobs;
 using math = Unity.Mathematics;
 using random = Unity.Mathematics.Random;
+using UnityEngine.Profiling;
 
 public struct JobData
 {
@@ -63,6 +64,8 @@ public class MovementJobSystem : MonoBehaviour
         {
             JobList = _jobList
         };
+
+        Profiler.BeginSample("DoingJobSystem");
         _flockSeperateMovementJobParallelJobHandler = _flockSeperateMovementJobParallel.Schedule(_jobList.Length, 64);
         _flockSeperateMovementJobParallelJobHandler.Complete();
         for (int i = 0; i < _flockSeperateMovementJobParallel.JobList.Length; i++)
@@ -72,6 +75,7 @@ public class MovementJobSystem : MonoBehaviour
             _flockList[UnitID].JobSeperateResult(resultDirection);
         }
         _jobList.Dispose();
+        Profiler.EndSample();
     }
 
     public void SeperateMovementJob(List<FlockController> flockList, FlockController flock, FlockSO flockSO)
