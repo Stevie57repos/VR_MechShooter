@@ -70,21 +70,38 @@ public class SpatialPartitioner : MonoBehaviour
         zMax = new Vector3(xMin.x, 0, zMin.z + _gridCubeSize.z * _gridZ);
     }
 
-    public void ProcessFlockRequest(FlockRequest request, Vector3 targetPosition)
+    //public void ProcessFlockRequest( FlockRequest request, Vector3 targetPosition)
+    //{
+    //    FlockCallbackResult result = new FlockCallbackResult();
+    //    bool isInGridRange = CheckInGridRange(request.Flock);
+
+    //    if(isInGridRange)
+    //    {
+    //        result.InGridRange = true;
+    //        result.FlockList = GetFlockList(request.Flock);
+    //    }
+    //    else
+    //        result.InGridRange = false;
+        
+    //    result.TargetPosition = targetPosition;
+    //    //request.ResultCallBack?.Invoke(result);
+    //}
+    public void ProcessFlockRequest(List<FlockController> flockList, FlockRequest request, Vector3 targetPosition)
     {
         FlockCallbackResult result = new FlockCallbackResult();
         bool isInGridRange = CheckInGridRange(request.Flock);
 
-        if(isInGridRange)
+        if (isInGridRange)
         {
             result.InGridRange = true;
             result.FlockList = GetFlockList(request.Flock);
         }
         else
             result.InGridRange = false;
-        
+
         result.TargetPosition = targetPosition;
-        request.ResultCallBack?.Invoke(result);
+
+        flockList[request.UnitID].HandleResult(result); 
     }
 
     private List<FlockController> GetFlockList(FlockController flock)

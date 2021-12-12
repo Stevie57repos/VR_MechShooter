@@ -5,17 +5,24 @@ using System;
 
 public struct FlockRequest
 {
-    public Action<FlockCallbackResult> ResultCallBack;
+    //public Action<FlockCallbackResult> ResultCallBack;
     public Vector3 FlockPosition;
     public FlockController Flock;
-
-    public FlockRequest(Action<FlockCallbackResult> callback, Vector3 flockPosition, FlockController flock)
+    public int UnitID;
+    public FlockRequest(Vector3 flockPosition, FlockController flock, int unitID)
     {
-        // flock result handle method when data is returned
-        ResultCallBack = callback;
         FlockPosition = flockPosition;
         Flock = flock;
+        UnitID = unitID;
     }
+    //public FlockRequest(Action<FlockCallbackResult> callback, Vector3 flockPosition, FlockController flock, int unitID)
+    //{
+    //    // flock result handle method when data is returned
+    //    ResultCallBack = callback;
+    //    FlockPosition = flockPosition;
+    //    Flock = flock;
+    //    UnitID = unitID;
+    //}
 }
 
 public struct FlockCallbackResult

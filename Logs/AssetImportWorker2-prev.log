@@ -1143,3 +1143,4 @@ Received Import Request.
 Start importing Assets/Prefabs/Flock.prefab using Guid(e32276c6efe868c4bad43c88c8d4d76a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f5d5c288b2e13797a8a3742af5604dd') in 0.026122 seconds 
   Import took 0.038987 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

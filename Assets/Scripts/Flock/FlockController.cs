@@ -25,26 +25,48 @@ public class FlockController : MonoBehaviour
     private MovementJobSystem _movementJobSystem;
     public int _flockID;
 
-    private void Start()
-    {
-        MakeRequest();
-    }
+    //private void Start()
+    //{
+    //    MakeRequest();
+    //}
 
-    protected virtual void Update()
-    {
-        MakeRequest();
-    }
+    //protected virtual void Update()
+    //{
+    //    MakeRequest();
+    //}
 
-    private void MakeRequest()
-    {
-        if(_requesting == false)
-        {
-            _requesting = true;
-            FlockManager.instance.MakeRequest(new FlockRequest(HandleResult, transform.position, this), this);
-        }
-    }
+    //private void MakeRequest()
+    //{
+    //    if(_requesting == false)
+    //    {
+    //        _requesting = true;
+    //        FlockManager.instance.MakeRequest(new FlockRequest(HandleResult, transform.position, this, _flockID), this);
+    //    }
+    //}
 
-    protected virtual void HandleResult(FlockCallbackResult result)
+    //protected virtual void HandleResult(FlockCallbackResult result)
+    //{
+    //    _requesting = false;
+    //    SeekTarget(result.TargetPosition);
+
+    //    List<FlockController> list = result.FlockList;
+    //    if (result.InGridRange)
+    //    {
+    //        if (_isUsingJobs)
+    //        {
+                
+    //            JobsSeperate(result.FlockList);
+    //        }
+    //        else
+    //        {
+    //            Profiler.BeginSample("NoJobs");
+    //            Seperate(result.FlockList);
+    //            Profiler.EndSample();
+    //        }
+    //    }
+    //}
+
+    public void HandleResult(FlockCallbackResult result)
     {
         _requesting = false;
         SeekTarget(result.TargetPosition);
@@ -131,20 +153,8 @@ public class FlockController : MonoBehaviour
     }
     public void Seperate(Vector3 directionSum)
     {
-        //Vector3 directionSum = Vector3.zero;
-        //foreach (FlockController flock in flockList)
-        //{
-        //    float distance = Vector3.Distance(transform.position, flock.transform.position);
-        //    if ((distance > 0) && (distance < _flockSO.DesiredSeperationDistance) && flock != this)
-        //    {
-        //        Vector3 oppositeDireciton = (transform.position - flock.transform.position).normalized;
-        //        directionSum += oppositeDireciton;
-        //    }
-
-        //    directionSum *= (_flockSO.TopSpeed * Time.fixedDeltaTime);
         _rigidBody.velocity += directionSum;
         _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _flockSO.TopSpeed);
-
     }
 
     private void OnDrawGizmosSelected()

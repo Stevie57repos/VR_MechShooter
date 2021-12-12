@@ -22,8 +22,6 @@ public class FlockManager : MonoBehaviour
     [SerializeField]
     private FlockController _flockPrefab;
     [SerializeField]
-    private JobFlockController _jobFlockPrefab;
-    [SerializeField]
     private int _spawnAmount;
     [SerializeField]
     protected List<FlockController> _flockList = new List<FlockController>();
@@ -112,7 +110,7 @@ public class FlockManager : MonoBehaviour
         int processedRequestCount = 0;
         while(processedRequestCount < _maxNumRequestPerFrame && _requestQueue.Count != 0)
         {
-            _spatialPartitioner.ProcessFlockRequest(_requestQueue.Dequeue(), _target.position);
+            _spatialPartitioner.ProcessFlockRequest(_flockList,_requestQueue.Dequeue(), _target.position);
             processedRequestCount++;
         }
     }
