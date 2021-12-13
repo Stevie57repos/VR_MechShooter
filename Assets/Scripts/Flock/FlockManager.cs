@@ -58,7 +58,7 @@ public class FlockManager : MonoBehaviour
         SetupJobSystem();
 
         // For debugging
-        //DebuggingDisplaySettings();
+        DebuggingDisplaySettings();
     }
 
     private void Update()

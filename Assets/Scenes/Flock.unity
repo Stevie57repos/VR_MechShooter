@@ -325,18 +325,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbf8f8da1ff2d842ab23e1f024e7537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isDebugTarget: 1
+  _isDebugTarget: 0
   _debugTargetPos: {fileID: 1958466996}
   _type: 1
   _VRTargetPos: {fileID: 443457951}
   _flockPrefab: {fileID: 2744864886392089145, guid: e32276c6efe868c4bad43c88c8d4d76a, type: 3}
-  _spawnAmount: 100
+  _spawnAmount: 800
   _flockList: []
   _flockSO: {fileID: 11400000, guid: 0fb15def7eb5ccc41b00a9722ad9478f, type: 2}
   _flockMovementRequestController: {fileID: 381459454}
   _maxNumRequestPerFrame: 100
   _spatialPartitioner: {fileID: 381459452}
-  _UsingJobs: 0
+  _UsingJobs: 1
   _movementJobSystem: {fileID: 381459453}
 --- !u!114 &381459452
 MonoBehaviour:
@@ -922,7 +922,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443457950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalPosition: {x: 0, y: 0, z: 18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 706636440}
@@ -2179,7 +2179,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1307950341
 Transform:
   m_ObjectHideFlags: 0

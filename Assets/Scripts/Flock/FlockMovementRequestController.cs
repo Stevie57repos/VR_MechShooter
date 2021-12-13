@@ -70,6 +70,5 @@ public class FlockMovementRequestController : MonoBehaviour
                 counter++;
             }       
         }
-        DebugEditorScreen.Instance.DisplayValue($"counter is {QueueCount}");
     }
 }

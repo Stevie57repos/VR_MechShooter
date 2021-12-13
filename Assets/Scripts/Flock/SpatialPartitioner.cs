@@ -220,7 +220,6 @@ public class SpatialPartitioner : MonoBehaviour
             $"Count list 2 is {RetreiveListFromCellPos(list2).Count}<br>" +
             $"Count list 3 is {RetreiveListFromCellPos(list3).Count}<br>" +
             $"Count list 4 is {RetreiveListFromCellPos(list4).Count}<br>";
-        DebugEditorScreen.Instance.DisplayValue(display);
     }
 }
 

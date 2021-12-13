@@ -33,7 +33,6 @@ public class SeekTesting : MonoBehaviour
         else
         {
             // Slow down when reaching the center
-            Debug.Log($"slowing down");
             float percentageValue = Mathf.InverseLerp(_flockSO.TargetDistanceSlowDown, _flockSO.DistanceSlowDown, _targetDirection.magnitude);
             Vector3 desiredSpeed = _targetDirection.normalized * (_flockSO.TopSpeed * percentageValue);
             Vector3 adjustmentSpeed = desiredSpeed - _rigidBody.velocity;
