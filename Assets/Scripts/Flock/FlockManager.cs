@@ -2,20 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public enum FlockSystemType { simple, spatialRequest}
 
+[RequireComponent(typeof(MovementJobSystem))]
+[RequireComponent(typeof(SpatialPartitioner))]
 public class FlockManager : MonoBehaviour
 {
-    public static FlockManager instance;
-
-    [SerializeField]
-    private FlockSystemType _type;
-    [Header("Flock Spawn Settings")]
+    [Header("Debugging Settings")]
     [SerializeField]
     private bool _isDebugTarget;
     [SerializeField]
     private Transform _debugTargetPos;
+
+    // For testing different optimization set ups
+    [SerializeField]
+    private FlockSystemType _type;
+
+    [Header("Flock Spawn Settings")]
     [SerializeField]
     private Transform _VRTargetPos;
     private Transform _target;
@@ -30,12 +33,14 @@ public class FlockManager : MonoBehaviour
     [SerializeField]
     private FlockSO _flockSO;
 
-    [Header("RequestManager")]
+    [Header("Flock Movement Controller")]
+    [SerializeField]
+    FlockMovementRequestController _flockMovementRequestController;
     [SerializeField]
     private int _maxNumRequestPerFrame = 10;
-    [SerializeField]
-    private int _maxQueueCount = 50;
-    private Queue<FlockRequest> _requestQueue = new Queue<FlockRequest>();
+    //[SerializeField]
+    //private int _maxQueueCount = 50;
+
     [SerializeField]
     private SpatialPartitioner _spatialPartitioner;
 
@@ -45,21 +50,15 @@ public class FlockManager : MonoBehaviour
     [SerializeField]
     MovementJobSystem _movementJobSystem;
 
-    private void Awake()
-    {
-        instance = this;
-    }
-
     private void Start()
     {
-        _target = _isDebugTarget ? _debugTargetPos : _VRTargetPos;
+        SetTarget();
         SpawnFlock();
-        string display = 
-            $"spawn amount is {_spawnAmount}<br>" +
-            $"jobsystem = {_UsingJobs}<br>" +
-            $"request/frame {_maxNumRequestPerFrame}";
+        SetupSpatialRequests();
+        SetupJobSystem();
 
-        DebugEditorScreen.Instance.DisplayValue(display);
+        // For debugging
+        //DebuggingDisplaySettings();
     }
 
     private void Update()
@@ -69,8 +68,7 @@ public class FlockManager : MonoBehaviour
             case FlockSystemType.simple:            
                 foreach (FlockController flock in _flockList)
                 {
-                    flock.SeekTarget(_target.position);
-                    flock.Seperate(_flockList);
+                    flock.SimpleFlockSystemUpdate(_target.position,_flockList);
                 }
                 break;
                 
@@ -79,39 +77,58 @@ public class FlockManager : MonoBehaviour
                 break;
         }       
     }
-
+    private void SetTarget()
+    {
+        _target = _isDebugTarget ? _debugTargetPos : _VRTargetPos;
+    }
     private void SpawnFlock()
     {
         Vector3 offset = Vector3.zero;
-        int UnitID;
+        int AssignedUnitID;
         for (int i = 0; i < _spawnAmount; i++)
         {
             FlockController flock = Instantiate(_flockPrefab, _debugTargetPos.transform.position + offset, Quaternion.identity);
-            UnitID = i;
-            flock.Initialize(_flockSO, this, _UsingJobs, _movementJobSystem, UnitID) ;
+            AssignedUnitID = i;
+            flock.Initialize(_flockSO, _UsingJobs, _movementJobSystem, AssignedUnitID);
             _flockList.Add(flock);
             offset.x++;
         }
+    }
 
+    private void SetupJobSystem()
+    {
         if (_UsingJobs == true)
             _movementJobSystem.GetFlockList(_flockList);
     }
-    public void MakeRequest(FlockRequest request, FlockController flock)
+
+    private void SetupSpatialRequests()
     {
-        if (_requestQueue.Count > _maxQueueCount)
+        if (_type == FlockSystemType.spatialRequest)
         {
-            flock.QueueFull();
-            return;
+            _flockMovementRequestController.Initialize(_flockList, _maxNumRequestPerFrame);
+            _spatialPartitioner.Initialize(_flockList);
         }
-        _requestQueue.Enqueue(request);
     }
+
     private void ProcessRequest()
     {
         int processedRequestCount = 0;
-        while(processedRequestCount < _maxNumRequestPerFrame && _requestQueue.Count != 0)
+
+        while(processedRequestCount < _maxNumRequestPerFrame && _flockMovementRequestController.QueueCount != 0)
         {
-            _spatialPartitioner.ProcessFlockRequest(_flockList,_requestQueue.Dequeue(), _target.position);
+            FlockRequest request = _flockMovementRequestController.RetrieveRequest();
+            request.TargetPosition = _target.position;
+            _spatialPartitioner.ProcessFlockRequest(request);
             processedRequestCount++;
         }
+    }
+
+    private void DebuggingDisplaySettings()
+    {
+        string display =
+            $"spawn amount is {_spawnAmount}<br>" +
+            $"jobsystem = {_UsingJobs}<br>" +
+            $"request/frame {_maxNumRequestPerFrame}";
+        DebugEditorScreen.Instance.DisplayValue(display);
     }
 }

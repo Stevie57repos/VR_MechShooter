@@ -6,15 +6,16 @@ using System;
 public struct FlockRequest
 {
     //public Action<FlockCallbackResult> ResultCallBack;
-    public Vector3 FlockPosition;
-    public FlockController Flock;
+    //public Vector3 FlockPosition;
+    //public FlockController Flock;    
     public int UnitID;
-    public FlockRequest(Vector3 flockPosition, FlockController flock, int unitID)
+    public Vector3 TargetPosition;
+
+    public void AddUnitID(int unitID)
     {
-        FlockPosition = flockPosition;
-        Flock = flock;
         UnitID = unitID;
     }
+
     //public FlockRequest(Action<FlockCallbackResult> callback, Vector3 flockPosition, FlockController flock, int unitID)
     //{
     //    // flock result handle method when data is returned

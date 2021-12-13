@@ -5,7 +5,6 @@ using UnityEngine.Profiling;
 
 public class FlockController : MonoBehaviour
 {
-    private FlockManager _flockManager;
     [SerializeField]
     protected FlockSO _flockSO;
     [SerializeField]
@@ -15,7 +14,7 @@ public class FlockController : MonoBehaviour
     [Header("Request Settings")]
     public Vector3 PreviousCellList;
     [SerializeField]
-    private bool _requesting = false;
+    //private bool _requesting = false;
 
     public bool isInitialized = false;
     public List<FlockController> _flockList;
@@ -35,74 +34,50 @@ public class FlockController : MonoBehaviour
     //    MakeRequest();
     //}
 
-    //private void MakeRequest()
-    //{
-    //    if(_requesting == false)
-    //    {
-    //        _requesting = true;
-    //        FlockManager.instance.MakeRequest(new FlockRequest(HandleResult, transform.position, this, _flockID), this);
-    //    }
-    //}
-
-    //protected virtual void HandleResult(FlockCallbackResult result)
-    //{
-    //    _requesting = false;
-    //    SeekTarget(result.TargetPosition);
-
-    //    List<FlockController> list = result.FlockList;
-    //    if (result.InGridRange)
-    //    {
-    //        if (_isUsingJobs)
-    //        {
-                
-    //            JobsSeperate(result.FlockList);
-    //        }
-    //        else
-    //        {
-    //            Profiler.BeginSample("NoJobs");
-    //            Seperate(result.FlockList);
-    //            Profiler.EndSample();
-    //        }
-    //    }
-    //}
-
+    public FlockRequest MakeRequest()
+    {
+        FlockRequest request = new FlockRequest();
+        request.AddUnitID(_flockID);
+        return request;
+    }
     public void HandleResult(FlockCallbackResult result)
     {
-        _requesting = false;
+        //_requesting = false;
         SeekTarget(result.TargetPosition);
 
-        List<FlockController> list = result.FlockList;
         if (result.InGridRange)
         {
             if (_isUsingJobs)
             {
-                
                 JobsSeperate(result.FlockList);
             }
             else
             {
-                Profiler.BeginSample("NoJobs");
                 Seperate(result.FlockList);
-                Profiler.EndSample();
             }
         }
     }
 
     public void QueueFull()
     {
-        _requesting = false;
+        //_requesting = false;
     }
 
-    public void Initialize(FlockSO flockSO, FlockManager flockManager, bool isUsingJobs, MovementJobSystem movementJobSystem, int flockID)
+    public void Initialize(FlockSO flockSO, bool isUsingJobs, MovementJobSystem movementJobSystem, int flockID)
     {
         _flockSO = flockSO;
-        _flockManager = flockManager;
         _isUsingJobs = isUsingJobs;
         _movementJobSystem = movementJobSystem;
         _flockID = flockID;
     }
 
-    public virtual void SeekTarget(Vector3 targetPos)
+    public void SimpleFlockSystemUpdate(Vector3 targetPos, List<FlockController> flockList)
+    {
+        SeekTarget(targetPos);
+        Seperate(flockList);
+    }
+
+    private void SeekTarget(Vector3 targetPos)
     {
         _targetDirection = targetPos - transform.position;
 
@@ -115,17 +90,15 @@ public class FlockController : MonoBehaviour
         }
         else
         {
-            // Slow down when reaching the center
             float percentageValue = Mathf.InverseLerp(_flockSO.TargetDistanceSlowDown, _flockSO.DistanceSlowDown, _targetDirection.magnitude);
             Vector3 desiredSpeed = _targetDirection.normalized * (_flockSO.TopSpeed * percentageValue);
             Vector3 adjustmentSpeed = desiredSpeed - _rigidBody.velocity;
             _rigidBody.AddForce(adjustmentSpeed);
         }
     }
-    public virtual void Seperate(List<FlockController> flockList)
+    private void Seperate(List<FlockController> flockList)
     {
         if (flockList == null) return;
-
         Vector3 directionSum = Vector3.zero;
         foreach (FlockController flock in flockList)
         {
@@ -150,11 +123,6 @@ public class FlockController : MonoBehaviour
     {
         _rigidBody.velocity += jobResultDireciton;
         _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _flockSO.TopSpeed);        
-    }
-    public void Seperate(Vector3 directionSum)
-    {
-        _rigidBody.velocity += directionSum;
-        _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _flockSO.TopSpeed);
     }
 
     private void OnDrawGizmosSelected()

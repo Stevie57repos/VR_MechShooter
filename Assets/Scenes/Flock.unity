@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 381459450}
   - component: {fileID: 381459451}
   - component: {fileID: 381459452}
+  - component: {fileID: 381459454}
   - component: {fileID: 381459453}
   m_Layer: 0
   m_Name: Flock Manager
@@ -324,19 +325,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dbf8f8da1ff2d842ab23e1f024e7537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
   _isDebugTarget: 1
   _debugTargetPos: {fileID: 1958466996}
+  _type: 1
   _VRTargetPos: {fileID: 443457951}
   _flockPrefab: {fileID: 2744864886392089145, guid: e32276c6efe868c4bad43c88c8d4d76a, type: 3}
-  _jobFlockPrefab: {fileID: 5009054273942431779, guid: 3784636cb32f16a4b8cd668a47e60c90, type: 3}
-  _spawnAmount: 1000
+  _spawnAmount: 100
   _flockList: []
   _flockSO: {fileID: 11400000, guid: 0fb15def7eb5ccc41b00a9722ad9478f, type: 2}
-  _maxNumRequestPerFrame: 10
-  _maxQueueCount: 400
+  _flockMovementRequestController: {fileID: 381459454}
+  _maxNumRequestPerFrame: 100
   _spatialPartitioner: {fileID: 381459452}
-  _UsingJobs: 1
+  _UsingJobs: 0
   _movementJobSystem: {fileID: 381459453}
 --- !u!114 &381459452
 MonoBehaviour:
@@ -368,6 +368,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4981429e3d5f51c42be095675a2191b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &381459454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381459449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a58dd834159d64cbd8ce33849816f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentIndex: 0
 --- !u!1 &406783894
 GameObject:
   m_ObjectHideFlags: 0

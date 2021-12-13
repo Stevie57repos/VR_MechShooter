@@ -5,7 +5,18 @@ using UnityEngine;
 
 public class SpatialPartitioner : MonoBehaviour
 {
-    [Header("Debug Grid Settings")]
+    private List<FlockController> _flockList;
+
+    // limits for grid
+    private Vector3 xMin;
+    private Vector3 xMax;
+    private Vector3 yMin;
+    private Vector3 yMax;
+    private Vector3 zMin;
+    private Vector3 zMax;
+    private Vector3 MarkerCubeSize = new Vector3(.25f, 0.25f, 0.25f);
+
+    [Header("Debugging Draw Grid Settings")]
     [SerializeField]
     private bool _debugDrawGrid;
     [SerializeField]
@@ -19,28 +30,14 @@ public class SpatialPartitioner : MonoBehaviour
     [SerializeField]
     private Vector3 _gridStartPosition;
     private List<FlockController>[,,] _cells;
-
-    // limits for grid
-    private Vector3 xMin;
-    private Vector3 xMax;
-    private Vector3 yMin;
-    private Vector3 yMax;
-    private Vector3 zMin;
-    private Vector3 zMax;
-    private Vector3 MarkerCubeSize = new Vector3(.25f, 0.25f, 0.25f);
-
-    [Header("debug")]
     private Vector2 _debugVector;
+    private int _counter;
 
-    private void Awake()
+    public void Initialize(List<FlockController> flockList)
     {
         GenerateCells();
         GridLimitCalculation();
-    }
-
-    private void LateUpdate()
-    {
-        //DebugListCount();  
+        _flockList = flockList;
     }
 
     private void GenerateCells()
@@ -70,38 +67,26 @@ public class SpatialPartitioner : MonoBehaviour
         zMax = new Vector3(xMin.x, 0, zMin.z + _gridCubeSize.z * _gridZ);
     }
 
-    //public void ProcessFlockRequest( FlockRequest request, Vector3 targetPosition)
-    //{
-    //    FlockCallbackResult result = new FlockCallbackResult();
-    //    bool isInGridRange = CheckInGridRange(request.Flock);
-
-    //    if(isInGridRange)
-    //    {
-    //        result.InGridRange = true;
-    //        result.FlockList = GetFlockList(request.Flock);
-    //    }
-    //    else
-    //        result.InGridRange = false;
-        
-    //    result.TargetPosition = targetPosition;
-    //    //request.ResultCallBack?.Invoke(result);
-    //}
-    public void ProcessFlockRequest(List<FlockController> flockList, FlockRequest request, Vector3 targetPosition)
+    public void ProcessFlockRequest(FlockRequest request)
     {
         FlockCallbackResult result = new FlockCallbackResult();
-        bool isInGridRange = CheckInGridRange(request.Flock);
+        FlockController flock = _flockList[request.UnitID];
+        bool isInGridRange = CheckInGridRange(flock);
 
         if (isInGridRange)
         {
             result.InGridRange = true;
-            result.FlockList = GetFlockList(request.Flock);
+            result.FlockList = GetFlockList(flock);
         }
         else
             result.InGridRange = false;
 
-        result.TargetPosition = targetPosition;
+        result.TargetPosition = request.TargetPosition;
 
-        flockList[request.UnitID].HandleResult(result); 
+        flock.HandleResult(result);
+        
+        _counter++;
+              
     }
 
     private List<FlockController> GetFlockList(FlockController flock)
