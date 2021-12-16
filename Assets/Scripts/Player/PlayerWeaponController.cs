@@ -4,19 +4,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerWeaponController : MonoBehaviour
-{
-    public InputActionReference primaryTriggerReference = null;
-    public InputActionReference toggleSecondaryReference = null;
+{ 
+    private PlayerInput _playerInput;
+    private InputAction _primaryTriggerAction;
+    private InputAction _toggleSecondaryAction;
     private float _round2decimals = 100f;
 
     [SerializeField]
-    private PrimaryGunController _primaryGun;
+    private PrimaryGunController _primaryGunRight;
+
+    
 
     private void Awake()
     {
-        toggleSecondaryReference.action.started += ToggleSecondary;
-        primaryTriggerReference.action.performed += PrimaryWeaponFire;
+        _playerInput = GetComponent<PlayerInput>();
+        _primaryTriggerAction = _playerInput.actions["FirePrimary"];
+        _toggleSecondaryAction = _playerInput.actions["ToggleSecondary"];
+
+        //toggleSecondaryReference.action.started += ToggleSecondary;
+        //primaryTriggerReference.action.performed += PrimaryWeaponFire;
+    }
+
+    private void OnEnable()
+    {
+        _primaryTriggerAction.performed += PrimaryWeaponFire;
+    }
+
+    private void OnDisable()
+    {
+        _primaryTriggerAction.performed -= PrimaryWeaponFire;
     }
 
     private void Update()
@@ -25,16 +43,18 @@ public class PlayerWeaponController : MonoBehaviour
     }
     private void PrimaryWeaponFire(InputAction.CallbackContext context)
     {
-        float value = primaryTriggerReference.action.ReadValue<float>();
+        float value = context.ReadValue<float>();
         value = Mathf.Round(value * _round2decimals) / _round2decimals;
         if (value > 0.9f)
-            _primaryGun.Fire(value);
+            _primaryGunRight.Fire(value);
     }
 
     private void OnDestroy()
     {
-        toggleSecondaryReference.action.started -= ToggleSecondary;
-        primaryTriggerReference.action.performed -= PrimaryWeaponFire;
+        //toggleSecondaryReference.action.started -= ToggleSecondary;
+        //primaryTriggerReference.action.performed -= PrimaryWeaponFire;
+
+
     }
 
     private void ToggleSecondary(InputAction.CallbackContext context)
