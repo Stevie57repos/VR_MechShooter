@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerWeaponController : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerWeaponController : MonoBehaviour
     private InputAction _primaryTriggerAction;
     private InputAction _toggleSecondaryAction;
     private float _round2decimals = 100f;
+    [SerializeField]
+    ActionBasedController _rightController;
 
     [SerializeField]
     private PrimaryGunController _primaryGunRight;
@@ -29,24 +32,32 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void OnEnable()
     {
-        _primaryTriggerAction.performed += PrimaryWeaponFire;
+        _primaryTriggerAction.performed += PrimaryWeaponFireRightHand;
+        _primaryTriggerAction.canceled += PrimaryWeaponRightStop;
     }
 
     private void OnDisable()
     {
-        _primaryTriggerAction.performed -= PrimaryWeaponFire;
+        _primaryTriggerAction.performed -= PrimaryWeaponFireRightHand;
+        _primaryTriggerAction.canceled -= PrimaryWeaponRightStop;
     }
 
     private void Update()
     {
        
     }
-    private void PrimaryWeaponFire(InputAction.CallbackContext context)
+
+    private void PrimaryWeaponFireRightHand(InputAction.CallbackContext context)
     {
-        float value = context.ReadValue<float>();
-        value = Mathf.Round(value * _round2decimals) / _round2decimals;
-        if (value > 0.9f)
-            _primaryGunRight.Fire(value);
+        bool value = context.ReadValueAsButton();
+        if (value)
+            _primaryGunRight.Firing(_rightController);
+        //float value = context.ReadValue<float>();
+    }
+
+    private void PrimaryWeaponRightStop(InputAction.CallbackContext context)
+    {
+        _primaryGunRight.StopFiring();
     }
 
     private void OnDestroy()

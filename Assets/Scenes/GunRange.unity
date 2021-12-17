@@ -618,11 +618,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gunRange: 50
+  coolDownTime: 0.5
   _muzzleFlashPS: {fileID: 537568084}
   _muzzleSound: {fileID: 221394108}
+  _gunShot: {fileID: 8300000, guid: d5a73d10e3465d545883aa223a38a861, type: 3}
+  _hitImpactPS: {fileID: 198011925041146442, guid: 57e18706e2792ff4bb5561ed74b796e2, type: 3}
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4294967295
 --- !u!82 &221394108
 AudioSource:
   m_ObjectHideFlags: 0
@@ -719,6 +722,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &221394111 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1301393418506074283, guid: 322e7c0b864f23d438e2d33ec89d5b0d, type: 3}
+  m_PrefabInstance: {fileID: 587594442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221394106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caff514de9b15ad48ab85dcff5508221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &236238710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1301393419279832488, guid: 322e7c0b864f23d438e2d33ec89d5b0d, type: 3}
@@ -950,6 +964,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 198251319911848504, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198251319911848504, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198251319911848504, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198251319911848504, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198251319911848504, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405310834809902, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405310834809902, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405310834809902, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405310834809902, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 198405310834809902, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198433154002263402, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198433154002263402, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198433154002263402, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198694891347678144, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 199068053901769020, guid: ab32929843ea40d48ae16ecaa85f794a, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -983,6 +1053,10 @@ PrefabInstance:
     - target: {fileID: 1301393419148384276, guid: 322e7c0b864f23d438e2d33ec89d5b0d, type: 3}
       propertyPath: m_Name
       value: VR Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301393419148384277, guid: 322e7c0b864f23d438e2d33ec89d5b0d, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1301393419148384278, guid: 322e7c0b864f23d438e2d33ec89d5b0d, type: 3}
       propertyPath: m_RootOrder
@@ -1047,6 +1121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6bdfdb2fa444d43b35bfcb2247260a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rightController: {fileID: 221394111}
   _primaryGunRight: {fileID: 221394107}
 --- !u!114 &587594449
 MonoBehaviour:

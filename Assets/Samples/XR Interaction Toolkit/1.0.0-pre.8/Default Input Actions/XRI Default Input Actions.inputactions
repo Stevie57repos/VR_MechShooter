@@ -932,11 +932,11 @@
             "actions": [
                 {
                     "name": "FirePrimary",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "1c014c8e-8671-4e0a-a674-7ca34a06779e",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": true
                 },
                 {

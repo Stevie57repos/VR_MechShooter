@@ -1,60 +1,86 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PrimaryGunController : MonoBehaviour
 {
     [Header("PrimaryGun Settings")]
     [SerializeField]
     private float _gunRange;
+
     [SerializeField]
-    private float _fireRate = 1f;
-    private float _gunCoolDownTracker = 0f;
+    private float coolDownTime;
+    private float nextFireTime = float.MinValue;
 
     [Header("Muzzle FX")]
     [SerializeField]
     private ParticleSystem _muzzleFlashPS;
     [SerializeField]
     private AudioSource _muzzleSound;
+    [SerializeField]
+    private AudioClip _gunShot;
+    [SerializeField]
+    private ParticleSystem _hitImpactPS;
 
+    private bool isShooting = false;
+    
     [SerializeField]
     private LayerMask _enemyLayer;
 
-    private int _triggeredAmount;
-
-    public void Fire(float value)
+    public void Firing(ActionBasedController controller)
     {
-        if(!CheckGunCoolDown()) return;
-
-        //debugging
-        string display = $"Fired {_triggeredAmount}";
-        _triggeredAmount++;
-
-        Ray ray = new Ray(transform.position, transform.forward * _gunRange);
-        _muzzleFlashPS.Play();
-        _muzzleSound.Play();
-        if (Physics.Raycast(ray, out RaycastHit info, _gunRange, _enemyLayer))
+        if(isShooting == false)
         {
-            display += $".Hit {info.transform.gameObject.name} ";
-            DebugEditorScreen.Instance.DisplayValue($"Hit {display}");
+            isShooting = true;
+            StartCoroutine(Shooting(controller));
         }
-        else
+    }
+
+    private IEnumerator Shooting(ActionBasedController controller)
+    {
+        while (isShooting == true)
         {
-            DebugEditorScreen.Instance.DisplayValue("Hit Nothing");
-        }      
+            if (!CheckGunCoolDown()) yield return null;
+            else
+            {
+                _muzzleFlashPS.Play();
+                _muzzleSound.PlayOneShot(_gunShot);
+                controller.SendHapticImpulse(.25f, .25f);
+
+                Ray ray = new Ray(transform.position, transform.forward * _gunRange);
+                if (Physics.Raycast(ray, out RaycastHit info, _gunRange, _enemyLayer))
+                {
+                    DebugEditorScreen.Instance.DisplayValue($"Hit {info.transform.gameObject.name}");
+                }
+                else
+                {
+                    DebugEditorScreen.Instance.DisplayValue("Hit Nothing");
+                }
+            }
+        }
+    }
+
+    public void StopFiring()
+    {
+        Debug.Log($"stop firing called");
+        StopAllCoroutines();
+        isShooting = false;
     }
 
     private bool CheckGunCoolDown()
     {
-        bool canShoot = false;
-
-        if (_gunCoolDownTracker <= 0f)
+        if(Time.time > nextFireTime)
         {
-            _gunCoolDownTracker = _fireRate;
-            canShoot = true;
-            return canShoot;
+            Debug.Log($"time is {Time.time} and nextfiretime is : {nextFireTime}");
+            nextFireTime = Time.time + coolDownTime;
+            return true;
         }
-        _gunCoolDownTracker -= Time.deltaTime;
-        return canShoot;
+        return false;     
+    }
+
+    private void Update()
+    {
+      
     }
 }
