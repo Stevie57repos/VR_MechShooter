@@ -18,16 +18,11 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField]
     private PrimaryGunController _primaryGunRight;
 
-    
-
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         _primaryTriggerAction = _playerInput.actions["FirePrimary"];
         _toggleSecondaryAction = _playerInput.actions["ToggleSecondary"];
-
-        //toggleSecondaryReference.action.started += ToggleSecondary;
-        //primaryTriggerReference.action.performed += PrimaryWeaponFire;
     }
 
     private void OnEnable()
@@ -42,30 +37,16 @@ public class PlayerWeaponController : MonoBehaviour
         _primaryTriggerAction.canceled -= PrimaryWeaponRightStop;
     }
 
-    private void Update()
-    {
-       
-    }
-
     private void PrimaryWeaponFireRightHand(InputAction.CallbackContext context)
     {
         bool value = context.ReadValueAsButton();
         if (value)
             _primaryGunRight.Firing(_rightController);
-        //float value = context.ReadValue<float>();
     }
 
     private void PrimaryWeaponRightStop(InputAction.CallbackContext context)
     {
         _primaryGunRight.StopFiring();
-    }
-
-    private void OnDestroy()
-    {
-        //toggleSecondaryReference.action.started -= ToggleSecondary;
-        //primaryTriggerReference.action.performed -= PrimaryWeaponFire;
-
-
     }
 
     private void ToggleSecondary(InputAction.CallbackContext context)

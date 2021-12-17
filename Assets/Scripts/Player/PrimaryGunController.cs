@@ -8,6 +8,8 @@ public class PrimaryGunController : MonoBehaviour
     [Header("PrimaryGun Settings")]
     [SerializeField]
     private float _gunRange;
+    [SerializeField]
+    private float _damage;
 
     [SerializeField]
     private float coolDownTime;
@@ -47,10 +49,13 @@ public class PrimaryGunController : MonoBehaviour
                 _muzzleFlashPS.Play();
                 _muzzleSound.PlayOneShot(_gunShot);
                 controller.SendHapticImpulse(.25f, .25f);
-
                 Ray ray = new Ray(transform.position, transform.forward * _gunRange);
-                if (Physics.Raycast(ray, out RaycastHit info, _gunRange, _enemyLayer))
+                if (Physics.Raycast(ray, out RaycastHit info, _gunRange))
                 {
+                    EnemyController enemy = info.transform.GetComponent<EnemyController>();
+                    if (enemy != null)
+                        enemy.TakeDamage(_damage);
+
                     DebugEditorScreen.Instance.DisplayValue($"Hit {info.transform.gameObject.name}");
                 }
                 else

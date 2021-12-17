@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float _health;
+    [SerializeField]
+    private float _minHealth;
+    [SerializeField]
+    private float _maxHealth;
+    [SerializeField]
+    private EnemyDeathEventSO _death;
+
+    private void Awake()
     {
-        
+        _health = _maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(float damage)
     {
-        
+        _health -= damage;
+        if (_health <= _minHealth)
+        {
+            _health = _minHealth;
+            _death.RaiseEvent(this);
+        }
+    }
+
+    [ContextMenu("Kill Unit")]
+    private void KillUnit()
+    {
+        TakeDamage(_maxHealth);
     }
 }
