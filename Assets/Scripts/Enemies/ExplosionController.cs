@@ -31,7 +31,4 @@ public class ExplosionController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         _explosion.SetActive(false);
     }
-
-
-
 }
