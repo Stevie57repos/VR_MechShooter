@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 0
   _minHealth: 0
-  _maxHealth: 0
+  _maxHealth: 1
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
 --- !u!54 &231530840218681399
 Rigidbody:

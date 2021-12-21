@@ -5,10 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PrimaryGunController : MonoBehaviour
 {
-    [Header("PrimaryGun Settings")]
-    [SerializeField]
     private float _gunRange;
-    [SerializeField]
     private float _damage;
 
     [SerializeField]
@@ -24,28 +21,42 @@ public class PrimaryGunController : MonoBehaviour
     private AudioClip _gunShot;
     [SerializeField]
     private ParticleSystem _hitImpactPS;
+    [SerializeField]
+    Vector3 _projectileOffset;
+
+    [SerializeField]
+    Transform target;
+    [SerializeField]
+    Vector3 targetDirection;
 
     private bool isShooting = false;
     
     [SerializeField]
     private LayerMask _enemyLayer;
 
-    public void Firing(ActionBasedController controller)
+    public void Initialize(float gunRange, float damage)
+    {
+        _gunRange = gunRange;
+        _damage = damage;  
+    }
+
+    public void Firing(ActionBasedController controller, Vector3 target)
     {
         if(isShooting == false)
         {
             isShooting = true;
-            StartCoroutine(Shooting(controller));
+            StartCoroutine(Shooting(controller, target));
         }
     }
 
-    private IEnumerator Shooting(ActionBasedController controller)
+    private IEnumerator Shooting(ActionBasedController controller, Vector3 target)
     {
         while (isShooting == true)
         {
             if (!CheckGunCoolDown()) yield return null;
             else
             {
+                AimAtTarget();
                 _muzzleFlashPS.Play();
                 _muzzleSound.PlayOneShot(_gunShot);
                 controller.SendHapticImpulse(.25f, .25f);
@@ -56,14 +67,25 @@ public class PrimaryGunController : MonoBehaviour
                     if (enemy != null)
                         enemy.TakeDamage(_damage);
 
-                    DebugEditorScreen.Instance.DisplayValue($"Hit {info.transform.gameObject.name}");
+                    //DebugEditorScreen.Instance.DisplayValue($"Hit {info.transform.gameObject.name}");
                 }
                 else
                 {
-                    DebugEditorScreen.Instance.DisplayValue("Hit Nothing");
+                    //DebugEditorScreen.Instance.DisplayValue("Hit Nothing");
                 }
             }
         }
+    }
+
+    private void Update()
+    {
+
+    }
+
+    private void AimAtTarget()
+    {
+        targetDirection = target.position - new Vector3(transform.position.x + _projectileOffset.x, transform.position.y + _projectileOffset.y, transform.position.z);
+        _muzzleFlashPS.transform.LookAt(targetDirection);
     }
 
     public void StopFiring()
@@ -82,10 +104,5 @@ public class PrimaryGunController : MonoBehaviour
             return true;
         }
         return false;     
-    }
-
-    private void Update()
-    {
-      
     }
 }
