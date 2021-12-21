@@ -8,6 +8,12 @@ public class ExplosionController : MonoBehaviour
     EnemyDeathEventSO _deathEventChannel;
     [SerializeField]
     GameObject _explosion;
+    [SerializeField]
+    PoolableObject _explosionFX;
+    private void Awake()
+    {
+        PoolSystem.CreatePool(_explosionFX, 10);
+    }
 
     private void OnEnable()
     {
@@ -21,14 +27,10 @@ public class ExplosionController : MonoBehaviour
 
     private void Explode(EnemyController enemy)
     {
-        _explosion.transform.position = enemy.transform.position;
-        _explosion.SetActive(true);
-        StartCoroutine(Deactivate());
+        PoolableObject explosion = PoolSystem.GetNext(_explosionFX);
+        explosion.transform.position = enemy.transform.position;
+        explosion.gameObject.SetActive(true);
     }
 
-    private IEnumerator Deactivate()
-    {
-        yield return new WaitForSeconds(3f);
-        _explosion.SetActive(false);
-    }
+
 }
