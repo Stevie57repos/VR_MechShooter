@@ -931,9 +931,18 @@
             "id": "9f826e43-3509-45e8-98b3-d5e929984726",
             "actions": [
                 {
-                    "name": "FirePrimary",
+                    "name": "FirePrimaryRight",
                     "type": "Button",
                     "id": "1c014c8e-8671-4e0a-a674-7ca34a06779e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "FirePrimaryLeft",
+                    "type": "Button",
+                    "id": "5ea4200d-5ce2-4573-a118-0f7a0ff8eb57",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold",
@@ -957,7 +966,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FirePrimary",
+                    "action": "FirePrimaryRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -969,6 +978,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ToggleSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90e9c187-fb2c-496b-a6d4-7e02282c7655",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FirePrimaryLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
