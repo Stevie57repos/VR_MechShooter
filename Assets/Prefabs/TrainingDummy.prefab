@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 231530840218681394}
   - component: {fileID: 231530840218681399}
   m_Layer: 11
-  m_Name: TargetPracticeEnemy
+  m_Name: TrainingDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
-  _minHealth: 0
-  _maxHealth: 1
+  _enemyStats: {fileID: 11400000, guid: 608e4395f7f10cf4bad239a5bbc3508e, type: 2}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
 --- !u!54 &231530840218681399
 Rigidbody:

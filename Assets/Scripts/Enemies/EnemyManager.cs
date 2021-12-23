@@ -46,9 +46,10 @@ public class EnemyManager : MonoBehaviour
 
     private void EnemyDeathEvent(EnemyController enemy)
     {
+        if (!_currentEnemylist.Contains(enemy)) return;
+
         _currentEnemylist.Remove(enemy);
         Vector3 enemyPosition = enemy.transform.position;
-        Destroy(enemy.gameObject);
         StartCoroutine(RespawnEnemy(enemyPosition));
     }
 
