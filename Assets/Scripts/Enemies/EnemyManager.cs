@@ -29,17 +29,19 @@ public class EnemyManager : MonoBehaviour
         SpawnEnemies(_spawnAmount, _enemy, _spawnPositionList);
     }
 
-    public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, List<Transform> spawnLocation)
+    public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, List<Transform> spawnLocationList)
     {
         for(int i = 0; i < spawnAmount; i++)
         {
-            EnemyController enemy = Instantiate(enemyPrefab, spawnLocation[i].position, Quaternion.identity);
+            Vector3 spawnLocation = new Vector3(spawnLocationList[i].position.x, spawnLocationList[i].position.y + 5, spawnLocationList[i].position.z);
+            EnemyController enemy = Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
             _currentEnemylist.Add(enemy);
         }
     }
 
     public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, Vector3 spawnLocation)
     {
+
         EnemyController enemy = Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
         _currentEnemylist.Add(enemy);
     }

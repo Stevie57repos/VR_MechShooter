@@ -24,16 +24,6 @@ public class FlockController : MonoBehaviour
     private MovementJobSystem _movementJobSystem;
     public int _flockID;
 
-    //private void Start()
-    //{
-    //    MakeRequest();
-    //}
-
-    //protected virtual void Update()
-    //{
-    //    MakeRequest();
-    //}
-
     public FlockRequest MakeRequest()
     {
         FlockRequest request = new FlockRequest();
