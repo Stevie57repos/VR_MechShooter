@@ -11,12 +11,85 @@ public class SentinelController : EnemyController
     [SerializeField]
     private Animator _animator;
 
-    protected override void Start()
+    [SerializeField]
+    private Rigidbody _rigidBody;
+
+    private Coroutine _currentState = null;
+
+    [SerializeField]
+    protected Transform _target = null;
+    private Vector3 _targetDirection;
+
+    [SerializeField]
+    Vector3 debugPosition;
+
+    float rotationSpeed = 100f;
+
+    private void Start()
     {
-        SetState(State_Idle());
+        //_animator.SetTrigger("SetIdle");
     }
 
-    protected override IEnumerator State_Idle()
+    private void Update()
+    {
+
+    }
+
+    public void SeekTarget(Vector3 targetPos)
+    {
+        _targetDirection = (targetPos - transform.position) * .5f;
+
+        if (_targetDirection.sqrMagnitude > _enemyStats.DistanceSlowDown * _enemyStats.DistanceSlowDown)
+        {
+            Vector3 desiredSpeed = _targetDirection.normalized * _enemyStats.TopSpeed;
+            Vector3 steer = desiredSpeed - _rigidBody.velocity;
+            steer = Vector3.ClampMagnitude(steer, _enemyStats.TopSpeed);
+            _rigidBody.AddForce(steer);
+        }
+        else
+        {
+            float percentageValue = Mathf.InverseLerp(_enemyStats.TargetDistanceSlowDown, _enemyStats.DistanceSlowDown, _targetDirection.magnitude);
+            Vector3 desiredSpeed = _targetDirection.normalized * (_enemyStats.TopSpeed * percentageValue);
+            Vector3 adjustmentSpeed = desiredSpeed - _rigidBody.velocity;
+            _rigidBody.AddForce(adjustmentSpeed);
+        }
+
+        Vector3 _targetRotation = targetPos - transform.position;
+        Quaternion rotTarget = Quaternion.LookRotation(_targetRotation);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * rotationSpeed);
+    }
+    public void Seperate(List<EnemyController> flockList)
+    {
+        //if (flockList.Count == 0) return;
+        //Vector3 directionSum = Vector3.zero;
+        //foreach (EnemyController flock in flockList)
+        //{
+        //    float distance = Vector3.Distance(transform.position, flock.transform.position);
+        //    if ((distance > 0) && (distance < _enemyStats.DesiredSeperationDistance) && flock != this)
+        //    {
+        //        Vector3 oppositeDireciton = (transform.position - flock.transform.position).normalized;
+        //        directionSum += oppositeDireciton;
+        //    }
+
+        //    directionSum *= (_enemyStats.TopSpeed * Time.fixedDeltaTime);
+        //    _rigidBody.velocity += directionSum;
+        //    _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _enemyStats.TopSpeed);
+        //}
+    }
+
+    #region State Coroutines
+
+    private void SetState(IEnumerator newState)
+    {
+        if (_currentState != null)
+        {
+            StopCoroutine(_currentState);
+        }
+
+        _currentState = StartCoroutine(newState);
+    }
+
+    private IEnumerator State_Idle()
     {
         while(_target == null)
         {
@@ -24,4 +97,18 @@ public class SentinelController : EnemyController
             yield return null;
         }
     }
+
+    private IEnumerator State_Spawning()
+    {
+        yield return null;
+    }
+
+    private IEnumerator PursueTarget()
+    {
+        yield return null;
+    }
+
+    #endregion
+
+
 }

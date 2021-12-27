@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public enum GunRangeEnemySpawnType { Basic, Flock};
+public class GunRangeEnemyManager : MonoBehaviour
 {
+    [SerializeField]
+    private GunRangeEnemySpawnType _spawnType;
     [SerializeField]
     private int _spawnAmount;
     [SerializeField]
@@ -14,6 +18,8 @@ public class EnemyManager : MonoBehaviour
     List<EnemyController> _currentEnemylist = new List<EnemyController>();
     [SerializeField]
     EnemyDeathEventSO _deathEventChannel;
+    [SerializeField]
+    private Transform _flockTarget;
 
     private void OnEnable()
     {
@@ -26,16 +32,33 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        SpawnEnemies(_spawnAmount, _enemy, _spawnPositionList);
+        SpawnEnemies(_spawnAmount, _enemy, _spawnPositionList);       
+    }
+
+    private void Update()
+    {
+        if (_spawnType == GunRangeEnemySpawnType.Flock)
+        {
+            foreach (EnemyController enemy in _currentEnemylist)
+            {
+                SentinelController sentinel = (SentinelController)enemy;
+                sentinel.SeekTarget(_flockTarget.position);
+                sentinel.Seperate(_currentEnemylist);
+            }
+        }
     }
 
     public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, List<Transform> spawnLocationList)
     {
+        int locationCount = 0;
         for(int i = 0; i < spawnAmount; i++)
-        {
-            Vector3 spawnLocation = new Vector3(spawnLocationList[i].position.x, spawnLocationList[i].position.y + 5, spawnLocationList[i].position.z);
+        {           
+            Vector3 spawnLocation = new Vector3(spawnLocationList[locationCount].position.x, spawnLocationList[locationCount].position.y + 5, spawnLocationList[locationCount].position.z);
             EnemyController enemy = Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
             _currentEnemylist.Add(enemy);
+
+            locationCount++;
+            if (locationCount > spawnLocationList.Count - 1) locationCount = 0;
         }
     }
 

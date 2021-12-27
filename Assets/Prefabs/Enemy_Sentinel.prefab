@@ -1815,8 +1815,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6316491336501125874}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.457, y: -0.599, z: 1.4199991}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.466, y: -0.595, z: -1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6316491337161034755}
@@ -1825,7 +1825,7 @@ Transform:
   - {fileID: 6316491337580767333}
   m_Father: {fileID: 6316491338376134110}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &6316491336501125879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11083,7 +11083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6316491337641114557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05700004, y: 0.046000004, z: 7.650001}
+  m_LocalPosition: {x: 0.065999985, y: 0.049999952, z: -7.300002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6316491338376134110}
@@ -17132,7 +17132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6316491337971139523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.917, y: 0.046000004, z: 7.650001}
+  m_LocalPosition: {x: 0.9259999, y: 0.049999952, z: -7.300002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6316491338376134110}
@@ -17162,7 +17162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6316491338012557185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83800006, y: 0.046000004, z: 7.650001}
+  m_LocalPosition: {x: -0.8290001, y: 0.049999952, z: -7.300002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6316491338376134110}
@@ -18550,12 +18550,13 @@ MonoBehaviour:
   _health: 0
   _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
-  _target: {fileID: 0}
   tentacleList:
   - {fileID: 6316491338012557186}
   - {fileID: 6316491337641114558}
   - {fileID: 6316491337971139524}
   _animator: {fileID: 6316491338376134050}
+  _rigidBody: {fileID: 6316491338376134052}
+  _target: {fileID: 0}
 --- !u!65 &6316491338376134051
 BoxCollider:
   m_ObjectHideFlags: 0

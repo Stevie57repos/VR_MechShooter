@@ -12,7 +12,6 @@ public class PlayerWeaponController : MonoBehaviour
     private InputAction _primaryRightTrigger;
     private InputAction _primaryLeftTrigger;
     private InputAction _toggleSecondaryAction;
-    private float _round2decimals = 100f;
     [SerializeField]
     private ActionBasedController _rightController;
     [SerializeField]

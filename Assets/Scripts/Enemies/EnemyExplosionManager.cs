@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionController : MonoBehaviour
+public class EnemyExplosionManager : MonoBehaviour
 {
     [SerializeField]
     EnemyDeathEventSO _deathEventChannel;
@@ -31,6 +31,4 @@ public class ExplosionController : MonoBehaviour
         explosion.transform.position = enemy.transform.position;
         explosion.gameObject.SetActive(true);
     }
-
-
 }

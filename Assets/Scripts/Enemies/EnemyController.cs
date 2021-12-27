@@ -9,19 +9,9 @@ public class EnemyController : MonoBehaviour, IDamageable
     private float _minHealth = 0f;
     private float _maxHealth;
     [SerializeField]
-    private HealthStatsSO _enemyStats;
+    protected StatsSO _enemyStats;
     [SerializeField]
     private EnemyDeathEventSO _death;
-
-    private Coroutine _currentState = null;
-
-    [SerializeField]
-    protected Transform _target = null;
-
-    protected virtual void Start()
-    {
-        SetState(State_Idle());
-    }
 
     private void OnEnable()
     {
@@ -46,32 +36,4 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         TakeDamage(_maxHealth);
     }
-
-    protected void SetState(IEnumerator newState)
-    {
-        if(_currentState != null)
-        {
-            StopCoroutine(_currentState);
-        }
-
-        _currentState = StartCoroutine(newState);
-    }
-
-    protected virtual IEnumerator State_Spawning()
-    {
-        yield return null;
-    }
-
-    protected virtual IEnumerator State_Idle()
-    {
-        while(_target == null)
-            yield return null;
-
-        SetState(PursueTarget());
-    }
-    protected virtual IEnumerator PursueTarget()
-    {
-        yield return null;
-    }
-
 }
