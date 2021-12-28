@@ -1800,7 +1800,6 @@ GameObject:
   - component: {fileID: 6316491336501125879}
   - component: {fileID: 6316491336501125878}
   - component: {fileID: 6316491336501125877}
-  - component: {fileID: 6316491336501125876}
   m_Layer: 0
   m_Name: Sentinel_Model
   m_TagString: Untagged
@@ -2090,20 +2089,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6316491336501125874}
-  m_Mesh: {fileID: 0}
---- !u!64 &6316491336501125876
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6316491336501125874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
 --- !u!1 &6316491336703207751
 GameObject:
@@ -18443,7 +18428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6316491338376134110
 Transform:
   m_ObjectHideFlags: 0
