@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class PoolSystem
+public static class PoolSystem 
 {
     private static readonly int _DEFAULT_POOL_SIZE = 5;
 

@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : PoolableObject, IDamageable
 {
     [SerializeField]
     private float _health;
-    [SerializeField]
-    private float _minHealth;
-    [SerializeField]
+    private float _minHealth = 0f;
     private float _maxHealth;
+    [SerializeField]
+    protected StatsSO _enemyStats;
     [SerializeField]
     private EnemyDeathEventSO _death;
 
-    private void Awake()
+    protected override void OnEnable()
     {
-        _health = _maxHealth;
+        base.OnEnable(); 
+        _health = _enemyStats.maxHealth;
+        _maxHealth = _enemyStats.maxHealth;
     }
 
     public void TakeDamage(float damage)
@@ -25,9 +27,11 @@ public class EnemyController : MonoBehaviour
         {
             _health = _minHealth;
             _death.RaiseEvent(this);
+            this.gameObject.SetActive(false);
         }
     }
 
+    // for debugging death state
     [ContextMenu("Kill Unit")]
     private void KillUnit()
     {

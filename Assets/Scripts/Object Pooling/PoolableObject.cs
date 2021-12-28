@@ -10,7 +10,7 @@ public class PoolableObject : MonoBehaviour
     protected WaitForSeconds _waitTime;
     protected Coroutine _disabler;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         if (_lifeSpan >= 0)
         {
