@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IDamageable
+public class EnemyController : PoolableObject, IDamageable
 {
     [SerializeField]
     private float _health;
@@ -13,8 +13,9 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField]
     private EnemyDeathEventSO _death;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable(); 
         _health = _enemyStats.maxHealth;
         _maxHealth = _enemyStats.maxHealth;
     }
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         {
             _health = _minHealth;
             _death.RaiseEvent(this);
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 

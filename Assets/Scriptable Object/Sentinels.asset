@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sentinels
   m_EditorClassIdentifier: 
   maxHealth: 3
-  DistanceSlowDown: 3
   TopSpeed: 8
-  TargetDistanceSlowDown: 6
+  TargetDistanceSlowDown: 16
+  TargetDistanceLimit: 8
   DesiredSeperationDistance: 13.5

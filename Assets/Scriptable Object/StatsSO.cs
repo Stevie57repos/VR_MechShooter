@@ -6,8 +6,8 @@ using UnityEngine;
 public class StatsSO : ScriptableObject
 {
     public float maxHealth;
-    public float DistanceSlowDown;
     public float TopSpeed;
     public float TargetDistanceSlowDown;
+    public float TargetDistanceLimit;
     public float DesiredSeperationDistance;
 }

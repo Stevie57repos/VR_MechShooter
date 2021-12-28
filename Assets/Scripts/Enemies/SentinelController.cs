@@ -27,7 +27,7 @@ public class SentinelController : EnemyController
 
     private void Start()
     {
-        //_animator.SetTrigger("SetIdle");
+        _animator.SetTrigger("SetIdle");
     }
 
     private void Update()
@@ -37,9 +37,8 @@ public class SentinelController : EnemyController
 
     public void SeekTarget(Vector3 targetPos)
     {
-        _targetDirection = (targetPos - transform.position) * .5f;
-
-        if (_targetDirection.sqrMagnitude > _enemyStats.DistanceSlowDown * _enemyStats.DistanceSlowDown)
+        _targetDirection = targetPos - transform.position;
+        if(_targetDirection.magnitude > _enemyStats.TargetDistanceSlowDown)
         {
             Vector3 desiredSpeed = _targetDirection.normalized * _enemyStats.TopSpeed;
             Vector3 steer = desiredSpeed - _rigidBody.velocity;
@@ -48,10 +47,10 @@ public class SentinelController : EnemyController
         }
         else
         {
-            float percentageValue = Mathf.InverseLerp(_enemyStats.TargetDistanceSlowDown, _enemyStats.DistanceSlowDown, _targetDirection.magnitude);
-            Vector3 desiredSpeed = _targetDirection.normalized * (_enemyStats.TopSpeed * percentageValue);
-            Vector3 adjustmentSpeed = desiredSpeed - _rigidBody.velocity;
-            _rigidBody.AddForce(adjustmentSpeed);
+            float percentageValueSpeed = Mathf.InverseLerp(_enemyStats.TargetDistanceLimit, _enemyStats.TargetDistanceSlowDown, _targetDirection.magnitude);
+            Vector3 desiredSpeed = _targetDirection.normalized * (_enemyStats.TopSpeed * percentageValueSpeed);
+            Vector3 steer = desiredSpeed - _rigidBody.velocity;
+            _rigidBody.AddForce(steer);
         }
 
         Vector3 _targetRotation = targetPos - transform.position;
@@ -60,21 +59,21 @@ public class SentinelController : EnemyController
     }
     public void Seperate(List<EnemyController> flockList)
     {
-        //if (flockList.Count == 0) return;
-        //Vector3 directionSum = Vector3.zero;
-        //foreach (EnemyController flock in flockList)
-        //{
-        //    float distance = Vector3.Distance(transform.position, flock.transform.position);
-        //    if ((distance > 0) && (distance < _enemyStats.DesiredSeperationDistance) && flock != this)
-        //    {
-        //        Vector3 oppositeDireciton = (transform.position - flock.transform.position).normalized;
-        //        directionSum += oppositeDireciton;
-        //    }
+        if (flockList.Count == 0) return;
+        Vector3 directionSum = Vector3.zero;
+        foreach (EnemyController flock in flockList)
+        {
+            float distance = Vector3.Distance(transform.position, flock.transform.position);
+            if ((distance > 0) && (distance < _enemyStats.DesiredSeperationDistance) && flock != this)
+            {
+                Vector3 oppositeDireciton = (transform.position - flock.transform.position).normalized;
+                directionSum += oppositeDireciton;
+            }
 
-        //    directionSum *= (_enemyStats.TopSpeed * Time.fixedDeltaTime);
-        //    _rigidBody.velocity += directionSum;
-        //    _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _enemyStats.TopSpeed);
-        //}
+            directionSum *= (_enemyStats.TopSpeed * Time.fixedDeltaTime);
+            _rigidBody.velocity += directionSum;
+            _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _enemyStats.TopSpeed);
+        }
     }
 
     #region State Coroutines

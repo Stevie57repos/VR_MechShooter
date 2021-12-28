@@ -18443,7 +18443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6316491338376134110
 Transform:
   m_ObjectHideFlags: 0
@@ -18547,6 +18547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc90ebe538e716498b15feb0df334c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifeSpan: -1
   _health: 0
   _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
@@ -18557,6 +18558,7 @@ MonoBehaviour:
   _animator: {fileID: 6316491338376134050}
   _rigidBody: {fileID: 6316491338376134052}
   _target: {fileID: 0}
+  debugPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &6316491338376134051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18568,8 +18570,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.137176, y: 1.3752296, z: 1.5628433}
-  m_Center: {x: 0.04078579, y: 0.04078591, z: 0.6811228}
+  m_Size: {x: 3.137176, y: 1.3752296, z: 2.3956604}
+  m_Center: {x: 0.04078579, y: 0.04078591, z: -0.041218758}
 --- !u!54 &6316491338376134052
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -30,6 +30,12 @@ public class GunRangeEnemyManager : MonoBehaviour
     {
         _deathEventChannel.EnemyDeathEvent -= EnemyDeathEvent;
     }
+
+    private void Awake()
+    {
+        PoolSystem.CreatePool(_enemy, 20);
+    }
+
     private void Start()
     {
         SpawnEnemies(_spawnAmount, _enemy, _spawnPositionList);       
@@ -54,7 +60,8 @@ public class GunRangeEnemyManager : MonoBehaviour
         for(int i = 0; i < spawnAmount; i++)
         {           
             Vector3 spawnLocation = new Vector3(spawnLocationList[locationCount].position.x, spawnLocationList[locationCount].position.y + 5, spawnLocationList[locationCount].position.z);
-            EnemyController enemy = Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
+            EnemyController enemy = PoolSystem.GetNext(_enemy) as EnemyController;
+            enemy.gameObject.SetActive(true);
             _currentEnemylist.Add(enemy);
 
             locationCount++;
@@ -64,8 +71,9 @@ public class GunRangeEnemyManager : MonoBehaviour
 
     public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, Vector3 spawnLocation)
     {
-
-        EnemyController enemy = Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
+        EnemyController enemy = PoolSystem.GetNext(_enemy) as EnemyController;
+        enemy.gameObject.transform.position = spawnLocation;
+        enemy.gameObject.SetActive(true);
         _currentEnemylist.Add(enemy);
     }
 
