@@ -69,7 +69,7 @@ public class GunRangeEnemyManager : MonoBehaviour
         }
     }
 
-    public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, Vector3 spawnLocation)
+    public void SpawnEnemy(int spawnAmount, EnemyController enemyPrefab, Vector3 spawnLocation)
     {
         EnemyController enemy = PoolSystem.GetNext(_enemy) as EnemyController;
         enemy.gameObject.transform.position = spawnLocation;
@@ -89,6 +89,6 @@ public class GunRangeEnemyManager : MonoBehaviour
     private IEnumerator RespawnEnemy(Vector3 spawnPosition)
     {
         yield return new WaitForSeconds(3f);
-        SpawnEnemies(1, _enemy, spawnPosition);
+        SpawnEnemy(1, _enemy, spawnPosition);
     }
 }

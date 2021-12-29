@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelManager : MonoBehaviour
+{
+    [SerializeField]
+    private LevelData _levelData;
+    [SerializeField]
+    private int _currentWave;
+    [SerializeField]
+    private Transform _target;
+    [SerializeField]
+    private EnemyManager _enemyManager;
+    [SerializeField]
+    private LevelTimer _levelTimer;
+    [SerializeField]
+    private SpawnTimerEventChannelSO _spawnTimerEventChannel;
+
+    private void Awake()
+    {
+        _levelTimer.SetLevelTimer(_levelData);
+    }
+
+    private void Start()
+    {
+        SpawnWave(_currentWave);
+    }
+
+    private void OnEnable()
+    {
+        _spawnTimerEventChannel.WaveSpawnEvent += SpawnWaveTimerCallback;
+    }
+
+    private void OnDisable()
+    {
+        _spawnTimerEventChannel.WaveSpawnEvent -= SpawnWaveTimerCallback;
+    }
+    private void SpawnWave(int enemyWaveNumber)
+    {
+        _enemyManager.SpawnEnemies(_levelData._waveDataList[enemyWaveNumber]);
+    }
+    private void SpawnWaveTimerCallback(int timerEnemyWave)
+    {        
+        if (_currentWave >= timerEnemyWave) return;
+
+        _currentWave = timerEnemyWave;
+        SpawnWave(_currentWave);
+    }
+}
