@@ -17,5 +17,6 @@ public class DebugEditorScreen : MonoBehaviour
     public void DisplayValue(string value)
     {
         _text.text = value;
+        transform.LookAt(Vector3.zero);
     }
 }

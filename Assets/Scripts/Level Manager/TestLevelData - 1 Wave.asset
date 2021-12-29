@@ -17,8 +17,8 @@ MonoBehaviour:
     spawnWaveTime: 0
     enemyAmount: 4
     enemySpawnPosition:
-    - {x: -5, y: 0, z: 10}
-    - {x: 0, y: 0, z: 10}
-    - {x: 5, y: 0, z: 10}
-    delayBetweenSpawn: 3
+    - {x: -5, y: 20, z: 40}
+    - {x: 0, y: 20, z: 40}
+    - {x: 5, y: 20, z: 40}
+    delayBetweenSpawn: 4
   maxLevelDuration: 60

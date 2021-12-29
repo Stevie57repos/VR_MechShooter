@@ -12,7 +12,6 @@ public class EnemyManager : MonoBehaviour
     List<EnemyController> _enemylist = new List<EnemyController>();
     private Transform _target;
 
-
     public void Awake()
     {
         PoolSystem.CreatePool(_trainingDummy, 10);
@@ -25,8 +24,7 @@ public class EnemyManager : MonoBehaviour
         {
             enemy.MoveTowardsTarget(_target.position);
             enemy.Seperate(_enemylist);
-        }
-           
+        }       
     }
 
     public void SetUpEnemyManager(Transform target)
