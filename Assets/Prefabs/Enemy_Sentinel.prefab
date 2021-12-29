@@ -18422,6 +18422,7 @@ GameObject:
   - component: {fileID: 6316491338376134111}
   - component: {fileID: 6316491338376134051}
   - component: {fileID: 6316491338376134052}
+  - component: {fileID: 4590683027626217272}
   m_Layer: 0
   m_Name: Enemy_Sentinel
   m_TagString: Untagged
@@ -18536,13 +18537,12 @@ MonoBehaviour:
   _health: 0
   _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  _flyingMovementController: {fileID: 4590683027626217272}
   tentacleList:
   - {fileID: 6316491338012557186}
   - {fileID: 6316491337641114558}
   - {fileID: 6316491337971139524}
   _animator: {fileID: 6316491338376134050}
-  _rigidBody: {fileID: 6316491338376134052}
-  _target: {fileID: 0}
   debugPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &6316491338376134051
 BoxCollider:
@@ -18573,6 +18573,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4590683027626217272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316491338376134109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ddc0e94cf476a142a073d2e61e67842, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidBody: {fileID: 6316491338376134052}
+  _rotationSpeed: 100
 --- !u!1 &6316491338434487211
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class LevelTimer : MonoBehaviour
 {   
-    [SerializeField]
     private float secondslevelTimeElapsed;
     private int _curentWaveSpawnTracker = 1;
-    [SerializeField]
     private List<float> _spawnWaveTimeTriggers = new List<float>();
-    [SerializeField]
     private float _maxLevelDuration;
     [SerializeField]
     private SpawnTimerEventChannelSO _spawnWaveEvent;
-
-    private void Start()
-    {
-    }
 
     void Update()
     {
         secondslevelTimeElapsed += Time.deltaTime;
     }
 
-    public void SetLevelTimer(LevelData levelData)
+    public void StartLevelTimer(LevelData levelData)
     {
         _spawnWaveTimeTriggers = levelData.GetSpawnWaveTimesList();
         _maxLevelDuration = levelData.maxLevelDuration;
@@ -32,7 +25,7 @@ public class LevelTimer : MonoBehaviour
 
     private IEnumerator CheckTimer()
     {
-        while(secondslevelTimeElapsed < _maxLevelDuration)
+        while(secondslevelTimeElapsed < _maxLevelDuration && _spawnWaveTimeTriggers.Count > 1)
         {
             if (secondslevelTimeElapsed < _spawnWaveTimeTriggers[_curentWaveSpawnTracker])
                 yield return null;
@@ -48,9 +41,7 @@ public class LevelTimer : MonoBehaviour
                     Debug.Log($" no more spawn timers and stopping coroutine");
                     yield break;
                 }
-
-            }
-                         
+            }                  
         }
     }
 }

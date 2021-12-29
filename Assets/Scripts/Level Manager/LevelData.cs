@@ -18,5 +18,4 @@ public class LevelData : ScriptableObject
         }
         return list;
     }
-
 }

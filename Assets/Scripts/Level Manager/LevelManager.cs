@@ -19,7 +19,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        _levelTimer.SetLevelTimer(_levelData);
+        _levelTimer.StartLevelTimer(_levelData);
+        _enemyManager.SetUpEnemyManager(_target);
     }
 
     private void Start()

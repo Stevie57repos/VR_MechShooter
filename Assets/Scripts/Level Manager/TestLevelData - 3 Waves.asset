@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 391f4f153e02c404fb96c4cc3808d9c1, type: 3}
-  m_Name: TestLevelData
+  m_Name: TestLevelData - 3 Waves
   m_EditorClassIdentifier: 
   _waveDataList:
-  - enemyPrefab: {fileID: 231530840218681394, guid: af6d8a65e82c7d34187158a0388d6e98, type: 3}
+  - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
     spawnWaveTime: 0
     enemyAmount: 3
     enemySpawnPosition:
@@ -27,10 +27,10 @@ MonoBehaviour:
     enemySpawnPosition:
     - {x: 0, y: 10, z: 15}
     delayBetweenSpawn: 0
-  - enemyPrefab: {fileID: 231530840218681394, guid: af6d8a65e82c7d34187158a0388d6e98, type: 3}
-    spawnWaveTime: 15
+  - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
+    spawnWaveTime: 10
     enemyAmount: 1
     enemySpawnPosition:
-    - {x: 0, y: 8, z: 12}
+    - {x: 0, y: 10, z: 15}
     delayBetweenSpawn: 0
   maxLevelDuration: 60

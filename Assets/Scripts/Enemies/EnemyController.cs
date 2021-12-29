@@ -37,4 +37,14 @@ public class EnemyController : PoolableObject, IDamageable
     {
         TakeDamage(_maxHealth);
     }
+
+    public virtual void MoveTowardsTarget(Vector3 targetPos)
+    {
+
+    }
+
+    public virtual void Seperate(List<EnemyController> flockList)
+    {
+      
+    }
 }
