@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LevelTimer : MonoBehaviour
 {   
-    private float secondslevelTimeElapsed;
-    private int _curentWaveSpawnTracker = 1;
+    [SerializeField]
+    private float secondsLevelTimeElapsed;
+    private int _curentWaveSpawnTracker = 0;
     private List<float> _spawnWaveTimeTriggers = new List<float>();
     private float _maxLevelDuration;
     [SerializeField]
@@ -13,7 +14,7 @@ public class LevelTimer : MonoBehaviour
 
     void Update()
     {
-        secondslevelTimeElapsed += Time.deltaTime;
+        secondsLevelTimeElapsed += Time.deltaTime;
     }
 
     public void StartLevelTimer(LevelData levelData)
@@ -25,14 +26,12 @@ public class LevelTimer : MonoBehaviour
 
     private IEnumerator CheckTimer()
     {
-        while(secondslevelTimeElapsed < _maxLevelDuration && _spawnWaveTimeTriggers.Count > 1)
+        while(secondsLevelTimeElapsed < _maxLevelDuration && _spawnWaveTimeTriggers.Count != 0)
         {
-            if (secondslevelTimeElapsed < _spawnWaveTimeTriggers[_curentWaveSpawnTracker])
+            if (secondsLevelTimeElapsed < _spawnWaveTimeTriggers[_curentWaveSpawnTracker])
                 yield return null;
             else
             {
-                Debug.Log($"current time : {secondslevelTimeElapsed} is greater than {_spawnWaveTimeTriggers[_curentWaveSpawnTracker]} ");
-                Debug.Log($"spawn event");
                 _spawnWaveEvent.RaiseEvent(_curentWaveSpawnTracker);
                 _curentWaveSpawnTracker++;
 

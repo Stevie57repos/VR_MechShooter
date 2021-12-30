@@ -4557,6 +4557,7 @@ MonoBehaviour:
   _health: 1
   _enemyStats: {fileID: 11400000, guid: 62e0a0e4f6bfd3a43bff0b8302dee2c4, type: 2}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  CurrentState: 0
   _flyingMovementController: {fileID: 5428003517418613499}
 --- !u!114 &5428003517418613499
 MonoBehaviour:
@@ -4571,4 +4572,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 3286582099166163738}
-  _rotationSpeed: 100
+  _rotationSpeed: 300

@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private SpawnTimerEventChannelSO _spawnTimerEventChannel;
 
+
     private void Awake()
     {
         _levelTimer.StartLevelTimer(_levelData);
@@ -25,7 +26,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnWave(_currentWave);
+        //_enemyFlockManager.SpawnFlock(_scoutflockAmount, _sentinelFlockAmount);
+        //SpawnWave(_currentWave);
     }
 
     private void OnEnable()
@@ -42,10 +44,12 @@ public class LevelManager : MonoBehaviour
         _enemyManager.SpawnEnemies(_levelData._waveDataList[enemyWaveNumber]);
     }
     private void SpawnWaveTimerCallback(int timerEnemyWave)
-    {        
+    {
+        Debug.Log($"call back triggered");
         if (_currentWave >= timerEnemyWave) return;
 
         _currentWave = timerEnemyWave;
         SpawnWave(_currentWave);
+        Debug.Log($"spawning wave {timerEnemyWave}");
     }
 }

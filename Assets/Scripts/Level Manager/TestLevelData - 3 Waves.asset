@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveDataList:
   - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
-    spawnWaveTime: 0
+    spawnWaveTime: 10
     enemyAmount: 3
     enemySpawnPosition:
     - {x: -5, y: 0, z: 10}
@@ -22,13 +22,13 @@ MonoBehaviour:
     - {x: 5, y: 0, z: 10}
     delayBetweenSpawn: 3
   - enemyPrefab: {fileID: 6316491338376134111, guid: 0af04967f156cd04590804f596e841f9, type: 3}
-    spawnWaveTime: 10
+    spawnWaveTime: 20
     enemyAmount: 1
     enemySpawnPosition:
     - {x: 0, y: 10, z: 15}
     delayBetweenSpawn: 3
   - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
-    spawnWaveTime: 10
+    spawnWaveTime: 30
     enemyAmount: 1
     enemySpawnPosition:
     - {x: 0, y: 10, z: 15}

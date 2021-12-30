@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class EnemyController : PoolableObject, IDamageable
 {
     [SerializeField]
@@ -12,6 +13,9 @@ public class EnemyController : PoolableObject, IDamageable
     protected StatsSO _enemyStats;
     [SerializeField]
     private EnemyDeathEventSO _death;
+    
+    public EnemyState CurrentState;
+
 
     protected override void OnEnable()
     {
@@ -31,11 +35,9 @@ public class EnemyController : PoolableObject, IDamageable
         }
     }
 
-    // for debugging death state
-    [ContextMenu("Kill Unit")]
-    private void KillUnit()
+    public virtual void AttackTarget(Vector3 targetPos)
     {
-        TakeDamage(_maxHealth);
+
     }
 
     public virtual void MoveTowardsTarget(Vector3 targetPos)
@@ -46,5 +48,12 @@ public class EnemyController : PoolableObject, IDamageable
     public virtual void Seperate(List<EnemyController> flockList)
     {
       
+    }
+
+    // for debugging death state
+    [ContextMenu("Kill Unit")]
+    private void KillUnit()
+    {
+        TakeDamage(_maxHealth);
     }
 }

@@ -18537,13 +18537,13 @@ MonoBehaviour:
   _health: 0
   _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  CurrentState: 0
   _flyingMovementController: {fileID: 4590683027626217272}
   tentacleList:
   - {fileID: 6316491338012557186}
   - {fileID: 6316491337641114558}
   - {fileID: 6316491337971139524}
   _animator: {fileID: 6316491338376134050}
-  debugPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &6316491338376134051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18586,7 +18586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 6316491338376134052}
-  _rotationSpeed: 100
+  _rotationSpeed: 300
 --- !u!1 &6316491338434487211
 GameObject:
   m_ObjectHideFlags: 0

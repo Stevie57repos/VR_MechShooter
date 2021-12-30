@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(EnemyFlyingMovementController))]
 public class SentinelController : EnemyController
 {
@@ -15,12 +16,13 @@ public class SentinelController : EnemyController
     [SerializeField]
     private Animator _animator;
 
-    private Coroutine _currentState = null;
+    private Coroutine _currentState;
 
     private void Awake()
     {
         _flyingMovementController.SetUpMovementController(_enemyStats);
     }
+
 
     private void Start()
     {
@@ -31,10 +33,12 @@ public class SentinelController : EnemyController
     {
         _flyingMovementController.FlyTowardsTarget(targetPos);
     }
+
     public override void Seperate(List<EnemyController> flockList)
     {
         _flyingMovementController.Seperate(flockList);
     }
+
 
     #region State Coroutines
 
@@ -48,9 +52,8 @@ public class SentinelController : EnemyController
         _currentState = StartCoroutine(newState);
     }
 
-    private IEnumerator State_Idle()
+    private IEnumerator State_Flocking()
     {
-        _animator.SetTrigger("SetIdle");
         yield return null;
     }
 

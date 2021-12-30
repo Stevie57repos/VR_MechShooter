@@ -10,7 +10,7 @@ public class EnemyFlyingMovementController : MonoBehaviour
     private StatsSO _enemyStats;
     private Vector3 _targetDirection;
     [SerializeField]
-    private float _rotationSpeed = 100f;
+    private float _rotationSpeed;
 
     public void SetUpMovementController(StatsSO stats)
     {        
