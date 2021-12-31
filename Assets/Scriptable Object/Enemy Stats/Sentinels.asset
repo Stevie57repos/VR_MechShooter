@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c677569b9164b174b93048e7517b9a11, type: 3}
-  m_Name: ScoutDrone
+  m_Name: Sentinels
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  TopSpeed: 5
-  TargetDistanceSlowDown: 15
+  maxHealth: 3
+  TopSpeed: 20
+  TargetDistanceSlowDown: 30
   TargetDistanceLimit: 8
-  DesiredSeperationDistance: 10
+  DesiredSeperationDistance: 13.5

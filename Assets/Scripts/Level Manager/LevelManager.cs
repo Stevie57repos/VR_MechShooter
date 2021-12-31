@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,19 +16,31 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private LevelTimer _levelTimer;
     [SerializeField]
-    private SpawnTimerEventChannelSO _spawnTimerEventChannel;
+    private SpawnTimerEventChannelSO _spawnTimerEventChannel;  
 
+    [Header("Enemy Pooling settings")]
+    [SerializeField]
+    private EnemyController _scoutDrone;
+    [SerializeField]
+    private EnemyController _sentinel;
+    [SerializeField]
+    private int _minimumPoolAmount;
 
     private void Awake()
     {
         _levelTimer.StartLevelTimer(_levelData);
-        _enemyManager.SetUpEnemyManager(_target);
-    }
+        SetupEnemyManager();     
+     }
 
-    private void Start()
+    private void SetupEnemyManager()
     {
-        //_enemyFlockManager.SpawnFlock(_scoutflockAmount, _sentinelFlockAmount);
-        //SpawnWave(_currentWave);
+        int levelScoutDroneTotal = _levelData.GetEnemyPoolAmount(_scoutDrone);
+        int levelSentinelTotal = _levelData.GetEnemyPoolAmount(_sentinel);
+        Debug.Log($" total scout drone for level is {levelScoutDroneTotal} || " +
+            $"total sentinal for level is {levelSentinelTotal}");
+        int scoutPoolAmount = levelScoutDroneTotal > _minimumPoolAmount ? levelScoutDroneTotal: _minimumPoolAmount;
+        int sentinelPoolAmount = levelSentinelTotal > _minimumPoolAmount ? levelSentinelTotal: _minimumPoolAmount;
+        _enemyManager.SetUpEnemyManager(_target, scoutPoolAmount, sentinelPoolAmount );
     }
 
     private void OnEnable()

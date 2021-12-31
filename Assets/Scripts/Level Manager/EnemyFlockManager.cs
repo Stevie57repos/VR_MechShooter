@@ -18,21 +18,16 @@ public class EnemyFlockManager : MonoBehaviour
     private Transform _flockTarget;
     private Queue<EnemyController> _flockQueue = new Queue<EnemyController>();
 
-    private void Awake()
-    {
-        PoolSystem.CreatePool(_scoutDrone, 50);
-        PoolSystem.CreatePool(_sentinel, 50);
-    }
-
     public void SpawnFlock(int ScoutDroneAmountToSpawn, int SentinelAmountToSpawn)
     {
+        CreateEnemyPools(ScoutDroneAmountToSpawn, SentinelAmountToSpawn);
+
         Vector3 spawnPos = _flockSpawn.position;
         for (int i = 0; i < ScoutDroneAmountToSpawn; i++)
         {
             EnemyController scoutDroneEnemy = PoolSystem.GetNext(_scoutDrone) as EnemyController;
             scoutDroneEnemy.transform.position = spawnPos;
             _scoutFlockList.Add(scoutDroneEnemy);
-            scoutDroneEnemy.CurrentState = EnemyState.Flocking;
             _flockQueue.Enqueue(scoutDroneEnemy);
             scoutDroneEnemy.gameObject.SetActive(true);
             spawnPos.z++;
@@ -43,11 +38,16 @@ public class EnemyFlockManager : MonoBehaviour
             EnemyController sentinel = PoolSystem.GetNext(_sentinel) as EnemyController;
             sentinel.transform.position = spawnPos;
             _sentinelFlockList.Add(sentinel);
-            sentinel.CurrentState = EnemyState.Flocking;
             _flockQueue.Enqueue(sentinel);
             sentinel.gameObject.SetActive(true);
             spawnPos.z++;
         }
+    }
+
+    public void CreateEnemyPools(int ScoutDroneAmountToPool, int SentinelAmountToPool)
+    {
+        PoolSystem.CreatePool(_scoutDrone, ScoutDroneAmountToPool);
+        PoolSystem.CreatePool(_sentinel, SentinelAmountToPool);
     }
 
     private void Update()

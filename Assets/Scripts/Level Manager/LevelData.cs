@@ -18,4 +18,15 @@ public class LevelData : ScriptableObject
         }
         return list;
     }
+
+    public int GetEnemyPoolAmount(EnemyController prefab)
+    {
+        int enemyAmount = 0;
+        for(int i = 0; i < _waveDataList.Count; i++)
+        {
+            if(_waveDataList[i].enemyPrefab == prefab)
+                enemyAmount+= _waveDataList[i].enemyAmount;
+        }
+        return enemyAmount;
+    }
 }

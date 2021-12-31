@@ -14,7 +14,8 @@ public class EnemyController : PoolableObject, IDamageable
     [SerializeField]
     private EnemyDeathEventSO _death;
     
-    public EnemyState CurrentState;
+    private Coroutine _currentState;
+    protected List<EnemyController> _enemiesInWave;
 
 
     protected override void OnEnable()
@@ -22,6 +23,8 @@ public class EnemyController : PoolableObject, IDamageable
         base.OnEnable(); 
         _health = _enemyStats.maxHealth;
         _maxHealth = _enemyStats.maxHealth;
+
+        SetState(State_Flocking());  
     }
 
     public void TakeDamage(float damage)
@@ -35,9 +38,9 @@ public class EnemyController : PoolableObject, IDamageable
         }
     }
 
-    public virtual void AttackTarget(Vector3 targetPos)
+    public virtual void AttackTarget(Vector3 targetPos, List<EnemyController> enemiesInWave)
     {
-
+        _enemiesInWave = enemiesInWave; 
     }
 
     public virtual void MoveTowardsTarget(Vector3 targetPos)
@@ -48,6 +51,25 @@ public class EnemyController : PoolableObject, IDamageable
     public virtual void Seperate(List<EnemyController> flockList)
     {
       
+    }
+
+    protected void SetState(IEnumerator newState)
+    {
+        if (_currentState != null)
+        {
+            StopCoroutine(_currentState);
+        }
+
+        _currentState = StartCoroutine(newState);
+    }
+
+    protected IEnumerator State_Flocking()
+    {
+        yield return null;
+    }
+    protected virtual IEnumerator State_Attack()
+    {
+        yield return null;
     }
 
     // for debugging death state

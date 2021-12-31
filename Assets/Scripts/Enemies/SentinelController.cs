@@ -14,19 +14,27 @@ public class SentinelController : EnemyController
     private List<Transform> tentacleList = new List<Transform>();
 
     [SerializeField]
+    private Transform _target;
+
+    [SerializeField]
     private Animator _animator;
 
-    private Coroutine _currentState;
+    
 
     private void Awake()
     {
         _flyingMovementController.SetUpMovementController(_enemyStats);
     }
 
-
     private void Start()
     {
         _animator.SetTrigger("SetIdle");
+    }
+
+    public override void AttackTarget(Vector3 targetPos, List<EnemyController> enemiesInWave)
+    {
+        base.AttackTarget(targetPos, enemiesInWave);
+        SetState(State_Attack());
     }
 
     public override void MoveTowardsTarget(Vector3 targetPos)
@@ -39,35 +47,13 @@ public class SentinelController : EnemyController
         _flyingMovementController.Seperate(flockList);
     }
 
-
-    #region State Coroutines
-
-    private void SetState(IEnumerator newState)
+    protected override IEnumerator State_Attack()
     {
-        if (_currentState != null)
+        while(_target != null)
         {
-            StopCoroutine(_currentState);
+            MoveTowardsTarget(_target.position);
+            Seperate(_enemiesInWave);
+            yield return null;
         }
-
-        _currentState = StartCoroutine(newState);
     }
-
-    private IEnumerator State_Flocking()
-    {
-        yield return null;
-    }
-
-    private IEnumerator State_Spawning()
-    {
-        yield return null;
-    }
-
-    private IEnumerator PursueTarget()
-    {
-        yield return null;
-    }
-
-    #endregion
-
-
 }
