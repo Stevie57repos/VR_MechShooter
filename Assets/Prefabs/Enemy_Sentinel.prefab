@@ -18423,6 +18423,9 @@ GameObject:
   - component: {fileID: 6316491338376134051}
   - component: {fileID: 6316491338376134052}
   - component: {fileID: 4590683027626217272}
+  - component: {fileID: -8593468222645709196}
+  - component: {fileID: 4661444378687658474}
+  - component: {fileID: 5787267270952570779}
   m_Layer: 0
   m_Name: Enemy_Sentinel
   m_TagString: Untagged
@@ -18534,15 +18537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeSpan: -1
-  _health: 0
   _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
+  _healthHandler: {fileID: 5787267270952570779}
   _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
-  CurrentState: 0
-  _flyingMovementController: {fileID: 4590683027626217272}
-  tentacleList:
-  - {fileID: 6316491338012557186}
-  - {fileID: 6316491337641114558}
-  - {fileID: 6316491337971139524}
   _animator: {fileID: 6316491338376134050}
 --- !u!65 &6316491338376134051
 BoxCollider:
@@ -18587,6 +18584,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 6316491338376134052}
   _rotationSpeed: 300
+--- !u!114 &-8593468222645709196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316491338376134109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d32063778ae754da005157bb15a7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4661444378687658474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316491338376134109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb01a756a8cc3f4599df602c38faf31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5787267270952570779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316491338376134109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e203751448ea92458ffc6588d555644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
 --- !u!1 &6316491338434487211
 GameObject:
   m_ObjectHideFlags: 0

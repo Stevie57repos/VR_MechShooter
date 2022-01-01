@@ -47,9 +47,12 @@ public class GunRangeEnemyManager : MonoBehaviour
         {
             foreach (EnemyController enemy in _currentEnemylist)
             {
-                SentinelController sentinel = (SentinelController)enemy;
-                sentinel.MoveTowardsTarget(_flockTarget.position);
-                sentinel.Seperate(_currentEnemylist);
+                //SentinelController sentinel = (SentinelController)enemy;
+                //sentinel.MoveTowardsTarget(_flockTarget.position);
+                //sentinel.Seperate(_currentEnemylist);
+
+                enemy.MovementHandler(_flockTarget, _currentEnemylist);
+
             }
         }
     }

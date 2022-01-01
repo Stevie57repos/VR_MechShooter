@@ -6,52 +6,55 @@ using UnityEngine;
 public class EnemyController : PoolableObject, IDamageable
 {
     [SerializeField]
-    private float _health;
-    private float _minHealth = 0f;
-    private float _maxHealth;
-    [SerializeField]
     protected StatsSO _enemyStats;
+    [SerializeField]
+    protected HealthHandler _healthHandler;
+    [SerializeField]
+    protected IEnemyAttackHandler _attackHandler;
+    [SerializeField]
+    protected IEnemyMovementHandler _enemyMovementHandler;
     [SerializeField]
     private EnemyDeathEventSO _death;
     
     private Coroutine _currentState;
     protected List<EnemyController> _enemiesInWave;
-
+    [SerializeField]
+    protected EnemyState _enemyState;
 
     protected override void OnEnable()
     {
-        base.OnEnable(); 
-        _health = _enemyStats.maxHealth;
-        _maxHealth = _enemyStats.maxHealth;
+        base.OnEnable();
+        SetupEnemyController();
+    }
 
-        SetState(State_Flocking());  
+    protected void SetupEnemyController()
+    {
+        _healthHandler = GetComponent<HealthHandler>();
+        _healthHandler.Setup(_enemyStats);
+        _attackHandler = GetComponent<IEnemyAttackHandler>();
+        _enemyMovementHandler = GetComponent<IEnemyMovementHandler>();
+        _enemyMovementHandler.Setup(_enemyStats.MovementStats);
     }
 
     public void TakeDamage(float damage)
     {
-        _health -= damage;
-        if (_health <= _minHealth)
+        bool isAlive = _healthHandler.TakeDamage(damage);
+        if(!isAlive)
         {
-            _health = _minHealth;
             _death.RaiseEvent(this);
             this.gameObject.SetActive(false);
         }
     }
 
-    public virtual void AttackTarget(Vector3 targetPos, List<EnemyController> enemiesInWave)
+    public virtual void AttackHandler(Transform target, List<EnemyController> enemiesInWave)
     {
-        _enemiesInWave = enemiesInWave; 
+        _attackHandler.HandleAttack(target, _enemyMovementHandler, enemiesInWave);
     }
 
-    public virtual void MoveTowardsTarget(Vector3 targetPos)
+    public virtual void MovementHandler(Transform target, List<EnemyController> enemiesList)
     {
-
-    }
-
-    public virtual void Seperate(List<EnemyController> flockList)
-    {
-      
-    }
+        _enemyMovementHandler.HandleMovement(target, enemiesList);
+    } 
 
     protected void SetState(IEnumerator newState)
     {
@@ -70,12 +73,5 @@ public class EnemyController : PoolableObject, IDamageable
     protected virtual IEnumerator State_Attack()
     {
         yield return null;
-    }
-
-    // for debugging death state
-    [ContextMenu("Kill Unit")]
-    private void KillUnit()
-    {
-        TakeDamage(_maxHealth);
     }
 }
