@@ -717,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemylist: []
   _enemyFlockManager: {fileID: 814682040}
+  _enemyDeath: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
 --- !u!114 &814682038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,11 +1379,11 @@ PrefabInstance:
     - target: {fileID: 2409273618945994599, guid: b952c51fbcf19e245aa7753ea27b2881, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6f242c2e7d5ed7744970e5b4f2684c30, type: 2}
+      objectReference: {fileID: 2100000, guid: 116b150bb37ee9d42977f3dce2312263, type: 2}
     - target: {fileID: 2409273619010714664, guid: b952c51fbcf19e245aa7753ea27b2881, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6f242c2e7d5ed7744970e5b4f2684c30, type: 2}
+      objectReference: {fileID: 2100000, guid: 116b150bb37ee9d42977f3dce2312263, type: 2}
     - target: {fileID: 2409273619036030849, guid: b952c51fbcf19e245aa7753ea27b2881, type: 3}
       propertyPath: m_Mesh
       value: 

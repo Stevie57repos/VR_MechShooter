@@ -12,9 +12,17 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private EnemyFlockManager _enemyFlockManager;
 
-    private void Update()
-    {
+    [SerializeField]
+    private EnemyDeathEventSO _enemyDeath;
 
+    private void OnEnable()
+    {
+        _enemyDeath.EnemyDeathEvent += EnemyDeathRemoval;
+    }
+
+    private void OnDisable()
+    {
+        _enemyDeath.EnemyDeathEvent -= EnemyDeathRemoval;
     }
 
     public void SetUpEnemyManager(Transform target, int scoutFlockSpawnAmount, int sentinelFlockSpawnAmount)
@@ -41,6 +49,15 @@ public class EnemyManager : MonoBehaviour
         foreach(EnemyController enemy in _enemylist)
         {
             enemy.AttackHandler(_playerTarget, _enemylist);
+        }
+    }
+
+    private void EnemyDeathRemoval(EnemyController enemy)
+    {
+        _enemylist.Remove(enemy);
+        if(_enemylist.Count == 0)
+        {
+            DebugEditorScreen.Instance.DisplayValue($"All enemies in wave cleared");
         }
     }
 }

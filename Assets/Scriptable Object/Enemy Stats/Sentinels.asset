@@ -19,3 +19,7 @@ MonoBehaviour:
     TargetDistanceSlowDown: 30
     TargetDistanceLimit: 8
     DesiredSeperationDistance: 13.5
+  AttackStats:
+    Damage: 1
+    AttackDistance: 2
+    AttackChargeTime: 3

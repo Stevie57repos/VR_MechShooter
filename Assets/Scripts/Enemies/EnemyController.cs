@@ -31,9 +31,10 @@ public class EnemyController : PoolableObject, IDamageable
     {
         _healthHandler = GetComponent<HealthHandler>();
         _healthHandler.Setup(_enemyStats);
-        _attackHandler = GetComponent<IEnemyAttackHandler>();
         _enemyMovementHandler = GetComponent<IEnemyMovementHandler>();
         _enemyMovementHandler.Setup(_enemyStats.MovementStats);
+        _attackHandler = GetComponent<IEnemyAttackHandler>();
+        _attackHandler.Setup(_enemyStats.AttackStats);
     }
 
     public void TakeDamage(float damage)

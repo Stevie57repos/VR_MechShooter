@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEnemyAttackHandler 
 {
-
+    public void Setup(AttackStats stats);
     public void HandleAttack(Transform target, IEnemyMovementHandler movementHandler, List<EnemyController> enemiesInWave);
 
 }
