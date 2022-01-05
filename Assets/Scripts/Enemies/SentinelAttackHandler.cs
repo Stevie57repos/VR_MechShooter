@@ -32,10 +32,5 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, _target.position);
-        Gizmos.DrawSphere(transform.position, 3f);
-    }
+
 }

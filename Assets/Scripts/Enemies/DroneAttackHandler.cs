@@ -26,38 +26,35 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
 
     private IEnumerator State_MoveTowardsTarget()
     {
-
         // move towards target
-        while(_target != null)
+        while(Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
         {
-            Debug.Log($" the distance is {Vector3.Distance(transform.position, _target.position)} " +
-                $"and target is {_stats.AttackDistance}");
-
-            if(Vector3.Distance(transform.position,_target.position) > _stats.AttackDistance)
-            {
-                _movementHandler.HandleMovement(_target, _enemiesInWave);
-                yield return null;
-            }
-            else
-            {
-                _attackTimer = _stats.AttackChargeTime;
-                SetState(State_Attack());
-            }
-        }
+            _movementHandler.HandleMovement(_target, _enemiesInWave);
+            yield return null;    
+        }     
+        _attackTimer = _stats.AttackChargeTime;
+        SetState(State_Attack());        
     }
 
     private IEnumerator State_Attack()
     {
         Debug.Log($"in Attack State");
-        if (Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance) SetState(State_MoveTowardsTarget());
-        if(_attackTimer > 0)
+        float currentDistance = Vector3.Distance(transform.position, _target.position);
+        if ( currentDistance > _stats.AttackDistance) SetState(State_MoveTowardsTarget());
+        while(currentDistance < _stats.AttackDistance)
         {
-            _attackTimer -= Time.deltaTime / _stats.AttackChargeTime;
+            transform.LookAt(_target.position);
+            _movementHandler.StopMovement();
+            if (_attackTimer > 0)
+            {
+                _attackTimer -= Time.deltaTime / _stats.AttackChargeTime;
+                yield return null;
+            }
+            else
+            {
+                Debug.Log($"Player takes damage !");
+            }
             yield return null;
-        }
-        else
-        {
-            Debug.Log($"Player takes damage !");
         }
     }
     

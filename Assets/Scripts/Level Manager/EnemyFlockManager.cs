@@ -57,9 +57,12 @@ public class EnemyFlockManager : MonoBehaviour
         while (i < 10)
         {
             EnemyController enemy = _flockQueue.Dequeue();
-            enemy.MovementHandler(_flockTarget, _scoutFlockList);
-            enemy.MovementHandler(_flockTarget, _sentinelFlockList);
-            _flockQueue.Enqueue(enemy);
+            if (_scoutFlockList.Contains(enemy) || _sentinelFlockList.Contains(enemy))
+            {
+                enemy.MovementHandler(_flockTarget, _scoutFlockList);
+                enemy.MovementHandler(_flockTarget, _sentinelFlockList);
+                _flockQueue.Enqueue(enemy);
+            }
             i++;
         }
     }

@@ -74,4 +74,10 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
             _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
         }
     }
+
+    public void StopMovement()
+    {
+        _rigidBody.velocity = Vector3.zero;
+        _rigidBody.angularVelocity = Vector3.zero;
+    }
 }

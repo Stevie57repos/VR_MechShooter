@@ -6,4 +6,6 @@ public interface IEnemyMovementHandler
 {
     public void Setup(MovementStats stats);
     public void HandleMovement(Transform target, List<EnemyController> enemiesInWave);
+
+    public void StopMovement();
 }
