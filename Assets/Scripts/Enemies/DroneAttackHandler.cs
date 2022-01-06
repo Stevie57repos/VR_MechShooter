@@ -9,7 +9,12 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
     private IEnemyMovementHandler _movementHandler;
     private List<EnemyController> _enemiesInWave;
     private Coroutine _currentState = null;
-    private float _attackTimer;
+    [SerializeField]
+    private float _attackTimerStart = float.MinValue;
+    [SerializeField]
+    private float _attackTimerEnd;
+    [SerializeField]
+    private ParticleSystem _attackParticles;
 
     public void HandleAttack(Transform target, IEnemyMovementHandler movementHandler, List<EnemyController> enemiesInWave)
     {
@@ -26,14 +31,19 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
 
     private IEnumerator State_MoveTowardsTarget()
     {
+        Debug.Log($"in moving state");
+        _attackParticles.Stop();
         // move towards target
         while(Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
         {
             _movementHandler.HandleMovement(_target, _enemiesInWave);
             yield return null;    
-        }     
-        _attackTimer = _stats.AttackChargeTime;
+        }
+        _attackTimerStart = Time.time;
+        _attackTimerEnd = Time.time + _stats.AttackChargeTime;    
+        _attackParticles.Play();
         SetState(State_Attack());        
+
     }
 
     private IEnumerator State_Attack()
@@ -45,19 +55,25 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         {
             transform.LookAt(_target.position);
             _movementHandler.StopMovement();
-            if (_attackTimer > 0)
+            _attackTimerStart = Time.time;
+            if (_attackTimerStart <= _attackTimerEnd)
             {
-                _attackTimer -= Time.deltaTime / _stats.AttackChargeTime;
                 yield return null;
             }
             else
             {
+                yield return new WaitForSeconds(1f);
+                Debug.Log($"timer started at {_attackTimerStart} and ended at {_attackTimerEnd}");
                 Debug.Log($"Player takes damage !");
+                // Reset attack
+                _attackTimerStart = Time.time;
+                _attackTimerEnd = Time.time + _stats.AttackChargeTime;
+                _attackParticles.Play();
             }
             yield return null;
         }
     }
-    
+
     private void SetState(IEnumerator newState) 
     {
         if (_currentState != null)
@@ -72,5 +88,4 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, _target.position);
     }
-
 }

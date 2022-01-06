@@ -22,4 +22,4 @@ MonoBehaviour:
   AttackStats:
     Damage: 1
     AttackDistance: 18.5
-    AttackChargeTime: 3
+    AttackChargeTime: 5
