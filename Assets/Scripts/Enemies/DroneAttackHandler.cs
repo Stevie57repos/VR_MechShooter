@@ -9,12 +9,15 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
     private IEnemyMovementHandler _movementHandler;
     private List<EnemyController> _enemiesInWave;
     private Coroutine _currentState = null;
-    [SerializeField]
     private float _attackTimerStart = float.MinValue;
-    [SerializeField]
     private float _attackTimerEnd;
     [SerializeField]
     private ParticleSystem _attackParticles;
+
+    private void OnDisable()
+    {
+        _attackParticles.Stop();
+    }
 
     public void HandleAttack(Transform target, IEnemyMovementHandler movementHandler, List<EnemyController> enemiesInWave)
     {
