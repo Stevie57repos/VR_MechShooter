@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Flock.unity
     guid: 8318724e4f1ad56459712cb993235f57
+  - enabled: 1
+    path: Assets/Scenes/PersistentManagers.unity
+    guid: e2621d63ffedbfb4f95cf5bff836fd67
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 87c0ff5ce1f44c14fa3cb721205a2a3a, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 397fe64bd3aa0864f842c557b4a2eaee, type: 2}
