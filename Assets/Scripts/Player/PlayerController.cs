@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(PlayerInput))]
-public class PlayerWeaponController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 { 
     private PlayerInput _playerInput;
     private InputAction _primaryRightTrigger;
@@ -20,6 +20,8 @@ public class PlayerWeaponController : MonoBehaviour
     private Transform _targetRight;
     [SerializeField]
     private Transform _targetLeft;
+    [SerializeField]
+    private HealthHandler _healthHandler;
 
     [Header("PrimaryGun Settings")]
     [SerializeField]
@@ -91,5 +93,19 @@ public class PlayerWeaponController : MonoBehaviour
         string display = "toggle was pressed";
         Debug.Log(display);
         DebugEditorScreen.Instance.DisplayValue($"pew pew. Primary trigger value is {display}");
+    }
+
+    public bool CheckPlayerHealthStatus()
+    {
+        return _healthHandler.HealthStatus();
+    }
+
+    public void PlayerDamage(float damage)
+    {
+        bool isAlive = _healthHandler.TakeDamage(damage);
+        if (!isAlive)
+        {
+            Debug.Log($"player is dead !");
+        }
     }
 }

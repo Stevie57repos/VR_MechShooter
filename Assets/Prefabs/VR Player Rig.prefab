@@ -4278,6 +4278,7 @@ GameObject:
   - component: {fileID: 3701976469669456362}
   - component: {fileID: 2409273618490880489}
   - component: {fileID: 2409273618490880501}
+  - component: {fileID: 2597017654378746744}
   m_Layer: 0
   m_Name: VR Player Rig
   m_TagString: Untagged
@@ -4562,10 +4563,24 @@ MonoBehaviour:
   _leftController: {fileID: 3701976469442419152}
   _targetRight: {fileID: 2409273618945994597}
   _targetLeft: {fileID: 2409273619010714679}
+  _healthHandler: {fileID: 2597017654378746744}
   _primaryGunRight: {fileID: 2409273619129155459}
   _primaryGunLeft: {fileID: 3701976469442419136}
   _gunRange: 70
   _damage: 1
+--- !u!114 &2597017654378746744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701976469669456358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e203751448ea92458ffc6588d555644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 10
 --- !u!1 &3701976469879206854
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,4 +31,9 @@ public class HealthHandler : MonoBehaviour
     {
         TakeDamage(_maxHealth);
     }
+
+    public bool HealthStatus()
+    {
+        return _health > 0;
+    }
 }

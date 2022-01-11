@@ -66,6 +66,23 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
             {
                 Debug.Log($"timer started at {_attackTimerStart} and ended at {_attackTimerEnd}");
                 Debug.Log($"Player takes damage !");
+                PlayerController player = _target.GetComponent<PlayerController>();
+                if (player.CheckPlayerHealthStatus())
+                {
+                    _target.GetComponent<PlayerController>().PlayerDamage(_stats.Damage);
+                    if (player.CheckPlayerHealthStatus())
+                    {
+                        _attackTimerStart = Time.time;
+                        _attackTimerEnd = Time.time + _stats.AttackChargeTime;
+                        _attackParticles.Stop();
+                        _attackParticles.Play();
+                    }
+                    else
+                    {                                        
+                        StopAllCoroutines();
+                    }
+                }
+
             }
             yield return null;
         }
@@ -87,6 +104,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
 
     private void OnDisable()
     {
-        
+        StopAllCoroutines();
+        _currentState = null;
     }
 }
