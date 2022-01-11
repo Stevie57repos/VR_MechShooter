@@ -72,6 +72,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
                     _target.GetComponent<PlayerController>().PlayerDamage(_stats.Damage);
                     if (player.CheckPlayerHealthStatus())
                     {
+                        yield return new WaitForSeconds(3f);
                         _attackTimerStart = Time.time;
                         _attackTimerEnd = Time.time + _stats.AttackChargeTime;
                         _attackParticles.Stop();
