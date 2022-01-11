@@ -20,7 +20,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
 
     private void OnEnable()
     {
-        //_attackParticles.Stop();
+        _attackParticles.Stop();
     }
     private void OnDisable()
     {
@@ -113,6 +113,4 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, _target.position);
     }
-
-
 }

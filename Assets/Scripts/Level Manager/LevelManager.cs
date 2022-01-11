@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RoboRyanTron.SceneReference;
 
 public class LevelManager : MonoBehaviour
 {
@@ -26,13 +27,28 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     private int _minimumPoolAmount;
 
+    [SerializeField]
+    private PlayerDeathEvenChannelSO _playerDeathEventChannel;
+    [SerializeField]
+    private SceneReference _lossScene;
+
     private void Awake()
     {
-        _levelTimer.StartLevelTimer(_levelData);
-        SetupEnemyManager();     
-     }
+        StartLevel();
+    }
+    private void OnEnable()
+    {
+        _spawnTimerEventChannel.WaveSpawnEvent += SpawnWaveTimerCallback;
+        _playerDeathEventChannel.PlayerDeathEvent += PlayerLoss;
+    }
 
-    private void SetupEnemyManager()
+    private void OnDisable()
+    {
+        _spawnTimerEventChannel.WaveSpawnEvent -= SpawnWaveTimerCallback;
+        _playerDeathEventChannel.PlayerDeathEvent -= PlayerLoss;
+    }
+
+    private void StartLevel()
     {
         int levelScoutDroneTotal = _levelData.GetEnemyPoolAmount(_scoutDrone);
         int levelSentinelTotal = _levelData.GetEnemyPoolAmount(_sentinel);
@@ -40,18 +56,11 @@ public class LevelManager : MonoBehaviour
             $"total sentinal for level is {levelSentinelTotal}");
         int scoutPoolAmount = levelScoutDroneTotal > _minimumPoolAmount ? levelScoutDroneTotal: _minimumPoolAmount;
         int sentinelPoolAmount = levelSentinelTotal > _minimumPoolAmount ? levelSentinelTotal: _minimumPoolAmount;
-        _enemyManager.SetUpEnemyManager(_target, scoutPoolAmount, sentinelPoolAmount );
+        _enemyManager.CreateEnemyFlock(_target, scoutPoolAmount, sentinelPoolAmount );
+
+        _levelTimer.StartLevelTimer(_levelData);
     }
 
-    private void OnEnable()
-    {
-        _spawnTimerEventChannel.WaveSpawnEvent += SpawnWaveTimerCallback;
-    }
-
-    private void OnDisable()
-    {
-        _spawnTimerEventChannel.WaveSpawnEvent -= SpawnWaveTimerCallback;
-    }
     private void SpawnWave(int enemyWaveNumber)
     {
         _enemyManager.SpawnEnemies(_levelData._waveDataList[enemyWaveNumber]);
@@ -64,5 +73,12 @@ public class LevelManager : MonoBehaviour
         _currentWave = timerEnemyWave;
         SpawnWave(_currentWave);
         Debug.Log($"spawning wave {timerEnemyWave}");
+    }
+
+    public void PlayerLoss()
+    {
+        _levelTimer.Stop();
+        _enemyManager.Stop();
+        _lossScene.LoadSceneAsync();
     }
 }

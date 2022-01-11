@@ -25,12 +25,11 @@ public class EnemyManager : MonoBehaviour
         _enemyDeath.EnemyDeathEvent -= EnemyDeathRemoval;
     }
 
-    public void SetUpEnemyManager(Transform target, int scoutFlockSpawnAmount, int sentinelFlockSpawnAmount)
+    public void CreateEnemyFlock(Transform target, int scoutFlockSpawnAmount, int sentinelFlockSpawnAmount)
     {
         _playerTarget = target;
         _enemyFlockManager.SpawnFlock(scoutFlockSpawnAmount, sentinelFlockSpawnAmount);
     }
-
     public void SpawnEnemies(EnemyWave waveData)
     {
         Debug.Log($"spawn wave has been called");
@@ -59,5 +58,10 @@ public class EnemyManager : MonoBehaviour
         {
             DebugEditorScreen.Instance.DisplayValue($"All enemies in wave cleared");
         }
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 }
