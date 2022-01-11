@@ -18424,7 +18424,8 @@ GameObject:
   - component: {fileID: 6316491338376134052}
   - component: {fileID: 4590683027626217272}
   - component: {fileID: 5787267270952570779}
-  - component: {fileID: -8367516730649238632}
+  - component: {fileID: 781303984}
+  - component: {fileID: 781303994}
   m_Layer: 0
   m_Name: Enemy_Sentinel
   m_TagString: Untagged
@@ -18598,7 +18599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
---- !u!114 &-8367516730649238632
+--- !u!114 &781303984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18607,10 +18608,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 6316491338376134109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e59e37acd181445a84e94aad2dcd48, type: 3}
+  m_Script: {fileID: 11500000, guid: 879416833c22a8346ac7f99a92d286d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackParticles: {fileID: 0}
+  _animator: {fileID: 6316491338376134050}
+  _tentacleList:
+  - {fileID: 6316491338012557186}
+  - {fileID: 6316491337641114558}
+  - {fileID: 6316491337971139524}
+  _attackParticles: {fileID: 129048636717481276}
+--- !u!114 &781303994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6316491338376134109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39162659bb3149c41809e6e1d3ba3d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyController: {fileID: 6316491338376134111}
+  _target: {fileID: 0}
+  isDebug: 1
 --- !u!1 &6316491338434487211
 GameObject:
   m_ObjectHideFlags: 0
@@ -20255,5 +20276,10 @@ PrefabInstance:
 --- !u!4 &218135301813134122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
+  m_PrefabInstance: {fileID: 218501646384050916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &129048636717481276 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198790722273677272, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
   m_PrefabInstance: {fileID: 218501646384050916}
   m_PrefabAsset: {fileID: 0}

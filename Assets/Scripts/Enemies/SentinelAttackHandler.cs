@@ -51,8 +51,10 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
     {
         Debug.Log($"in Attack State");
         _animator.SetTrigger("SetAttack");
+
         float currentDistance = Vector3.Distance(transform.position, _target.position);
         if (currentDistance > _stats.AttackDistance) SetState(State_MoveTowardsTarget());
+
         while (currentDistance < _stats.AttackDistance)
         {
             transform.LookAt(_target.position);
@@ -83,7 +85,6 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
                         StopAllCoroutines();
                     }
                 }
-
             }
             yield return null;
         }

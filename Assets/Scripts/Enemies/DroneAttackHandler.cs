@@ -54,6 +54,7 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         Debug.Log($"in Attack State");
         float currentDistance = Vector3.Distance(transform.position, _target.position);
         if ( currentDistance > _stats.AttackDistance) SetState(State_MoveTowardsTarget());
+
         while(currentDistance < _stats.AttackDistance)
         {
             transform.LookAt(_target.position);
@@ -65,13 +66,25 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
             }
             else
             {
-                yield return new WaitForSeconds(1f);
                 Debug.Log($"timer started at {_attackTimerStart} and ended at {_attackTimerEnd}");
                 Debug.Log($"Player takes damage !");
-                // Reset attack
-                _attackTimerStart = Time.time;
-                _attackTimerEnd = Time.time + _stats.AttackChargeTime;
-                _attackParticles.Play();
+                PlayerController player = _target.GetComponent<PlayerController>();
+                if (player.CheckPlayerHealthStatus())
+                {
+                    _target.GetComponent<PlayerController>().PlayerDamage(_stats.Damage);
+                    if (player.CheckPlayerHealthStatus())
+                    {
+                        yield return new WaitForSeconds(3f);
+                        _attackTimerStart = Time.time;
+                        _attackTimerEnd = Time.time + _stats.AttackChargeTime;
+                        _attackParticles.Stop();
+                        _attackParticles.Play();
+                    }
+                    else
+                    {
+                        StopAllCoroutines();
+                    }
+                }
             }
             yield return null;
         }
