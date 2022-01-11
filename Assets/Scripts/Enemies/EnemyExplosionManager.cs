@@ -7,8 +7,6 @@ public class EnemyExplosionManager : MonoBehaviour
     [SerializeField]
     EnemyDeathEventSO _deathEventChannel;
     [SerializeField]
-    GameObject _explosion;
-    [SerializeField]
     PoolableObject _explosionFX;
     private void Awake()
     {

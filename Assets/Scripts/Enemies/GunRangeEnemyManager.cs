@@ -47,9 +47,12 @@ public class GunRangeEnemyManager : MonoBehaviour
         {
             foreach (EnemyController enemy in _currentEnemylist)
             {
-                SentinelController sentinel = (SentinelController)enemy;
-                sentinel.SeekTarget(_flockTarget.position);
-                sentinel.Seperate(_currentEnemylist);
+                //SentinelController sentinel = (SentinelController)enemy;
+                //sentinel.MoveTowardsTarget(_flockTarget.position);
+                //sentinel.Seperate(_currentEnemylist);
+
+                enemy.MovementHandler(_flockTarget, _currentEnemylist);
+
             }
         }
     }
@@ -69,7 +72,7 @@ public class GunRangeEnemyManager : MonoBehaviour
         }
     }
 
-    public void SpawnEnemies(int spawnAmount, EnemyController enemyPrefab, Vector3 spawnLocation)
+    public void SpawnEnemy(int spawnAmount, EnemyController enemyPrefab, Vector3 spawnLocation)
     {
         EnemyController enemy = PoolSystem.GetNext(_enemy) as EnemyController;
         enemy.gameObject.transform.position = spawnLocation;
@@ -89,6 +92,6 @@ public class GunRangeEnemyManager : MonoBehaviour
     private IEnumerator RespawnEnemy(Vector3 spawnPosition)
     {
         yield return new WaitForSeconds(3f);
-        SpawnEnemies(1, _enemy, spawnPosition);
+        SpawnEnemy(1, _enemy, spawnPosition);
     }
 }

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391f4f153e02c404fb96c4cc3808d9c1, type: 3}
+  m_Name: TestLevelData
+  m_EditorClassIdentifier: 
+  _waveDataList:
+  - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
+    spawnWaveTime: 10
+    enemyAmount: 4
+    enemySpawnPosition:
+    - {x: -5, y: 20, z: 80}
+    - {x: 0, y: 20, z: 80}
+    - {x: 5, y: 20, z: 80}
+    delayBetweenSpawn: 4
+  - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
+    spawnWaveTime: 20
+    enemyAmount: 4
+    enemySpawnPosition:
+    - {x: -5, y: 20, z: 90}
+    - {x: 0, y: 20, z: 90}
+    - {x: 5, y: 20, z: 90}
+    delayBetweenSpawn: 4
+  - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
+    spawnWaveTime: 30
+    enemyAmount: 4
+    enemySpawnPosition:
+    - {x: -5, y: 20, z: 100}
+    - {x: 0, y: 20, z: 100}
+    - {x: 5, y: 20, z: 100}
+    delayBetweenSpawn: 4
+  maxLevelDuration: 60
