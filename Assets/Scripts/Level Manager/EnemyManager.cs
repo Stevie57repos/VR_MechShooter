@@ -17,6 +17,10 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private EnemyWaveClearedEventChannelSO _enemyWaveClearedChannel;
 
+    [SerializeField]
+    private bool _waveSpawnComplete = false;
+
+
     private void OnEnable()
     {
         _enemyDeath.EnemyDeathEvent += EnemyDeathRemoval;
@@ -45,6 +49,7 @@ public class EnemyManager : MonoBehaviour
             EnemyController enemy = _enemyFlockManager.GetEnemy(waveData.enemyPrefab);
             _enemylist.Add(enemy);            
             yield return new WaitForSeconds(waveData.delayBetweenSpawn);
+            _waveSpawnComplete = true;
         }     
 
         foreach(EnemyController enemy in _enemylist)
@@ -56,9 +61,8 @@ public class EnemyManager : MonoBehaviour
     private void EnemyDeathRemoval(EnemyController enemy)
     {
         _enemylist.Remove(enemy);
-        if(_enemylist.Count == 0)
+        if(_enemylist.Count == 0 && _waveSpawnComplete)
         {
-            DebugEditorScreen.Instance.DisplayValue($"All enemies in wave cleared");
             _enemyWaveClearedChannel.RaiseEvent();
         }
     }

@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 319677863}
   - component: {fileID: 319677862}
   - component: {fileID: 319677861}
+  - component: {fileID: 319677869}
   m_Layer: 5
   m_Name: Win Menu
   m_TagString: Untagged
@@ -444,6 +445,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0.45, y: 6.52}
   m_SizeDelta: {x: 132.3426, y: 66.6676}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &319677869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319677860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7951c64acb0fa62458bf30a60089fe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 0
+  m_CheckFor2DOcclusion: 0
+  m_CheckFor3DOcclusion: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RaycastTriggerInteraction: 1
 --- !u!1 &513383842
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,8 +42,8 @@ public class EnemyController : PoolableObject, IDamageable
         bool isAlive = _healthHandler.TakeDamage(damage);
         if(!isAlive)
         {
-            _death.RaiseEvent(this);
             this.gameObject.SetActive(false);
+            _death.RaiseEvent(this);
         }
     }
 
@@ -74,5 +74,12 @@ public class EnemyController : PoolableObject, IDamageable
     protected virtual IEnumerator State_Attack()
     {
         yield return null;
+    }
+
+    // for debugging death state
+    [ContextMenu("Kill Unit")]
+    private void KillUnit()
+    {
+        TakeDamage(_enemyStats.HealthStats.maxHealth);
     }
 }

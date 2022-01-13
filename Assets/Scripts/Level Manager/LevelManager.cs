@@ -35,7 +35,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField]
     private EnemyWaveClearedEventChannelSO _enemyWaveClearedEventChannel;
-    
+    [SerializeField]
+    private SceneReference _WinScene;
+
 
     private void Awake()
     {
@@ -45,12 +47,14 @@ public class LevelManager : MonoBehaviour
     {
         _spawnTimerEventChannel.WaveSpawnEvent += SpawnWaveTimerCallback;
         _playerDeathEventChannel.PlayerDeathEvent += PlayerLoss;
+        _enemyWaveClearedEventChannel.EnemyWaveClearedEvent += PlayerWin; 
     }
 
     private void OnDisable()
     {
         _spawnTimerEventChannel.WaveSpawnEvent -= SpawnWaveTimerCallback;
         _playerDeathEventChannel.PlayerDeathEvent -= PlayerLoss;
+        _enemyWaveClearedEventChannel.EnemyWaveClearedEvent -= PlayerWin;
     }
 
     private void StartLevel()
@@ -81,12 +85,15 @@ public class LevelManager : MonoBehaviour
         Debug.Log($"spawning wave {timerEnemyWave}");
     }
 
-    private void ClearedEnemyWave()
+    private void PlayerWin()
     {
         _currentWave++;
-        if( _currentWave == _levelData._waveDataList.Count - 1)
+
+        if( _currentWave == _levelData._waveDataList.Count)
         {
             // you won the game
+            StopGameManagers();
+            _WinScene.LoadSceneAsync();
         }
         else
         {
@@ -96,8 +103,13 @@ public class LevelManager : MonoBehaviour
 
     public void PlayerLoss()
     {
+        StopGameManagers();
+        _lossScene.LoadSceneAsync();
+    }
+
+    private void StopGameManagers()
+    {
         _levelTimer.Stop();
         _enemyManager.Stop();
-        _lossScene.LoadSceneAsync();
     }
 }
