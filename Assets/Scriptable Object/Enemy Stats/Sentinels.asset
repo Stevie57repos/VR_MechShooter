@@ -15,7 +15,7 @@ MonoBehaviour:
   HealthStats:
     maxHealth: 3
   MovementStats:
-    TopSpeed: 20
+    TopSpeed: 25
     TargetDistanceSlowDown: 30
     TargetDistanceLimit: 8
     DesiredSeperationDistance: 13.5
