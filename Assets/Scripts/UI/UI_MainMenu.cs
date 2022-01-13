@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RoboRyanTron.SceneReference;
+using UnityEngine.SceneManagement;
 
 public class UI_MainMenu : MonoBehaviour
 {
@@ -10,7 +11,15 @@ public class UI_MainMenu : MonoBehaviour
 
     public void StartLevel()
     {
-        _startLevelScene.LoadSceneAsync();
+        Scene currentScene = SceneManager.GetActiveScene();
+        _startLevelScene.LoadScene();
+    }
+
+    // TODO : Async scene loading
+    private IEnumerator LoadLevel()
+    {
+        yield return _startLevelScene.LoadSceneAsync();
+        yield return SceneManager.SetActiveScene(SceneManager.GetSceneByName(_startLevelScene.SceneName));
     }
 
     public void QuitGame()

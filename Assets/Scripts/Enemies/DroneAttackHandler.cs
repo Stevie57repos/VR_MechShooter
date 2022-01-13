@@ -46,7 +46,6 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _attackTimerEnd = Time.time + _stats.AttackChargeTime;    
         _attackParticles.Play();
         SetState(State_Attack());        
-
     }
 
     private IEnumerator State_Attack()
@@ -84,6 +83,10 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
                     {
                         StopAllCoroutines();
                     }
+                }
+                else
+                {
+                    StopAllCoroutines();
                 }
             }
             yield return null;

@@ -14,6 +14,8 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField]
     private EnemyDeathEventSO _enemyDeath;
+    [SerializeField]
+    private EnemyWaveClearedEventChannelSO _enemyWaveClearedChannel;
 
     private void OnEnable()
     {
@@ -57,6 +59,7 @@ public class EnemyManager : MonoBehaviour
         if(_enemylist.Count == 0)
         {
             DebugEditorScreen.Instance.DisplayValue($"All enemies in wave cleared");
+            _enemyWaveClearedChannel.RaiseEvent();
         }
     }
 

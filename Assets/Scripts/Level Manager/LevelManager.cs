@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RoboRyanTron.SceneReference;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -31,6 +32,10 @@ public class LevelManager : MonoBehaviour
     private PlayerDeathEvenChannelSO _playerDeathEventChannel;
     [SerializeField]
     private SceneReference _lossScene;
+
+    [SerializeField]
+    private EnemyWaveClearedEventChannelSO _enemyWaveClearedEventChannel;
+    
 
     private void Awake()
     {
@@ -63,6 +68,7 @@ public class LevelManager : MonoBehaviour
 
     private void SpawnWave(int enemyWaveNumber)
     {
+        _currentWave = enemyWaveNumber;
         _enemyManager.SpawnEnemies(_levelData._waveDataList[enemyWaveNumber]);
     }
     private void SpawnWaveTimerCallback(int timerEnemyWave)
@@ -73,6 +79,19 @@ public class LevelManager : MonoBehaviour
         _currentWave = timerEnemyWave;
         SpawnWave(_currentWave);
         Debug.Log($"spawning wave {timerEnemyWave}");
+    }
+
+    private void ClearedEnemyWave()
+    {
+        _currentWave++;
+        if( _currentWave == _levelData._waveDataList.Count - 1)
+        {
+            // you won the game
+        }
+        else
+        {
+            SpawnWave(_currentWave);
+        }
     }
 
     public void PlayerLoss()
