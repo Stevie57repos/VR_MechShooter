@@ -32,7 +32,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _target = target;
         _movementHandler = movementHandler;
         _enemiesInWave = enemiesInWave;
-        //SetState(State_MoveTowardsTarget());
+        SetState(State_MoveTowardsTarget());
     }
 
     public void Setup(AttackStats stats)
@@ -48,7 +48,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _animator.SetTrigger("SetIdle");
         while (Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
         {
-            _movementHandler.HandleMovement(_target, _enemiesInWave);
+            _movementHandler.AttackMovement(_target, _enemiesInWave);
             yield return null;
         }
         _attackTimerStart = Time.time;
@@ -107,10 +107,5 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         }
 
         _currentState = StartCoroutine(newState);
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, _target.position);
     }
 }

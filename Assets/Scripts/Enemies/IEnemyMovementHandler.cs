@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IEnemyMovementHandler 
 {
     public void Setup(MovementStats stats);
-    public void HandleMovement(Transform target, List<EnemyController> enemiesInWave);
-
+    public void FlockingMovement(Transform target, List<EnemyController> enemiesInWave);
+    public void AttackMovement(Transform target, List<EnemyController> enemiesInWave);
     public void StopMovement();
 }

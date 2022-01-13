@@ -20,7 +20,6 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private bool _waveSpawnComplete = false;
 
-
     private void OnEnable()
     {
         _enemyDeath.EnemyDeathEvent += EnemyDeathRemoval;
@@ -39,23 +38,24 @@ public class EnemyManager : MonoBehaviour
     public void SpawnEnemies(EnemyWave waveData)
     {
         Debug.Log($"spawn wave has been called");
-        StartCoroutine(SpawnEnemyWave(waveData));
+        StartCoroutine(CreateEnemyWave(waveData));
     }
 
-    private IEnumerator SpawnEnemyWave(EnemyWave waveData)
+    private IEnumerator CreateEnemyWave(EnemyWave waveData)
     {
         for(int i = 0; i < waveData.enemyAmount; i++)
         {
             EnemyController enemy = _enemyFlockManager.GetEnemy(waveData.enemyPrefab);
-            _enemylist.Add(enemy);            
+            _enemylist.Add(enemy);
+            enemy.AttackPlayer(_playerTarget, _enemylist);
             yield return new WaitForSeconds(waveData.delayBetweenSpawn);
             _waveSpawnComplete = true;
         }     
 
-        foreach(EnemyController enemy in _enemylist)
-        {
-            enemy.AttackHandler(_playerTarget, _enemylist);
-        }
+        //foreach(EnemyController enemy in _enemylist)
+        //{
+        //    enemy.AttackPlayer(_playerTarget, _enemylist);
+        //}
     }
 
     private void EnemyDeathRemoval(EnemyController enemy)

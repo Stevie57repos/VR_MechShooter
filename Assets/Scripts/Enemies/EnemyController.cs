@@ -9,17 +9,11 @@ public class EnemyController : PoolableObject, IDamageable
     protected StatsSO _enemyStats;
     [SerializeField]
     protected HealthHandler _healthHandler;
-    [SerializeField]
     protected IEnemyAttackHandler _attackHandler;
-    [SerializeField]
-    protected IEnemyMovementHandler _enemyMovementHandler;
+    protected IEnemyMovementHandler _enemyMovementHandler; 
     [SerializeField]
     private EnemyDeathEventSO _death;
-    
-    private Coroutine _currentState;
     protected List<EnemyController> _enemiesInWave;
-    [SerializeField]
-    protected EnemyState _enemyState;
 
     protected override void OnEnable()
     {
@@ -52,29 +46,17 @@ public class EnemyController : PoolableObject, IDamageable
         _attackHandler.HandleAttack(target, _enemyMovementHandler, enemiesInWave);
     }
 
-    public virtual void MovementHandler(Transform target, List<EnemyController> enemiesList)
+    public virtual void MovementHandler(Transform target, List<EnemyController> enemiesInWave)
     {
-        _enemyMovementHandler.HandleMovement(target, enemiesList);
-    } 
-
-    protected void SetState(IEnumerator newState)
+        _enemyMovementHandler.FlockingMovement(target, enemiesInWave);
+    }
+    
+    public void AttackPlayer(Transform target, List<EnemyController> enemiesInWave)
     {
-        if (_currentState != null)
-        {
-            StopCoroutine(_currentState);
-        }
-
-        _currentState = StartCoroutine(newState);
+        _enemyMovementHandler.StopMovement();
+        AttackHandler(target, enemiesInWave);
     }
 
-    protected IEnumerator State_Flocking()
-    {
-        yield return null;
-    }
-    protected virtual IEnumerator State_Attack()
-    {
-        yield return null;
-    }
 
     // for debugging death state
     [ContextMenu("Kill Unit")]

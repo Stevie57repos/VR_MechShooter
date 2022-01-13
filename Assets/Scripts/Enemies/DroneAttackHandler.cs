@@ -39,7 +39,7 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         // move towards target
         while(Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
         {
-            _movementHandler.HandleMovement(_target, _enemiesInWave);
+            _movementHandler.AttackMovement(_target, _enemiesInWave);
             yield return null;    
         }
         _attackTimerStart = Time.time;
@@ -101,10 +101,5 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         }
 
         _currentState = StartCoroutine(newState);
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, _target.position);
     }
 }
