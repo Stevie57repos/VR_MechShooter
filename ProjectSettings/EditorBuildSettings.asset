@@ -8,9 +8,30 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Flock.unity
+  - enabled: 0
+    path: Assets/Scenes/Testing/Flock.unity
     guid: 8318724e4f1ad56459712cb993235f57
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: d62a9605156de8d48a24a443ad73c78b
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 4af0459f1b969d24eb3386cf2cabbcc6
+  - enabled: 1
+    path: Assets/Scenes/PersistentManagers.unity
+    guid: e2621d63ffedbfb4f95cf5bff836fd67
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: fdd418ff3a2e5544ebcc4fe4757e8445
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: 03cbaeb9de34c9f418ea55bd35d947f4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 87c0ff5ce1f44c14fa3cb721205a2a3a, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 397fe64bd3aa0864f842c557b4a2eaee, type: 2}

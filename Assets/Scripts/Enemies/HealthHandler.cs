@@ -25,12 +25,7 @@ public class HealthHandler : MonoBehaviour
         }
         return true;
     }
-    // for debugging death state
-    [ContextMenu("Kill Unit")]
-    private void KillUnit()
-    {
-        TakeDamage(_maxHealth);
-    }
+
 
     public bool HealthStatus()
     {

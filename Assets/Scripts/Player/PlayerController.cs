@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _damage;
 
+    [SerializeField]
+    private PlayerDeathEvenChannelSO _playerDeath;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -106,6 +109,7 @@ public class PlayerController : MonoBehaviour
         if (!isAlive)
         {
             Debug.Log($"player is dead !");
+            _playerDeath.RaiseEvent();
         }
     }
 }

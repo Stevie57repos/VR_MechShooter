@@ -17,12 +17,22 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
     List<Transform> _tentacleList;
     [SerializeField]
     ParticleSystem _attackParticles;
+
+    private void OnEnable()
+    {
+        _attackParticles.Stop();
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        _currentState = null;
+    }
     public void HandleAttack(Transform target, IEnemyMovementHandler movementHandler, List<EnemyController> enemiesInWave)
     {
         _target = target;
         _movementHandler = movementHandler;
         _enemiesInWave = enemiesInWave;
-        SetState(State_MoveTowardsTarget());
+        //SetState(State_MoveTowardsTarget());
     }
 
     public void Setup(AttackStats stats)
@@ -102,11 +112,5 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, _target.position);
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-        _currentState = null;
     }
 }

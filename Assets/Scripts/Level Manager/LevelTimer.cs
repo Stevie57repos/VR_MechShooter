@@ -43,4 +43,9 @@ public class LevelTimer : MonoBehaviour
             }                  
         }
     }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
+    }
 }
