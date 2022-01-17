@@ -12,6 +12,7 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     private Vector3 _targetDirection;
     [SerializeField]
     private Vector3 _newTargetPos;
+    private Vector3 _startAttackPos;
     private bool _targetSet = false;
     [SerializeField]
     private float _rotationSpeed;
@@ -78,10 +79,23 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         {
             _newTargetPos = targetPos;
             _newTargetPos.y += 10;
-            _newTargetPos.z += 10;
+            _newTargetPos.z += 7;
             _targetSet = true;
+            _startAttackPos = transform.position;
         }
         _targetDirection = _newTargetPos - transform.position;
+
+        float percentTravelled = InverseLerp(_startAttackPos, _newTargetPos, transform.position);
+        Debug.Log($"percent Traveled is {percentTravelled}");
+
+        if(percentTravelled < 0.3f)
+        {
+            _rigidBody.AddForce(Vector3.left * _movementStats.TopSpeed * 0.5f);
+        }
+        else if(percentTravelled >0.3f && percentTravelled < 0.7f)
+        {
+            _rigidBody.AddForce(Vector3.right * _movementStats.TopSpeed * 0.5f);
+        }
 
         // if outside of slow distance move at normal speed
         if (_targetDirection.magnitude > _movementStats.TargetDistanceSlowDown)
@@ -142,5 +156,12 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(_targetDirection, 1f);
+    }
+
+    float InverseLerp(Vector3 pointA, Vector3 pointB, Vector3 currentPos)
+    {
+        Vector3 AB = pointB - pointA;
+        Vector3 AV = currentPos - pointA;
+        return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB);
     }
 }
