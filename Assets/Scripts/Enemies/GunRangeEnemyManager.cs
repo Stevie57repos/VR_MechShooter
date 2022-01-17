@@ -52,7 +52,6 @@ public class GunRangeEnemyManager : MonoBehaviour
                 //sentinel.Seperate(_currentEnemylist);
 
                 enemy.MovementHandler(_flockTarget, _currentEnemylist);
-
             }
         }
     }
@@ -64,6 +63,8 @@ public class GunRangeEnemyManager : MonoBehaviour
         {           
             Vector3 spawnLocation = new Vector3(spawnLocationList[locationCount].position.x, spawnLocationList[locationCount].position.y + 5, spawnLocationList[locationCount].position.z);
             EnemyController enemy = PoolSystem.GetNext(_enemy) as EnemyController;
+            Quaternion lookDirection = Quaternion.LookRotation(_flockTarget.position - transform.position);
+            enemy.transform.SetPositionAndRotation(spawnLocation, lookDirection);                       
             enemy.gameObject.SetActive(true);
             _currentEnemylist.Add(enemy);
 

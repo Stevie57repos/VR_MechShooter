@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b2112b1d7dab6994da984ebe24b9a672
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _soundEmitterPrefab: {fileID: 5838885153016635130, guid: 5a6b3825f195b594da7eed17be01b19e, type: 3}
+  - _EnemyTakeDamage: {instanceID: 0}
+  - _soundEventChannel: {fileID: 11400000, guid: 6122f348ca8b7e242bf2661011112101, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

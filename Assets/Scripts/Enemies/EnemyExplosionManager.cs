@@ -8,6 +8,10 @@ public class EnemyExplosionManager : MonoBehaviour
     EnemyDeathEventSO _deathEventChannel;
     [SerializeField]
     PoolableObject _explosionFX;
+    [SerializeField]
+    private AudioClip _explosionSoundClip;
+    [SerializeField]
+    private SoundEventChannelSO _soundEventChannel;
     private void Awake()
     {
         PoolSystem.CreatePool(_explosionFX, 10);
@@ -28,5 +32,6 @@ public class EnemyExplosionManager : MonoBehaviour
         PoolableObject explosion = PoolSystem.GetNext(_explosionFX);
         explosion.transform.position = enemy.transform.position;
         explosion.gameObject.SetActive(true);
+        _soundEventChannel.RaiseEvent(_explosionSoundClip, enemy.transform);
     }
 }

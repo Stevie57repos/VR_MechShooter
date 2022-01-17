@@ -33,4 +33,16 @@ MonoBehaviour:
     enemySpawnPosition:
     - {x: 0, y: 10, z: 15}
     delayBetweenSpawn: 0
+  - enemyPrefab: {fileID: 6316491338376134111, guid: 0af04967f156cd04590804f596e841f9, type: 3}
+    spawnWaveTime: 35
+    enemyAmount: 3
+    enemySpawnPosition:
+    - {x: 0, y: 10, z: 15}
+    delayBetweenSpawn: 1
+  - enemyPrefab: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
+    spawnWaveTime: 40
+    enemyAmount: 3
+    enemySpawnPosition:
+    - {x: 0, y: 10, z: 15}
+    delayBetweenSpawn: 1
   maxLevelDuration: 60

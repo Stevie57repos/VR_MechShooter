@@ -14,9 +14,13 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
     [SerializeField]
     private Animator _animator;
     [SerializeField]
-    List<Transform> _tentacleList;
+    private List<Transform> _tentacleList;
     [SerializeField]
-    ParticleSystem _attackParticles;
+    private ParticleSystem _attackParticles;
+    [SerializeField]
+    private AudioClip _laserAttackSoundClip;
+    [SerializeField]
+    private SoundEventChannelSO _soundEventChannel;
 
     private void OnEnable()
     {
@@ -43,6 +47,8 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
     private IEnumerator State_MoveTowardsTarget()
     {
         _attackParticles.Stop();
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
         Debug.Log($"in moving state");
         // move towards target
         _animator.SetTrigger("SetIdle");
@@ -54,6 +60,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _attackTimerStart = Time.time;
         _attackTimerEnd = Time.time + _stats.AttackChargeTime;
         _attackParticles.Play();
+        audioSource.PlayOneShot(_laserAttackSoundClip);
         SetState(State_Attack());
     }
 
@@ -89,6 +96,8 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
                         _attackTimerEnd = Time.time + _stats.AttackChargeTime;
                         _attackParticles.Stop();
                         _attackParticles.Play();
+                        //GetComponent<AudioSource>().PlayOneShot(_laserAttackSoundClip);
+                        _soundEventChannel.RaiseEvent(_laserAttackSoundClip, this.transform);
                     }
                     else
                     {                                        

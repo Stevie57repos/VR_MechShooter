@@ -13,6 +13,10 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
     private float _attackTimerEnd;
     [SerializeField]
     private ParticleSystem _attackParticles;
+    [SerializeField]
+    private AudioClip _laserAttackSoundClip;
+    [SerializeField]
+    private SoundEventChannelSO _soundEventChannel;
 
     private void OnDisable()
     {
@@ -36,8 +40,10 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
     {
         Debug.Log($"in moving state");
         _attackParticles.Stop();
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
         // move towards target
-        while(Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
+        while (Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
         {
             _movementHandler.AttackMovement(_target, _enemiesInWave);
             yield return null;    
@@ -45,6 +51,7 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _attackTimerStart = Time.time;
         _attackTimerEnd = Time.time + _stats.AttackChargeTime;    
         _attackParticles.Play();
+        audioSource.PlayOneShot(_laserAttackSoundClip);
         SetState(State_Attack());        
     }
 
@@ -78,6 +85,7 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
                         _attackTimerEnd = Time.time + _stats.AttackChargeTime;
                         _attackParticles.Stop();
                         _attackParticles.Play();
+                        _soundEventChannel.RaiseEvent(_laserAttackSoundClip, this.transform);
                     }
                     else
                     {

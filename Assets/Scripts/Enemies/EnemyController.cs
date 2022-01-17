@@ -14,6 +14,10 @@ public class EnemyController : PoolableObject, IDamageable
     [SerializeField]
     private EnemyDeathEventSO _death;
     protected List<EnemyController> _enemiesInWave;
+    [SerializeField]
+    private AudioSource _audioSource;
+    [SerializeField]
+    private AudioClip _takeDamageAudioClip;
 
     protected override void OnEnable()
     {
@@ -36,9 +40,13 @@ public class EnemyController : PoolableObject, IDamageable
         bool isAlive = _healthHandler.TakeDamage(damage);
         if(!isAlive)
         {
-            this.gameObject.SetActive(false);
             _death.RaiseEvent(this);
+            this.gameObject.SetActive(false);            
         }
+        else
+        {
+            _audioSource.PlayOneShot(_takeDamageAudioClip);
+        }        
     }
 
     public virtual void AttackHandler(Transform target, List<EnemyController> enemiesInWave)

@@ -466,8 +466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef04a45ff02ed346bc4f70c0da0fd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnType: 1
-  _spawnAmount: 15
+  _spawnType: 0
+  _spawnAmount: 6
   _enemy: {fileID: 6316491338376134111, guid: 0af04967f156cd04590804f596e841f9, type: 3}
   _spawnPositionList:
   - {fileID: 698011319}
@@ -492,7 +492,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
-  _explosion: {fileID: 1651330074}
   _explosionFX: {fileID: 1651330078}
 --- !u!1 &367233594
 GameObject:
@@ -5989,11 +5988,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1651330074 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2511590319053320364, guid: 505a967fdedbf57448777b8acae81df3, type: 3}
-  m_PrefabInstance: {fileID: 2512797714297627265}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1651330077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2508710158470054390, guid: 505a967fdedbf57448777b8acae81df3, type: 3}
@@ -6004,7 +5998,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5136979222717715321, guid: 505a967fdedbf57448777b8acae81df3, type: 3}
   m_PrefabInstance: {fileID: 2512797714297627265}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651330074}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58de9b5602bcf7645ba5491304dcb3e6, type: 3}
