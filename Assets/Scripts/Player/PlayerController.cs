@@ -106,6 +106,8 @@ public class PlayerController : MonoBehaviour
     public void PlayerDamage(float damage)
     {
         bool isAlive = _healthHandler.TakeDamage(damage);
+        _rightController.SendHapticImpulse(.5f, 1f);
+        _leftController.SendHapticImpulse(.5f, 1f);
         if (!isAlive)
         {
             Debug.Log($"player is dead !");

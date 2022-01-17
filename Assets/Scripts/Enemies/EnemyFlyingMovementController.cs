@@ -11,6 +11,9 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     [SerializeField]
     private Vector3 _targetDirection;
     [SerializeField]
+    private Vector3 _newTargetPos;
+    private bool _targetSet = false;
+    [SerializeField]
     private float _rotationSpeed;
     private List<EnemyController> _enemiesInWave;
 
@@ -37,6 +40,7 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     public void FlyTowardsTarget(Vector3 targetPos)
     {
         _targetDirection = targetPos - transform.position;
+
         if (_targetDirection.magnitude > _movementStats.TargetDistanceSlowDown)
         {
             Vector3 desiredSpeed = _targetDirection.normalized * _movementStats.TopSpeed;
@@ -67,7 +71,17 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
 
     public void AttackMovement(Vector3 targetPos)
     {
-        _targetDirection = targetPos - transform.position;
+        // get within attack range
+        // attack range is at target transform y + 2 and at least z + 2
+
+        if (!_targetSet)
+        {
+            _newTargetPos = targetPos;
+            _newTargetPos.y += 10;
+            _newTargetPos.z += 10;
+            _targetSet = true;
+        }
+        _targetDirection = _newTargetPos - transform.position;
 
         // if outside of slow distance move at normal speed
         if (_targetDirection.magnitude > _movementStats.TargetDistanceSlowDown)
@@ -123,5 +137,10 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     {
         _rigidBody.velocity = Vector3.zero;
         _rigidBody.angularVelocity = Vector3.zero;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(_targetDirection, 1f);
     }
 }
