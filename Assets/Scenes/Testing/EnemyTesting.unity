@@ -3779,8 +3779,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bb38d292753064fad9bbc690c06bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeEMP: 30
-  _coolDown: 0
+  _rangeEMP: 50
+  _coolDown: 10
   _isAvailable: 1
   _timeLastUsed: 0
   _enemyLayerMask:
@@ -3804,8 +3804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bb38d292753064fad9bbc690c06bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeEMP: 30
-  _coolDown: 0
+  _rangeEMP: 50
+  _coolDown: 10
   _isAvailable: 1
   _timeLastUsed: 0
   _enemyLayerMask:

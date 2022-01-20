@@ -11,6 +11,7 @@ public class SecondaryWeaponController : MonoBehaviour
     private float _scaleTracker;
     [SerializeField]
     private float _coolDown;
+    private float _EMPTimeLastUsed;
     [SerializeField]
     private bool _isAvailable = false;
     [SerializeField]
@@ -27,35 +28,51 @@ public class SecondaryWeaponController : MonoBehaviour
 
     private void OnEnable()
     {
-        _scaleTracker = 0f;
-       
+        _scaleTracker = 0f;       
     }
 
     private void SetupEMP()
     {
         PoolSystem.CreatePool(_empPrefab, 3);
         _rangeEMPVector = new Vector3(1 * _rangeEMP, 1 * _rangeEMP, 1 * _rangeEMP);
+        _EMPTimeLastUsed = float.MinValue;
     }
 
     [ContextMenu("EMP Stun")]
     public void Firing()
     {
-        CreateEMPWave();
-        var collidersInRange = Physics.OverlapSphere(transform.position, _rangeEMP, _enemyLayerMask);
-        foreach(Collider collider in collidersInRange)
+        if (CheckEMPAvailability())
         {
-            EnemyController enemy = collider.GetComponent<EnemyController>();
-            if(enemy != null && enemy.transform.gameObject.activeSelf)
+            CreateEMPWave();
+            var collidersInRange = Physics.OverlapSphere(transform.position, _rangeEMP, _enemyLayerMask);
+            foreach (Collider collider in collidersInRange)
             {
-                enemy.EmpStun();
+                EnemyController enemy = collider.GetComponent<EnemyController>();
+                if (enemy != null && enemy.transform.gameObject.activeSelf)
+                {
+                    enemy.EmpStun();
+                }
             }
+            _EMPTimeLastUsed = Time.time;
+        }
+    }
+
+    private bool CheckEMPAvailability()
+    {
+        float currentTime= Time.time;
+        if (currentTime >= _EMPTimeLastUsed + _coolDown)
+            return true;
+        else
+        {
+            Debug.Log($" EMP Not available - Cool Down Remaining : {_EMPTimeLastUsed + _coolDown - currentTime}");
+            return false;
         }
     }
 
     public void CreateEMPWave()
     {
         PoolableObject empPrefab = PoolSystem.GetNext(_empPrefab);
-        empPrefab.transform.position = Vector3.zero - new Vector3( 0,-2,0);
+        empPrefab.transform.position = Vector3.zero - new Vector3( );
         empPrefab.transform.localScale = _startScale;
         empPrefab.transform.gameObject.SetActive(true);
         StartCoroutine(EMPExplosion(empPrefab));       
