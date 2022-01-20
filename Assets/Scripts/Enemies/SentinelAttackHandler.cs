@@ -47,9 +47,9 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
     private IEnumerator State_MoveTowardsTarget()
     {
         _attackParticles.Stop();
-        AudioSource audioSource = GetComponent<AudioSource>();
-        audioSource.Stop();
-        Debug.Log($"in moving state");
+        //AudioSource audioSource = GetComponent<AudioSource>();
+        //audioSource.Stop();
+        //Debug.Log($"in moving state");
         // move towards target
         _animator.SetTrigger("SetIdle");
         while (Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
@@ -60,13 +60,13 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _attackTimerStart = Time.time;
         _attackTimerEnd = Time.time + _stats.AttackChargeTime;
         _attackParticles.Play();
-        audioSource.PlayOneShot(_laserAttackSoundClip);
+        // audioSource.PlayOneShot(_laserAttackSoundClip);        
         SetState(State_Attack());
     }
 
     private IEnumerator State_Attack()
     {
-        Debug.Log($"in Attack State");
+        //Debug.Log($"in Attack State");
         _animator.SetTrigger("SetAttack");
 
         float currentDistance = Vector3.Distance(transform.position, _target.position);
@@ -108,6 +108,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
             yield return null;
         }
     }
+
     private void SetState(IEnumerator newState)
     {
         if (_currentState != null)
@@ -116,5 +117,17 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         }
 
         _currentState = StartCoroutine(newState);
+    }
+
+    private IEnumerator State_EMPStun()
+    {
+        yield return new WaitForSeconds(3f);
+        SetState(State_MoveTowardsTarget());
+    }
+
+    public void EMPStun()
+    {
+        _attackParticles.Stop();
+        SetState(State_EMPStun());
     }
 }

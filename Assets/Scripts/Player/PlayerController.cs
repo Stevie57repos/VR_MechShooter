@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private InputAction _primaryRightTrigger;
     private InputAction _primaryLeftTrigger;
-    private InputAction _toggleSecondaryAction;
+    private InputAction _secondaryButtonTrigger;
+
     [SerializeField]
     private ActionBasedController _rightController;
     [SerializeField]
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PrimaryGunController _primaryGunLeft;
     [SerializeField]
+    private SecondaryWeaponController _secondaryWeapon;
+
+    [SerializeField]
     private float _gunRange;
     [SerializeField]
     private float _damage;
@@ -41,8 +45,7 @@ public class PlayerController : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _primaryRightTrigger = _playerInput.actions["FirePrimaryRight"];
         _primaryLeftTrigger = _playerInput.actions["FirePrimaryLeft"];
-
-        _toggleSecondaryAction = _playerInput.actions["ToggleSecondary"];
+        _secondaryButtonTrigger = _playerInput.actions["ToggleSecondary"];
 
         _primaryGunRight.Initialize(_gunRange, _damage);
         _primaryGunLeft.Initialize(_gunRange, _damage);
@@ -55,29 +58,43 @@ public class PlayerController : MonoBehaviour
     {
         _primaryRightTrigger.performed += PrimaryWeaponFireRightHand;
         _primaryRightTrigger.canceled += PrimaryWeaponRightStop;
+
         _primaryLeftTrigger.performed += PrimaryWeaponFireLeftHand;
         _primaryLeftTrigger.canceled += PrimaryWeaponLeftStop;
+
+        _secondaryButtonTrigger.performed += SeocondaryWeaponFire;
     }
 
     private void OnDisable()
     {
         _primaryRightTrigger.performed -= PrimaryWeaponFireRightHand;
         _primaryRightTrigger.canceled -= PrimaryWeaponRightStop;
+        
         _primaryLeftTrigger.performed -= PrimaryWeaponFireLeftHand;
         _primaryLeftTrigger.canceled -= PrimaryWeaponLeftStop;
+
+        _secondaryButtonTrigger.performed -= SeocondaryWeaponFire;
     }
 
     private void PrimaryWeaponFireRightHand(InputAction.CallbackContext context)
     {
-        bool value = context.ReadValueAsButton();
-        if (value)
+        bool isPressed = context.ReadValueAsButton();
+        if (isPressed)
             _primaryGunRight.Firing(_rightController, _targetRight.position);
+    }
+
+    private void SeocondaryWeaponFire(InputAction.CallbackContext context)
+    {
+        bool isPressed = context.ReadValueAsButton();
+        if (isPressed)
+        {
+            _secondaryWeapon.Firing();
+        }
     }
 
     private void PrimaryWeaponFireLeftHand(InputAction.CallbackContext context)
     {
         bool value = context.ReadValueAsButton();
-        Debug.Log($"left hand valeu is {value}");
         if (value)
             _primaryGunLeft.Firing(_leftController, _targetLeft.position);
     }
@@ -86,6 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         _primaryGunRight.StopFiring();
     }
+
     private void PrimaryWeaponLeftStop(InputAction.CallbackContext context)
     {
         _primaryGunLeft.StopFiring();

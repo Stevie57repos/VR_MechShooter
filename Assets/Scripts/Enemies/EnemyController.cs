@@ -12,12 +12,15 @@ public class EnemyController : PoolableObject, IDamageable
     protected IEnemyAttackHandler _attackHandler;
     protected IEnemyMovementHandler _enemyMovementHandler; 
     [SerializeField]
-    private EnemyDeathEventSO _death;
+    private EnemyDeathEventSO _deathEventChannel;
     protected List<EnemyController> _enemiesInWave;
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
     private AudioClip _takeDamageAudioClip;
+    private Transform _target;
+    [SerializeField]
+    private ElectricalEffectsChannelSO _electricalEffectsChannelSO;
 
     protected override void OnEnable()
     {
@@ -40,18 +43,20 @@ public class EnemyController : PoolableObject, IDamageable
         bool isAlive = _healthHandler.TakeDamage(damage);
         if(!isAlive)
         {
-            _death.RaiseEvent(this);
+            _deathEventChannel.RaiseEvent(this);
             this.gameObject.SetActive(false);            
         }
         else
         {
             _audioSource.PlayOneShot(_takeDamageAudioClip);
+            _electricalEffectsChannelSO.RaiseEvent(this.transform);
         }        
     }
 
     public virtual void AttackHandler(Transform target, List<EnemyController> enemiesInWave)
     {
         _attackHandler.HandleAttack(target, _enemyMovementHandler, enemiesInWave);
+        _target = target;
     }
 
     public virtual void MovementHandler(Transform target, List<EnemyController> enemiesInWave)
@@ -65,6 +70,15 @@ public class EnemyController : PoolableObject, IDamageable
         AttackHandler(target, enemiesInWave);
     }
 
+    [ContextMenu("EMP Stun")]
+    public void EmpStun()
+    { 
+        _attackHandler.EMPStun();
+        _enemyMovementHandler.StopMovement();
+        Vector3 FlyBackDistance = (transform.position - _target.position).normalized * 2f;
+        _enemyMovementHandler.KnockBack(FlyBackDistance);
+        _electricalEffectsChannelSO.RaiseEvent(this.transform);
+    }
 
     // for debugging death state
     [ContextMenu("Kill Unit")]

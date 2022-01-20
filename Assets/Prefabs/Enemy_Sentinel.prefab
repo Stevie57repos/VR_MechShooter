@@ -18540,9 +18540,10 @@ MonoBehaviour:
   _lifeSpan: -1
   _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
   _healthHandler: {fileID: 5787267270952570779}
-  _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
   _audioSource: {fileID: 5594564348804105930}
   _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
+  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
   _animator: {fileID: 6316491338376134050}
 --- !u!65 &6316491338376134051
 BoxCollider:
@@ -18587,6 +18588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 6316491338376134052}
   _targetDirection: {x: 0, y: 0, z: 0}
+  _newTargetPos: {x: 0, y: 0, z: 0}
   _rotationSpeed: 300
 --- !u!114 &5787267270952570779
 MonoBehaviour:

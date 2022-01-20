@@ -983,6 +983,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9dd1d2df-fdd5-4d69-b78a-0ed0568fe736",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleSecondary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "90e9c187-fb2c-496b-a6d4-7e02282c7655",
                     "path": "<XRController>{LeftHand}/triggerPressed",
                     "interactions": "",

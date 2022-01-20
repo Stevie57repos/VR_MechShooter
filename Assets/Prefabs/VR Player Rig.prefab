@@ -4569,6 +4569,7 @@ MonoBehaviour:
   _healthHandler: {fileID: 2597017654378746744}
   _primaryGunRight: {fileID: 2409273619129155459}
   _primaryGunLeft: {fileID: 3701976469442419136}
+  _secondaryWeapon: {fileID: 0}
   _gunRange: 100
   _damage: 1
   _playerDeath: {fileID: 11400000, guid: 98ad65396f5055242ad140a951dc3416, type: 2}

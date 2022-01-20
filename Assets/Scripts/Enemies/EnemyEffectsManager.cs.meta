@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3f2e359b2a377824f83e4aeb1d9176c0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  - _explosionFX: {fileID: 5136979222717715321, guid: 505a967fdedbf57448777b8acae81df3, type: 3}
+  - _explosionSoundClip: {fileID: 8300000, guid: be6e514894d37894583bde04c1835283, type: 3}
+  - _soundEventChannel: {fileID: 11400000, guid: 6122f348ca8b7e242bf2661011112101, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

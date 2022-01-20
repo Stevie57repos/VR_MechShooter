@@ -101,6 +101,8 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         }
     }
 
+
+
     private void SetState(IEnumerator newState) 
     {
         if (_currentState != null)
@@ -109,5 +111,16 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         }
 
         _currentState = StartCoroutine(newState);
+    }
+
+    private IEnumerator State_EMPStun()
+    {
+        yield return new WaitForSeconds(3f);
+        SetState(State_MoveTowardsTarget());
+    }
+
+    public void EMPStun()
+    {
+        SetState(State_EMPStun());       
     }
 }

@@ -8,4 +8,5 @@ public interface IEnemyMovementHandler
     public void FlockingMovement(Transform target, List<EnemyController> enemiesInWave);
     public void AttackMovement(Transform target, List<EnemyController> enemiesInWave);
     public void StopMovement();
+    public void KnockBack(Vector3 force);
 }
