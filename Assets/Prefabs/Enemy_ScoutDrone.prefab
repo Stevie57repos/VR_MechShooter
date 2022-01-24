@@ -4560,9 +4560,10 @@ MonoBehaviour:
   _lifeSpan: -1
   _enemyStats: {fileID: 11400000, guid: 62e0a0e4f6bfd3a43bff0b8302dee2c4, type: 2}
   _healthHandler: {fileID: 1225993243439694636}
-  _death: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
   _audioSource: {fileID: -4152046718574091003}
   _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
+  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
 --- !u!114 &5428003517418613499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4577,6 +4578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 3286582099166163738}
   _targetDirection: {x: 0, y: 0, z: 0}
+  _newTargetPos: {x: 0, y: 0, z: 0}
   _rotationSpeed: 300
 --- !u!114 &1225993243439694636
 MonoBehaviour:
@@ -4590,7 +4592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e203751448ea92458ffc6588d555644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 0
+  _health: 1
 --- !u!114 &3035370308119191965
 MonoBehaviour:
   m_ObjectHideFlags: 0

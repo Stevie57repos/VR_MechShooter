@@ -53,6 +53,30 @@ public class EnemyController : PoolableObject, IDamageable
         }        
     }
 
+    [ContextMenu("Debug Take Damage")]
+    public void DebugTakeDamage()
+    {
+        Vector3 knockBack = transform.position - _target.position;
+        knockBack = knockBack.normalized * 5f;
+        TakeDamage(1, knockBack);
+    }
+
+    public void TakeDamage(float damage, Vector3 knockBack)
+    {
+        bool isAlive = _healthHandler.TakeDamage(damage);
+        if (!isAlive)
+        {
+            _deathEventChannel.RaiseEvent(this);
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_takeDamageAudioClip);
+            _electricalEffectsChannelSO.RaiseEvent(this.transform);
+            _enemyMovementHandler.KnockBack(knockBack);
+        }
+    }
+
     public virtual void AttackHandler(Transform target, List<EnemyController> enemiesInWave)
     {
         _attackHandler.HandleAttack(target, _enemyMovementHandler, enemiesInWave);

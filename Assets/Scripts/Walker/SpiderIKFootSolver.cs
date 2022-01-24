@@ -36,8 +36,6 @@ public class SpiderIKFootSolver : MonoBehaviour
     [SerializeField]
     private Vector3 _debugPosition;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         SetInitialFeetSpacing();
@@ -69,7 +67,6 @@ public class SpiderIKFootSolver : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckFootPosition(_otherFootList);

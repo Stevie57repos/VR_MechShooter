@@ -53,14 +53,17 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         // move towards target
         _animator.SetTrigger("SetIdle");
         while (Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
-        {
+        { 
             _movementHandler.AttackMovement(_target, _enemiesInWave);
             yield return null;
         }
         _attackTimerStart = Time.time;
         _attackTimerEnd = Time.time + _stats.AttackChargeTime;
         _attackParticles.Play();
-        // audioSource.PlayOneShot(_laserAttackSoundClip);        
+        Debug.Log($"move towards target complete");
+        _movementHandler.StopMovement();
+        //audioSource.PlayOneShot(_laserAttackSoundClip);        
+        _soundEventChannel.RaiseEvent(_laserAttackSoundClip, this.transform);
         SetState(State_Attack());
     }
 
@@ -83,8 +86,8 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
             }
             else
             {
-                Debug.Log($"timer started at {_attackTimerStart} and ended at {_attackTimerEnd}");
-                Debug.Log($"Player takes damage !");
+                //Debug.Log($"timer started at {_attackTimerStart} and ended at {_attackTimerEnd}");
+                //Debug.Log($"Player takes damage !");
                 PlayerController player = _target.GetComponent<PlayerController>();
                 if (player.CheckPlayerHealthStatus())
                 {

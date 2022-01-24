@@ -65,9 +65,10 @@ public class PrimaryGunController : MonoBehaviour
                 {
                     IDamageable enemy = info.transform.GetComponent<IDamageable>();
                     if (enemy != null)
-                        enemy.TakeDamage(_damage);
-
-                    //DebugEditorScreen.Instance.DisplayValue($"Hit {info.transform.gameObject.name}");
+                    {
+                        Vector3 knockBack = (info.transform.position - transform.position).normalized * 5f;
+                        enemy.TakeDamage(_damage, knockBack);
+                    }
                 }
                 else
                 {
@@ -75,11 +76,6 @@ public class PrimaryGunController : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void Update()
-    {
-
     }
 
     private void AimAtTarget()
@@ -90,7 +86,7 @@ public class PrimaryGunController : MonoBehaviour
 
     public void StopFiring()
     {
-        Debug.Log($"stop firing called");
+        //Debug.Log($"stop firing called");
         StopAllCoroutines();
         isShooting = false;
     }
@@ -99,7 +95,7 @@ public class PrimaryGunController : MonoBehaviour
     {
         if(Time.time > nextFireTime)
         {
-            Debug.Log($"time is {Time.time} and nextfiretime is : {nextFireTime}");
+            //Debug.Log($"time is {Time.time} and nextfiretime is : {nextFireTime}");
             nextFireTime = Time.time + coolDownTime;
             return true;
         }

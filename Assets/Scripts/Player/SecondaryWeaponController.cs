@@ -13,10 +13,6 @@ public class SecondaryWeaponController : MonoBehaviour
     private float _coolDown;
     private float _EMPTimeLastUsed;
     [SerializeField]
-    private bool _isAvailable = false;
-    [SerializeField]
-    private float _timeLastUsed;
-    [SerializeField]
     private LayerMask _enemyLayerMask;
     [SerializeField]
     private PoolableObject _empPrefab;

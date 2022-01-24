@@ -3007,6 +3007,7 @@ GameObject:
   - component: {fileID: 3701976469036829018}
   - component: {fileID: 2409273619129155460}
   - component: {fileID: 2409273619129155459}
+  - component: {fileID: 1216983816}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -3628,6 +3629,24 @@ MonoBehaviour:
   _enemyLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1216983816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701976469036829012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bb38d292753064fad9bbc690c06bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rangeEMP: 50
+  _coolDown: 10
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _empPrefab: {fileID: -454515497671310030, guid: a9d5f9b5684326143b7bade894be116d, type: 3}
 --- !u!1 &3701976469442419151
 GameObject:
   m_ObjectHideFlags: 0
@@ -3643,6 +3662,7 @@ GameObject:
   - component: {fileID: 3701976469442419149}
   - component: {fileID: 3701976469442419136}
   - component: {fileID: 3701976469442419137}
+  - component: {fileID: 1169289827}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -4264,6 +4284,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1169289827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701976469442419151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bb38d292753064fad9bbc690c06bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rangeEMP: 50
+  _coolDown: 10
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _empPrefab: {fileID: -454515497671310030, guid: a9d5f9b5684326143b7bade894be116d, type: 3}
 --- !u!1 &3701976469669456358
 GameObject:
   m_ObjectHideFlags: 0
@@ -4569,7 +4607,7 @@ MonoBehaviour:
   _healthHandler: {fileID: 2597017654378746744}
   _primaryGunRight: {fileID: 2409273619129155459}
   _primaryGunLeft: {fileID: 3701976469442419136}
-  _secondaryWeapon: {fileID: 0}
+  _secondaryWeapon: {fileID: 1216983816}
   _gunRange: 100
   _damage: 1
   _playerDeath: {fileID: 11400000, guid: 98ad65396f5055242ad140a951dc3416, type: 2}

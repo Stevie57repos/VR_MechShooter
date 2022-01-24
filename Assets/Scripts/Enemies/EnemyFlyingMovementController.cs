@@ -75,7 +75,7 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         if (!_targetSet)
         {
             _newTargetPos = targetPos;
-            _newTargetPos.y += 10;
+            _newTargetPos.y += 5;
             _newTargetPos.z += 7;
             _targetSet = true;
             _startAttackPos = transform.position;
@@ -84,13 +84,17 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
 
         // snake movement based on percent distance travelled
         float percentTravelled = InverseLerp(_startAttackPos, _newTargetPos, transform.position);
-        if(percentTravelled < 0.3f)
+        if(percentTravelled < 0.25f)
         {
             _rigidBody.AddForce(Vector3.left * _movementStats.TopSpeed * 0.5f);
         }
-        else if(percentTravelled >0.3f && percentTravelled < 0.7f)
+        else if(percentTravelled >0.3f && percentTravelled < 0.5f)
         {
             _rigidBody.AddForce(Vector3.right * _movementStats.TopSpeed * 0.5f);
+        }
+        else if(percentTravelled > 0.5f && percentTravelled < 0.8f)
+        {
+
         }
 
         // if outside of slow distance move at normal speed
@@ -152,11 +156,6 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     public void KnockBack(Vector3 force)
     {
         _rigidBody.velocity += force;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(_targetDirection, 1f);
     }
 
     float InverseLerp(Vector3 pointA, Vector3 pointB, Vector3 currentPos)
