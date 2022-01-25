@@ -87,13 +87,20 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         if(percentTravelled < 0.25f)
         {
             _rigidBody.AddForce(Vector3.left * _movementStats.TopSpeed * 0.5f);
+            _target.gameObject.GetComponent<FieldOfView>().ChecKWithinPlayerFOV(transform.position, out Vector3 adjustment );
+            _rigidBody.AddForce(adjustment);
+
         }
         else if(percentTravelled >0.3f && percentTravelled < 0.5f)
         {
             _rigidBody.AddForce(Vector3.right * _movementStats.TopSpeed * 0.5f);
+            _target.gameObject.GetComponent<FieldOfView>().ChecKWithinPlayerFOV(transform.position, out Vector3 adjustment);
+            _rigidBody.AddForce(adjustment);
         }
         else if(percentTravelled > 0.5f && percentTravelled < 0.8f)
         {
+            _target.gameObject.GetComponent<FieldOfView>().ChecKWithinPlayerFOV(transform.position, out Vector3 adjustment);
+            _rigidBody.AddForce(adjustment * 2);
 
         }
 

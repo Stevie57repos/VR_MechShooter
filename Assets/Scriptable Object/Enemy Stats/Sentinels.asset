@@ -18,7 +18,7 @@ MonoBehaviour:
     TopSpeed: 25
     TargetDistanceSlowDown: 30
     TargetDistanceLimit: 8
-    DesiredSeperationDistance: 13.5
+    DesiredSeperationDistance: 6
   AttackStats:
     Damage: 1
     AttackDistance: 18.5

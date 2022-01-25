@@ -15,11 +15,13 @@ public class EnemyPlayerFOVCheck : MonoBehaviour
         CheckPlayerFOV();
     }
 
-    private void CheckPlayerFOV()
+    public void CheckPlayerFOV()
     {
-        if (_fieldOfViewHandler.CheckPosition(transform.position))
+        if (_fieldOfViewHandler.ChecKWithinPlayerFOV(transform.position, out Vector3 adjustment))    
             _meshRenderer.material.color = Color.green;
-        else
+        else         
             _meshRenderer.material.color = Color.red;
+
+        Debug.Log($"adjustment is {adjustment}");
     }
 }

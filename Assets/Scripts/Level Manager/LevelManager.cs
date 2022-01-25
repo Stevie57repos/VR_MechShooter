@@ -89,6 +89,9 @@ public class LevelManager : MonoBehaviour
     {
         _currentWave++;
 
+        Scene loseScene = SceneManager.GetSceneByName("Lose");
+        if (loseScene.isLoaded) return;
+
         if( _currentWave == _levelData._waveDataList.Count)
         {
             // you won the game

@@ -4320,6 +4320,7 @@ GameObject:
   - component: {fileID: 1791601830}
   - component: {fileID: 1791601831}
   - component: {fileID: 1886934239}
+  - component: {fileID: 7396093207556182981}
   m_Layer: 0
   m_Name: VR Player Rig
   m_TagString: Untagged
@@ -4688,6 +4689,21 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+--- !u!114 &7396093207556182981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701976469669456358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b24137a826c3c4ea05663cbf2ba0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _horizontalFieldOfView: 90
+  _verticalFieldOfView: 90
+  _projectedRange: 20
 --- !u!1 &3701976469879206854
 GameObject:
   m_ObjectHideFlags: 0
