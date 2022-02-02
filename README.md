@@ -10,3 +10,7 @@ This VR Mech Shooter Prototype was made over the winter break off work. The proj
 
 ## Latest Devlog
 https://youtu.be/MMgiq-vFzeQ
+- Added player field of view check to the enemy movement system
+- Added new EMP attack 
+- Increased lighting for the world to better improve visibility
+- Basic Level block out
