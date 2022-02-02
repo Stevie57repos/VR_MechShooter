@@ -52,6 +52,7 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _attackTimerEnd = Time.time + _stats.AttackChargeTime;    
         _attackParticles.Play();
         audioSource.PlayOneShot(_laserAttackSoundClip);
+        _movementHandler.StopMovement();
         SetState(State_Attack());        
     }
 
@@ -64,7 +65,6 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
         while(currentDistance < _stats.AttackDistance)
         {
             transform.LookAt(_target.position);
-            _movementHandler.StopMovement();
             _attackTimerStart = Time.time;
             if (_attackTimerStart <= _attackTimerEnd)
             {
