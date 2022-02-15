@@ -40,6 +40,3 @@ public class TestLookAt : MonoBehaviour
         Gizmos.DrawSphere(targetDirection, 1f);
     }
 }
-// 9107 343 676
-// dec 23rd 8:45
-// andrew vu
