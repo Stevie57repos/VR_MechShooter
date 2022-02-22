@@ -20,7 +20,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -1.65, y: 0.049999952, z: -7.300002}
+        value: {x: -0.353, y: 1.247, z: -4.0810027}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -29,7 +29,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: -1.91, y: 0.049999952, z: -7.300002}
+        value: {x: 0.117, y: 1.031, z: -4.0810027}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -38,7 +38,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: -1.65, y: 0.049999952, z: -7.300002}
+        value: {x: -0.353, y: 1.247, z: -4.0810027}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -48,13 +48,13 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Left_Tentacle_Target
+    path: Rigs/Tentacle_TopLeft/Tentacle_TopLeft_Target
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 0.065999985, y: 1.58, z: -7.300002}
+        value: {x: 0.8979999, y: 0.38199973, z: -4.081003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -63,7 +63,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: 0.065999985, y: 2.01, z: -7.300002}
+        value: {x: 1.521, y: 0.38199973, z: -4.081003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -72,7 +72,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: 0.065999985, y: 1.58, z: -7.300002}
+        value: {x: 0.8979999, y: 0.38199973, z: -4.081003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -82,13 +82,13 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Middle__Tentacle_Target
+    path: Rigs/Tentacle_BottomRight/Tentacle_BottomRight_Target
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 1.79, y: 0.049999952, z: -7.300002}
+        value: {x: -0.105, y: 0.38199976, z: -4.081003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -97,7 +97,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: 1.57, y: 0.32, z: -7.300002}
+        value: {x: -0.386, y: 0.38199976, z: -4.081003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -106,7 +106,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1
-        value: {x: 1.79, y: 0.049999952, z: -7.300002}
+        value: {x: -0.105, y: 0.38199976, z: -4.081003}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -116,7 +116,41 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Right__Tentacle_Target
+    path: Rigs/Tentacle_BottomLeft/Tentacle_BottomLeft_Target
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 1.332, y: 1.299, z: -4.0810027}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.5
+        value: {x: 1.056, y: 1.113, z: -4.0810027}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 1
+        value: {x: 1.332, y: 1.299, z: -4.0810027}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Rigs/Tentacle_TopRight/Tentacle_TopRight_Target
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -128,21 +162,28 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1999443810
+      path: 3601494577
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 564512330
+      path: 3438559889
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3955373567
+      path: 3091993871
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 3652601337
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -175,7 +216,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -1.65
+        value: -0.353
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -184,7 +225,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -1.91
+        value: 0.117
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -193,7 +234,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -1.65
+        value: -0.353
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -204,7 +245,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Left_Tentacle_Target
+    path: Rigs/Tentacle_TopLeft/Tentacle_TopLeft_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -212,7 +253,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.049999952
+        value: 1.247
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -221,7 +262,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.049999952
+        value: 1.031
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -230,7 +271,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.049999952
+        value: 1.247
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -241,7 +282,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Left_Tentacle_Target
+    path: Rigs/Tentacle_TopLeft/Tentacle_TopLeft_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -249,7 +290,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -7.300002
+        value: -4.0810027
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -258,7 +299,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -7.300002
+        value: -4.0810027
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -267,7 +308,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -7.300002
+        value: -4.0810027
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -278,7 +319,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Left_Tentacle_Target
+    path: Rigs/Tentacle_TopLeft/Tentacle_TopLeft_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -286,7 +327,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.065999985
+        value: 0.8979999
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -295,7 +336,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.065999985
+        value: 1.521
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -304,7 +345,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.065999985
+        value: 0.8979999
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -315,7 +356,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Middle__Tentacle_Target
+    path: Rigs/Tentacle_BottomRight/Tentacle_BottomRight_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -323,7 +364,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.58
+        value: 0.38199973
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -332,7 +373,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 2.01
+        value: 0.38199973
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -341,7 +382,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 1.58
+        value: 0.38199973
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -352,7 +393,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Middle__Tentacle_Target
+    path: Rigs/Tentacle_BottomRight/Tentacle_BottomRight_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -360,7 +401,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -7.300002
+        value: -4.081003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -369,7 +410,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -7.300002
+        value: -4.081003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -378,7 +419,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -7.300002
+        value: -4.081003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -389,7 +430,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Middle__Tentacle_Target
+    path: Rigs/Tentacle_BottomRight/Tentacle_BottomRight_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -397,7 +438,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.79
+        value: -0.105
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -406,7 +447,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 1.57
+        value: -0.386
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -415,7 +456,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 1.79
+        value: -0.105
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -426,7 +467,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Right__Tentacle_Target
+    path: Rigs/Tentacle_BottomLeft/Tentacle_BottomLeft_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -434,7 +475,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.049999952
+        value: 0.38199976
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -443,7 +484,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.32
+        value: 0.38199976
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -452,7 +493,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.049999952
+        value: 0.38199976
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -463,7 +504,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Right__Tentacle_Target
+    path: Rigs/Tentacle_BottomLeft/Tentacle_BottomLeft_Target
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -471,7 +512,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -7.300002
+        value: -4.081003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -480,7 +521,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -7.300002
+        value: -4.081003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -489,7 +530,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: -7.300002
+        value: -4.081003
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -500,7 +541,118 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Right__Tentacle_Target
+    path: Rigs/Tentacle_BottomLeft/Tentacle_BottomLeft_Target
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.332
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 1.056
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1.332
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: Rigs/Tentacle_TopRight/Tentacle_TopRight_Target
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.299
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: 1.113
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1.299
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: Rigs/Tentacle_TopRight/Tentacle_TopRight_Target
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -4.0810027
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5
+        value: -4.0810027
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -4.0810027
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: Rigs/Tentacle_TopRight/Tentacle_TopRight_Target
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves: []

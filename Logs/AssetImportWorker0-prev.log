@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.24f1 (79c78de19888) revision 7980941'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19042) 64bit Professional' Language: 'en' Physical Memory: 16343 MB
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'en' Physical Memory: 16343 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -15,12 +15,12 @@ E:/Unity Projects/BirdyHuntVR
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59817
+56160
 Successfully changed project path to: E:/Unity Projects/BirdyHuntVR
 E:/Unity Projects/BirdyHuntVR
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 171.06 ms, found 6 plugins.
-Preloading 1 native plugins for Editor in 1.08 ms.
+Refreshing native plugins compatible for Editor in 123.22 ms, found 6 plugins.
+Preloading 1 native plugins for Editor in 1.28 ms.
 Initialize engine version: 2020.3.24f1 (79c78de19888)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path E:/Unity Projects/BirdyHuntVR/Assets
@@ -30,57 +30,57 @@ Direct3D:
     Renderer: Radeon (TM) RX 480 Graphics (ID=0x67df)
     Vendor:   
     VRAM:     4075 MB
-    Driver:   30.0.14011.3017
+    Driver:   30.0.14023.7007
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56292
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56020
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.015575 seconds.
+Registered in 0.003392 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 124.24 ms, found 6 plugins.
+Refreshing native plugins compatible for Editor in 103.65 ms, found 6 plugins.
 Preloading 1 native plugins for Editor in 0.04 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.991 seconds
+- Completed reload, in  0.827 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1991ms)
-		BeginReloadAssembly (76ms)
+	ReloadAssembly (828ms)
+		BeginReloadAssembly (70ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (1776ms)
-			LoadAssemblies (74ms)
+		EndReloadAssembly (663ms)
+			LoadAssemblies (67ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (226ms)
+			SetupTypeCache (208ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (1327ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (278ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
+				InitializePlatformSupportModulesInManaged (6ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (124ms)
-				BeforeProcessingInitializeOnLoad (21ms)
-				ProcessInitializeOnLoadAttributes (1041ms)
-				ProcessInitializeOnLoadMethodAttributes (132ms)
+				RefreshPlugins (104ms)
+				BeforeProcessingInitializeOnLoad (17ms)
+				ProcessInitializeOnLoadAttributes (108ms)
+				ProcessInitializeOnLoadMethodAttributes (44ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (1ms)
+				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.034388 seconds.
+Registered in 0.010581 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 140.48 ms, found 6 plugins.
+Refreshing native plugins compatible for Editor in 142.74 ms, found 6 plugins.
 Preloading 1 native plugins for Editor in 0.04 ms.
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
@@ -88,46 +88,46 @@ Preloading 1 native plugins for Editor in 0.04 ms.
 [XR] Unable to register input lifecyle provider: [1]
 [XR] OVRP version 1.66.0
 Mono: successfully reloaded assembly
-- Completed reload, in  3.434 seconds
+- Completed reload, in  2.600 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3435ms)
-		BeginReloadAssembly (310ms)
+	ReloadAssembly (2601ms)
+		BeginReloadAssembly (171ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (26ms)
-		EndReloadAssembly (3026ms)
-			LoadAssemblies (158ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (2353ms)
+			LoadAssemblies (128ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (740ms)
+			SetupTypeCache (570ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (120ms)
-			SetupLoadedEditorAssemblies (1786ms)
+			RebuildScriptCaches (98ms)
+			SetupLoadedEditorAssemblies (1388ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (141ms)
-				BeforeProcessingInitializeOnLoad (174ms)
-				ProcessInitializeOnLoadAttributes (1426ms)
-				ProcessInitializeOnLoadMethodAttributes (28ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				RefreshPlugins (143ms)
+				BeforeProcessingInitializeOnLoad (215ms)
+				ProcessInitializeOnLoadAttributes (996ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (8ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (10ms)
+			AwakeInstancesAfterBackupRestoration (11ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
-Refreshing native plugins compatible for Editor in 2.00 ms, found 6 plugins.
-Preloading 1 native plugins for Editor in 0.05 ms.
-Unloading 4659 Unused Serialized files (Serialized files now loaded: 0)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 6 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 4660 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 203.1 MB.
 System memory in use after: 203.3 MB.
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 5078.
-Total: 5.788100 ms (FindLiveObjects: 0.524400 ms CreateObjectMapping: 0.335300 ms MarkObjects: 4.803300 ms  DeleteObjects: 0.123600 ms)
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 5079.
+Total: 6.685800 ms (FindLiveObjects: 0.437800 ms CreateObjectMapping: 0.335100 ms MarkObjects: 5.763700 ms  DeleteObjects: 0.147700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -141,32 +141,49 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Main.unity
-  artifactKey: Guid(d62a9605156de8d48a24a443ad73c78b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Main.unity using Guid(d62a9605156de8d48a24a443ad73c78b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49d4894ffb31404a321065aa5322d4f9') in 0.028728 seconds 
-  Import took 0.040003 seconds .
+  path: Assets/Prefabs/Walker.prefab
+  artifactKey: Guid(dc4207e15390f8047bd9fd2ea7a95ff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Walker.prefab using Guid(dc4207e15390f8047bd9fd2ea7a95ff3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef04a4f1e42ac560bd18fafcd5bbadd5') in 0.115317 seconds 
+  Import took 0.130452 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1309.502979 seconds.
-  path: Assets/Scenes/Testing/MechGunRange.unity
-  artifactKey: Guid(786a271793e4af4448599303b63c5719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Testing/MechGunRange.unity using Guid(786a271793e4af4448599303b63c5719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a73b5a9e02bb4ce96513fb9e35609e80') in 0.013456 seconds 
-  Import took 0.026326 seconds .
+  Time since last request: 0.000359 seconds.
+  path: Assets/Prefabs/VR Player Rig V2.prefab
+  artifactKey: Guid(30856258b672f9e4c83d2eee1b13825f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/VR Player Rig V2.prefab using Guid(30856258b672f9e4c83d2eee1b13825f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecef6eb579b3d4acceb3e0f59630e652') in 0.361428 seconds 
+  Import took 0.376187 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.355788 seconds.
-  path: Assets/Scenes/Testing/EnemyTesting.unity
-  artifactKey: Guid(609e8e3783e8de441a05ae218d1aee7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Testing/EnemyTesting.unity using Guid(609e8e3783e8de441a05ae218d1aee7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a2642d689de7a7434a33ba925e93c23') in 0.014504 seconds 
-  Import took 0.023760 seconds .
+  Time since last request: 3.640979 seconds.
+  path: Assets/Prefabs/VR Player Rig.prefab
+  artifactKey: Guid(b952c51fbcf19e245aa7753ea27b2881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/VR Player Rig.prefab using Guid(b952c51fbcf19e245aa7753ea27b2881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7046871679824bf5dd2c520229856cb') in 0.049442 seconds 
+  Import took 0.061509 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 806.060252 seconds.
-  path: Assets/Scenes/Testing/EnemyTesting.unity
-  artifactKey: Guid(609e8e3783e8de441a05ae218d1aee7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Testing/EnemyTesting.unity using Guid(609e8e3783e8de441a05ae218d1aee7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e504854ea5d209128b3e6ca448aff6c2') in 0.003907 seconds 
-  Import took 0.024808 seconds .
+  Time since last request: 27.481121 seconds.
+  path: Assets/Scenes/Testing/Recording.unity
+  artifactKey: Guid(7ee85ab82add7a741bae6c839aca4f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Testing/Recording.unity using Guid(7ee85ab82add7a741bae6c839aca4f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6198b0489b9782536dddc45571668d6') in 0.007550 seconds 
+  Import took 0.019022 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 1089.513256 seconds.
+  path: Assets/Texture
+  artifactKey: Guid(78e33a4169003ed48accf87d429f76f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture using Guid(78e33a4169003ed48accf87d429f76f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec005b2b85b4bb2f4284c693c30e55e0') in 0.007361 seconds 
+  Import took 0.027528 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.274570 seconds.
+  path: Assets/Texture/Recording.renderTexture
+  artifactKey: Guid(1ceff4f15815c714fa9bd3377b3ede24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Texture/Recording.renderTexture using Guid(1ceff4f15815c714fa9bd3377b3ede24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f94baff0564f6341fe91e90375398fc') in 0.036986 seconds 
+  Import took 0.064552 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
