@@ -51,7 +51,7 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         //audioSource.Stop();
         //Debug.Log($"in moving state");
         // move towards target
-        _animator.SetTrigger("SetIdle");
+        //_animator.SetTrigger("SetIdle");
         while (Vector3.Distance(transform.position, _target.position) > _stats.AttackDistance)
         { 
             _movementHandler.AttackMovement(_target, _enemiesInWave);

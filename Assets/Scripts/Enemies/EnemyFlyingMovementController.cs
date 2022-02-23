@@ -66,8 +66,10 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         }
 
         Vector3 _targetRotation = targetPos - transform.position;
-        Quaternion rotTarget = Quaternion.LookRotation(_targetRotation);
+        Quaternion rotTarget = Quaternion.LookRotation(_targetRotation, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * _rotationSpeed);
+        transform.LookAt(targetPos);
+    
     }
 
     public void AttackMovement(Vector3 targetPos)
