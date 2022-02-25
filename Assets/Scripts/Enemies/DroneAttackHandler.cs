@@ -123,4 +123,14 @@ public class DroneAttackHandler : MonoBehaviour, IEnemyAttackHandler
     {
         SetState(State_EMPStun());       
     }
+
+    public void AttackTarget(Transform target)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void StopAttack()
+    {
+        throw new System.NotImplementedException();
+    }
 }

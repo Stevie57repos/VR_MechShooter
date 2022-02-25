@@ -4796,8 +4796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0b787906635d14ab5f2c0967630629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoutDrone: {fileID: 5245598693655765112, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
-  _sentinel: {fileID: 6316491338376134111, guid: 0af04967f156cd04590804f596e841f9, type: 3}
+  _scoutDrone: {fileID: 1629000475, guid: df13b2c809cd2214ba7989443ac8be36, type: 3}
+  _sentinel: {fileID: 1517458967, guid: e28ec968795c58748b4ec9771e0125c2, type: 3}
   _scoutFlockList: []
   _sentinelFlockList: []
   _flockSpawn: {fileID: 1680507080}

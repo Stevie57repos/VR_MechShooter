@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     public bool CheckPlayerHealthStatus()
     {
-        return _healthHandler.HealthStatus();
+        return _healthHandler.IsAlive();
     }
 
     public void PlayerDamage(float damage)

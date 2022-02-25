@@ -2209,7 +2209,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f74079d220fbbe34bae9716ca7c299f7, type: 2}
+  - {fileID: 2100000, guid: 8a0f9c3dc599c8546b147e7e4b038606, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4488,11 +4488,11 @@ GameObject:
   - component: {fileID: 91710357293121969}
   - component: {fileID: 3286582099166163738}
   - component: {fileID: 33918414256947337}
-  - component: {fileID: 5245598693655765112}
   - component: {fileID: 5428003517418613499}
   - component: {fileID: 1225993243439694636}
-  - component: {fileID: 3035370308119191965}
   - component: {fileID: -4152046718574091003}
+  - component: {fileID: 1629000474}
+  - component: {fileID: 1629000475}
   m_Layer: 11
   m_Name: Enemy_ScoutDrone
   m_TagString: Untagged
@@ -4545,25 +4545,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5245598693655765112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8267674287373369946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c52d47ce9e2134da37205a6e04b701, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lifeSpan: -1
-  _enemyStats: {fileID: 11400000, guid: 62e0a0e4f6bfd3a43bff0b8302dee2c4, type: 2}
-  _healthHandler: {fileID: 1225993243439694636}
-  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
-  _audioSource: {fileID: -4152046718574091003}
-  _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
-  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
 --- !u!114 &5428003517418613499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4593,21 +4574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 1
---- !u!114 &3035370308119191965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8267674287373369946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e59e37acd181445a84e94aad2dcd48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackParticles: {fileID: 9175148498265060064}
-  _laserAttackSoundClip: {fileID: 8300000, guid: 3fb15e57ec6ec1648a649fddf2a1d1e5, type: 3}
-  _soundEventChannel: {fileID: 11400000, guid: 6122f348ca8b7e242bf2661011112101, type: 2}
 --- !u!82 &-4152046718574091003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4704,6 +4670,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1629000474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267674287373369946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bac42ba3bdf5bb4abc7019c02c3dab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _attackParticles: {fileID: 9175148498265060064}
+  _laserAttackSoundClip: {fileID: 8300000, guid: 3fb15e57ec6ec1648a649fddf2a1d1e5, type: 3}
+  _soundEventChannel: {fileID: 11400000, guid: 6122f348ca8b7e242bf2661011112101, type: 2}
+--- !u!114 &1629000475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267674287373369946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9ae6d49955e644c97759f5543a7b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeSpan: -1
+  _enemyStats: {fileID: 11400000, guid: 62e0a0e4f6bfd3a43bff0b8302dee2c4, type: 2}
+  _audioSource: {fileID: -4152046718574091003}
+  _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
+  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
 --- !u!1001 &9049583133024337208
 PrefabInstance:
   m_ObjectHideFlags: 0

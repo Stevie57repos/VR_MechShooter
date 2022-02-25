@@ -11,12 +11,12 @@ public class EnemyController : PoolableObject, IDamageable
     
     // player target
     private Transform _target;
-
     protected IEnemyAttackHandler _attackHandler;
     protected IEnemyMovementHandler _enemyMovementHandler;
     protected List<EnemyController> _enemiesInWave;
 
-    private bool reachedDestination;
+    private bool _reachedDestination;
+    private Coroutine _currentState;
 
     [Header("Audio")]
     [SerializeField]
@@ -39,6 +39,7 @@ public class EnemyController : PoolableObject, IDamageable
     {
         base.OnEnable();
         StopAllCoroutines();
+        _reachedDestination = false;
     }
 
     private void Setup()
@@ -51,29 +52,40 @@ public class EnemyController : PoolableObject, IDamageable
         _attackHandler.Setup(_enemyStats.AttackStats);
     }
 
-    public void BeginAttack(Transform target, List<EnemyController> enemyList)
+    public void BeginPlayerAttack(Transform target, List<EnemyController> enemyList)
     {
         _target = target;
         _enemiesInWave = enemyList;
-        reachedDestination = false;
-        StartCoroutine(AttackRoutine());
+        _reachedDestination = false;
+        SetState(ApproachPlayerRoutine());
     }
 
-    private IEnumerator AttackRoutine()
+    private IEnumerator ApproachPlayerRoutine()
     {                
-        while (!reachedDestination)
+        while (!_reachedDestination)
         {
-            _enemyMovementHandler.FlyTowards(_target.position, _enemiesInWave, out reachedDestination);
+            _enemyMovementHandler.FlyTowards(_target.position, _enemiesInWave, out _reachedDestination);
             yield return null;
         }
-        AttackPlayer();
-    }
-
-    private void AttackPlayer()
-    {
-        StopCoroutine(AttackRoutine());
         _enemyMovementHandler.StopMovement();
         print($"reached target");
+        SetState(AttackPlayerRoutine());
+    }
+
+    private IEnumerator AttackPlayerRoutine()
+    {
+        bool inAttackRange = Vector3.Distance(_target.position, transform.position) < _enemyStats.AttackStats.AttackDistance;
+        if (!inAttackRange) 
+        {
+            _attackHandler.StopAttack();
+            SetState(ApproachPlayerRoutine());
+        }
+
+        while (inAttackRange)
+        {
+            _attackHandler.AttackTarget(_target);
+            yield return null;
+        }        
     }
 
     public void FlockingMovement(Vector3 targetPosition, List<EnemyController> enemyList)
@@ -101,5 +113,15 @@ public class EnemyController : PoolableObject, IDamageable
     {
         TakeDamage(damage);
         _enemyMovementHandler.KnockBack(knockBack);
+    }
+
+    private void SetState(IEnumerator newState)
+    {
+        if (_currentState != null)
+        {
+            StopCoroutine(_currentState);
+        }
+
+        _currentState = StartCoroutine(newState);
     }
 }

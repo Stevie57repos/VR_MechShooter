@@ -18,11 +18,13 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     private float _rotationSpeed;
     private List<EnemyController> _enemiesInWave;
     private Vector3 _steer;
+    private Vector3 _seperationVector;
 
     public void Setup(MovementStats stats)
     {        
         _movementStats = stats; 
     }
+
     public void FlockingMovement(Transform target, List<EnemyController> enemiesInWave)
     {
         _target = target;
@@ -149,7 +151,9 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
                 directionSum += oppositeDireciton;
             }
 
-            directionSum *= (_movementStats.TopSpeed * Time.fixedDeltaTime);          
+            directionSum *= _movementStats.TopSpeed;
+            directionSum += _rigidBody.velocity;
+            //directionSum *= (_movementStats.TopSpeed * Time.fixedDeltaTime);
             //_rigidBody.velocity += directionSum;
             //_rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
         }
@@ -177,9 +181,11 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     public void FlyTowards(Vector3 targetPosition, List<EnemyController> enemiesInWave)
     {      
         _targetDirection = targetPosition - transform.position;
+        _enemiesInWave = enemiesInWave; ;
 
         // adjusting values 
         _steer = Vector3.zero;
+        _seperationVector = Vector3.zero;
 
         if (_targetDirection.magnitude > _movementStats.TargetDistanceSlowDown)
         {
@@ -210,7 +216,10 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
             //_steer = desiredSpeed - _rigidBody.velocity;
         }
 
-        _steer += Seperate(enemiesInWave);
+
+        _seperationVector = Seperate(enemiesInWave);
+        //_steer += (_rigidBody.velocity + Seperate(enemiesInWave));
+        //Seperate(enemiesInWave);
         RotateTowardsMovementDirection(_targetDirection);
     }
 
@@ -224,13 +233,19 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     {
         FlyTowards(targetPosition, enemiesInWave);
         reachedPosition = Vector3.Magnitude(targetPosition - transform.position) <= _movementStats.TargetDistanceLimit;
-        if (reachedPosition) _steer = Vector3.zero;
+        if (reachedPosition)
+        {
+            _steer = Vector3.zero;
+            _seperationVector = Vector3.zero;
+        }
         return reachedPosition;
     }
 
     private void FixedUpdate()
     {
         _rigidBody.AddForce(_steer);
-        _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
+        //_rigidBody.velocity += _seperationVector;
+        //_seperationVector = Vector3.zero;
+        //_rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
     }
 }

@@ -27,7 +27,7 @@ public class HealthHandler : MonoBehaviour
     }
 
 
-    public bool HealthStatus()
+    public bool IsAlive()
     {
         return _health > 0;
     }

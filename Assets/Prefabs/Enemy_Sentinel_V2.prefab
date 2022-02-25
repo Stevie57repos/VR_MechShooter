@@ -2159,19 +2159,18 @@ GameObject:
   - component: {fileID: 5327331225755552558}
   - component: {fileID: 5327331225755552557}
   - component: {fileID: 5327331225755552535}
+  - component: {fileID: 1517458967}
+  - component: {fileID: 3314526353259824965}
   - component: {fileID: 5327331225755552553}
   - component: {fileID: 5327331225755552552}
-  - component: {fileID: 5327331225755552555}
   - component: {fileID: 5327331225755552554}
-  - component: {fileID: 1517458967}
-  - component: {fileID: 1517458978}
   m_Layer: 0
-  m_Name: Sentinel 2
+  m_Name: Enemy_Sentinel_V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5327331225755552545
 Transform:
   m_ObjectHideFlags: 0
@@ -2300,6 +2299,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1517458967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327331225755552544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9ae6d49955e644c97759f5543a7b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeSpan: -1
+  _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
+  _audioSource: {fileID: 5327331225755552554}
+  _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
+  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
+--- !u!114 &3314526353259824965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327331225755552544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bac42ba3bdf5bb4abc7019c02c3dab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5327331225755552556}
+  _attackParticles: {fileID: 5416779895789798083}
+  _laserAttackSoundClip: {fileID: 8300000, guid: 3fb15e57ec6ec1648a649fddf2a1d1e5, type: 3}
+  _soundEventChannel: {fileID: 11400000, guid: 6122f348ca8b7e242bf2661011112101, type: 2}
 --- !u!114 &5327331225755552553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,23 +2362,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 0
---- !u!114 &5327331225755552555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327331225755552544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879416833c22a8346ac7f99a92d286d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 5327331225755552556}
-  _tentacleList: []
-  _attackParticles: {fileID: 5416779895789798083}
-  _laserAttackSoundClip: {fileID: 8300000, guid: 3fb15e57ec6ec1648a649fddf2a1d1e5, type: 3}
-  _soundEventChannel: {fileID: 11400000, guid: 6122f348ca8b7e242bf2661011112101, type: 2}
 --- !u!82 &5327331225755552554
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2442,39 +2458,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1517458967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327331225755552544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9ae6d49955e644c97759f5543a7b56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lifeSpan: -1
-  _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
-  _audioSource: {fileID: 5327331225755552554}
-  _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
-  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
-  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
---- !u!114 &1517458978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327331225755552544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39162659bb3149c41809e6e1d3ba3d43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyController: {fileID: 1517458967}
-  _target: {fileID: 0}
-  isDebug: 1
 --- !u!1 &5327331225760937479
 GameObject:
   m_ObjectHideFlags: 0
@@ -4246,15 +4229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.62
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.93
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalRotation.w

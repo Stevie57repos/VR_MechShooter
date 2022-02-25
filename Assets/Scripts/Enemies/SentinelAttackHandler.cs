@@ -133,4 +133,19 @@ public class SentinelAttackHandler : MonoBehaviour, IEnemyAttackHandler
         _attackParticles.Stop();
         SetState(State_EMPStun());
     }
+
+    public void AttackTarget(Transform target)
+    {
+        
+    }
+
+    private IEnumerator AttackRoutine()
+    {
+        yield return null;
+    }
+
+    public void StopAttack()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -17,7 +17,7 @@ public class DebugEnemyController : MonoBehaviour
         {
             List<EnemyController> list = new List<EnemyController>();
             //_enemyController.AttackHandler(_target, list);
-            _enemyController.BeginAttack(_target, list);
+            _enemyController.BeginPlayerAttack(_target, list);
         }
     }
 
