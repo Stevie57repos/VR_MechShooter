@@ -50,7 +50,7 @@ public class EnemyFlockManager : MonoBehaviour
         PoolSystem.CreatePool(_sentinel, SentinelAmountToPool);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_flockQueue.Count == 0) return;
         int i = 0;
@@ -59,8 +59,8 @@ public class EnemyFlockManager : MonoBehaviour
             EnemyController enemy = _flockQueue.Dequeue();
             if (_scoutFlockList.Contains(enemy) || _sentinelFlockList.Contains(enemy))
             {
-                enemy.MovementHandler(_flockTarget, _scoutFlockList);
-                enemy.MovementHandler(_flockTarget, _sentinelFlockList);
+                enemy.FlockingMovement(_flockTarget.position, _scoutFlockList);
+                enemy.FlockingMovement(_flockTarget.position, _sentinelFlockList);
                 _flockQueue.Enqueue(enemy);
             }
             i++;

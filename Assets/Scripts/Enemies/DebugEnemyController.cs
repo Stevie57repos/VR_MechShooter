@@ -16,7 +16,13 @@ public class DebugEnemyController : MonoBehaviour
         if (isDebug)
         {
             List<EnemyController> list = new List<EnemyController>();
-            _enemyController.AttackHandler(_target, list);
+            //_enemyController.AttackHandler(_target, list);
+            _enemyController.BeginAttack(_target, list);
         }
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 }

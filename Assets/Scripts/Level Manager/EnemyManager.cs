@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour
         {
             EnemyController enemy = _enemyFlockManager.GetEnemy(waveData.enemyPrefab);
             _enemylist.Add(enemy);
-            enemy.AttackPlayer(_playerTarget, _enemylist);
+            enemy.BeginAttack(_playerTarget, _enemylist);
             yield return new WaitForSeconds(waveData.delayBetweenSpawn);
             _waveSpawnComplete = true;
         }     

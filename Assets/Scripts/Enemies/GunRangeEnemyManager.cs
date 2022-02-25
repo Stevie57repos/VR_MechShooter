@@ -51,7 +51,7 @@ public class GunRangeEnemyManager : MonoBehaviour
                 //sentinel.MoveTowardsTarget(_flockTarget.position);
                 //sentinel.Seperate(_currentEnemylist);
 
-                enemy.MovementHandler(_flockTarget, _currentEnemylist);
+                enemy.FlockingMovement(_flockTarget.position, _currentEnemylist);
             }
         }
     }

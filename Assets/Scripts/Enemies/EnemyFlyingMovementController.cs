@@ -17,6 +17,7 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
     [SerializeField]
     private float _rotationSpeed;
     private List<EnemyController> _enemiesInWave;
+    private Vector3 _steer;
 
     public void Setup(MovementStats stats)
     {        
@@ -68,8 +69,7 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         Vector3 _targetRotation = targetPos - transform.position;
         Quaternion rotTarget = Quaternion.LookRotation(_targetRotation, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * _rotationSpeed);
-        transform.LookAt(targetPos);
-    
+        transform.LookAt(targetPos); 
     }
 
     public void AttackMovement(Vector3 targetPos)
@@ -103,7 +103,6 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         {
             _target.gameObject.GetComponent<FieldOfView>().ChecKWithinPlayerFOV(transform.position, out Vector3 adjustment);
             _rigidBody.AddForce(adjustment * 2);
-
         }
 
         // if outside of slow distance move at normal speed
@@ -137,9 +136,9 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * _rotationSpeed);
     }
 
-    public void Seperate(List<EnemyController> flockList)
+    public Vector3 Seperate(List<EnemyController> flockList)
     {
-        if (flockList.Count == 0) return;
+        if (flockList.Count == 0) return Vector3.zero;
         Vector3 directionSum = Vector3.zero;
         foreach (EnemyController flock in flockList)
         {
@@ -150,10 +149,11 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
                 directionSum += oppositeDireciton;
             }
 
-            directionSum *= (_movementStats.TopSpeed * Time.fixedDeltaTime);
-            _rigidBody.velocity += directionSum;
-            _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
+            directionSum *= (_movementStats.TopSpeed * Time.fixedDeltaTime);          
+            //_rigidBody.velocity += directionSum;
+            //_rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
         }
+        return directionSum;
     }
 
     public void StopMovement()
@@ -172,5 +172,65 @@ public class EnemyFlyingMovementController : MonoBehaviour, IEnemyMovementHandle
         Vector3 AB = pointB - pointA;
         Vector3 AV = currentPos - pointA;
         return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB);
+    }
+
+    public void FlyTowards(Vector3 targetPosition, List<EnemyController> enemiesInWave)
+    {      
+        _targetDirection = targetPosition - transform.position;
+
+        // adjusting values 
+        _steer = Vector3.zero;
+
+        if (_targetDirection.magnitude > _movementStats.TargetDistanceSlowDown)
+        {
+            // move at full speed
+            Vector3 desiredSpeed = _targetDirection.normalized * _movementStats.TopSpeed;
+            _steer = desiredSpeed - _rigidBody.velocity;
+        }
+        else if (_targetDirection.magnitude > _movementStats.TargetDistanceLimit)
+        {
+            // slow down
+            float percentageValueSpeed = Mathf.InverseLerp(_movementStats.TargetDistanceLimit, _movementStats.TargetDistanceSlowDown, _targetDirection.magnitude);
+            Vector3 desiredSpeed = _targetDirection.normalized * (_movementStats.TopSpeed * percentageValueSpeed);
+            _steer = desiredSpeed - _rigidBody.velocity;
+        }
+        else if (_targetDirection.magnitude < _movementStats.TargetDistanceLimit)
+        {
+            // reverse direction if past target
+
+            Vector3 reverseDirection = transform.position - targetPosition;
+            float percentageValueSpeed = Mathf.InverseLerp(0f, _movementStats.TargetDistanceLimit, _targetDirection.magnitude);
+            Vector3 desiredSpeed = reverseDirection.normalized * (_movementStats.TopSpeed * percentageValueSpeed);
+            _steer = desiredSpeed - _rigidBody.velocity;
+            //_rigidBody.AddForce(steer);
+
+            //Vector3 reverseDirection = _targetDirection;
+            ////float percentageValueSpeed = Mathf.InverseLerp(0f, _movementStats.TargetDistanceLimit, _targetDirection.magnitude);
+            //Vector3 desiredSpeed = reverseDirection.normalized * (_movementStats.TopSpeed);
+            //_steer = desiredSpeed - _rigidBody.velocity;
+        }
+
+        _steer += Seperate(enemiesInWave);
+        RotateTowardsMovementDirection(_targetDirection);
+    }
+
+    private void RotateTowardsMovementDirection(Vector3 targetDirection)
+    {
+        Quaternion rotTarget = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * _rotationSpeed);
+    }
+
+    public bool FlyTowards(Vector3 targetPosition, List<EnemyController> enemiesInWave, out bool reachedPosition)
+    {
+        FlyTowards(targetPosition, enemiesInWave);
+        reachedPosition = Vector3.Magnitude(targetPosition - transform.position) <= _movementStats.TargetDistanceLimit;
+        if (reachedPosition) _steer = Vector3.zero;
+        return reachedPosition;
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidBody.AddForce(_steer);
+        _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _movementStats.TopSpeed);
     }
 }

@@ -7,28 +7,41 @@ public class EnemyController : PoolableObject, IDamageable
 {
     [SerializeField]
     protected StatsSO _enemyStats;
-    [SerializeField]
     protected HealthHandler _healthHandler;
+    
+    // player target
+    private Transform _target;
+
     protected IEnemyAttackHandler _attackHandler;
-    protected IEnemyMovementHandler _enemyMovementHandler; 
-    [SerializeField]
-    private EnemyDeathEventSO _deathEventChannel;
+    protected IEnemyMovementHandler _enemyMovementHandler;
     protected List<EnemyController> _enemiesInWave;
+
+    private bool reachedDestination;
+
+    [Header("Audio")]
     [SerializeField]
     private AudioSource _audioSource;
     [SerializeField]
     private AudioClip _takeDamageAudioClip;
-    private Transform _target;
+
+    [Header("Event Channels")]
+    [SerializeField]
+    private EnemyDeathEventSO _deathEventChannel;
     [SerializeField]
     private ElectricalEffectsChannelSO _electricalEffectsChannelSO;
+
+    private void Awake()
+    {
+        Setup();
+    }
 
     protected override void OnEnable()
     {
         base.OnEnable();
-        SetupEnemyController();
+        StopAllCoroutines();
     }
 
-    protected void SetupEnemyController()
+    private void Setup()
     {
         _healthHandler = GetComponent<HealthHandler>();
         _healthHandler.Setup(_enemyStats);
@@ -38,30 +51,37 @@ public class EnemyController : PoolableObject, IDamageable
         _attackHandler.Setup(_enemyStats.AttackStats);
     }
 
-    public void TakeDamage(float damage)
+    public void BeginAttack(Transform target, List<EnemyController> enemyList)
     {
-        bool isAlive = _healthHandler.TakeDamage(damage);
-        if(!isAlive)
+        _target = target;
+        _enemiesInWave = enemyList;
+        reachedDestination = false;
+        StartCoroutine(AttackRoutine());
+    }
+
+    private IEnumerator AttackRoutine()
+    {                
+        while (!reachedDestination)
         {
-            _deathEventChannel.RaiseEvent(this);
-            this.gameObject.SetActive(false);            
+            _enemyMovementHandler.FlyTowards(_target.position, _enemiesInWave, out reachedDestination);
+            yield return null;
         }
-        else
-        {
-            _audioSource.PlayOneShot(_takeDamageAudioClip);
-            _electricalEffectsChannelSO.RaiseEvent(this.transform);
-        }        
+        AttackPlayer();
     }
 
-    [ContextMenu("Debug Take Damage")]
-    public void DebugTakeDamage()
+    private void AttackPlayer()
     {
-        Vector3 knockBack = transform.position - _target.position;
-        knockBack = knockBack.normalized * 5f;
-        TakeDamage(1, knockBack);
+        StopCoroutine(AttackRoutine());
+        _enemyMovementHandler.StopMovement();
+        print($"reached target");
     }
 
-    public void TakeDamage(float damage, Vector3 knockBack)
+    public void FlockingMovement(Vector3 targetPosition, List<EnemyController> enemyList)
+    {
+        _enemyMovementHandler.FlyTowards(targetPosition, enemyList);
+    }
+
+    public void TakeDamage(float damage)
     {
         bool isAlive = _healthHandler.TakeDamage(damage);
         if (!isAlive)
@@ -73,41 +93,13 @@ public class EnemyController : PoolableObject, IDamageable
         {
             _audioSource.PlayOneShot(_takeDamageAudioClip);
             _electricalEffectsChannelSO.RaiseEvent(this.transform);
-            _enemyMovementHandler.KnockBack(knockBack);
         }
     }
 
-    public virtual void AttackHandler(Transform target, List<EnemyController> enemiesInWave)
+    // overload for knockback option
+    public void TakeDamage(float damage, Vector3 knockBack)
     {
-        _attackHandler.HandleAttack(target, _enemyMovementHandler, enemiesInWave);
-        _target = target;
-    }
-
-    public virtual void MovementHandler(Transform target, List<EnemyController> enemiesInWave)
-    {
-        _enemyMovementHandler.FlockingMovement(target, enemiesInWave);
-    }
-    
-    public void AttackPlayer(Transform target, List<EnemyController> enemiesInWave)
-    {
-        _enemyMovementHandler.StopMovement();
-        AttackHandler(target, enemiesInWave);
-    }
-
-    [ContextMenu("EMP Stun")]
-    public void EmpStun()
-    { 
-        _attackHandler.EMPStun();
-        _enemyMovementHandler.StopMovement();
-        Vector3 FlyBackDistance = (transform.position - _target.position).normalized * 2f;
-        _enemyMovementHandler.KnockBack(FlyBackDistance);
-        _electricalEffectsChannelSO.RaiseEvent(this.transform);
-    }
-
-    // for debugging death state
-    [ContextMenu("Kill Unit")]
-    private void KillUnit()
-    {
-        TakeDamage(_enemyStats.HealthStats.maxHealth);
+        TakeDamage(damage);
+        _enemyMovementHandler.KnockBack(knockBack);
     }
 }

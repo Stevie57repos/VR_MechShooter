@@ -46,7 +46,8 @@ public class SecondaryWeaponController : MonoBehaviour
                 EnemyController enemy = collider.GetComponent<EnemyController>();
                 if (enemy != null && enemy.transform.gameObject.activeSelf)
                 {
-                    enemy.EmpStun();
+                    Vector3 knockback = (enemy.transform.position - transform.position).normalized * 10;
+                    enemy.TakeDamage(0, knockback);
                 }
             }
             _EMPTimeLastUsed = Time.time;

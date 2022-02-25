@@ -349,7 +349,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2833853714663441796}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1343,7 +1343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5327331225039524823}
   m_Layer: 0
-  m_Name: Tentacle_BottomRight_Target
+  m_Name: Tentacle_BottomLeft_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1688,7 +1688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5327331225350216739}
   m_Layer: 0
-  m_Name: Left_Tentacle_Target
+  m_Name: Tentacle_TopLeft_Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2159,11 +2159,12 @@ GameObject:
   - component: {fileID: 5327331225755552558}
   - component: {fileID: 5327331225755552557}
   - component: {fileID: 5327331225755552535}
-  - component: {fileID: 5327331225755552534}
   - component: {fileID: 5327331225755552553}
   - component: {fileID: 5327331225755552552}
   - component: {fileID: 5327331225755552555}
   - component: {fileID: 5327331225755552554}
+  - component: {fileID: 1517458967}
+  - component: {fileID: 1517458978}
   m_Layer: 0
   m_Name: Sentinel 2
   m_TagString: Untagged
@@ -2198,7 +2199,7 @@ Animator:
   m_GameObject: {fileID: 5327331225755552544}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d345d21c25693e7418f962ff486c93b3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1d1b363010f7f524aa52185eddae68e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2299,26 +2300,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5327331225755552534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5327331225755552544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc90ebe538e716498b15feb0df334c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lifeSpan: -1
-  _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
-  _healthHandler: {fileID: 5327331225755552552}
-  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
-  _audioSource: {fileID: 5327331225755552554}
-  _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
-  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
-  _animator: {fileID: 5327331225755552556}
 --- !u!114 &5327331225755552553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,7 +2315,7 @@ MonoBehaviour:
   _rigidBody: {fileID: 5327331225755552535}
   _targetDirection: {x: 0, y: 0, z: 0}
   _newTargetPos: {x: 0, y: 0, z: 0}
-  _rotationSpeed: 0
+  _rotationSpeed: 100
 --- !u!114 &5327331225755552552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,6 +2442,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1517458967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327331225755552544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f9ae6d49955e644c97759f5543a7b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeSpan: -1
+  _enemyStats: {fileID: 11400000, guid: ae489f00f84b8064687dedc97270c348, type: 2}
+  _audioSource: {fileID: 5327331225755552554}
+  _takeDamageAudioClip: {fileID: 8300000, guid: c0d63d69bc47bcd4aa710a658f2498a8, type: 3}
+  _deathEventChannel: {fileID: 11400000, guid: 2b83fd430830dba45bf255c7e69df9c7, type: 2}
+  _electricalEffectsChannelSO: {fileID: 11400000, guid: 62ad6844a6489c942a83997b9b0c22e4, type: 2}
+--- !u!114 &1517458978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5327331225755552544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39162659bb3149c41809e6e1d3ba3d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyController: {fileID: 1517458967}
+  _target: {fileID: 0}
+  isDebug: 1
 --- !u!1 &5327331225760937479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,7 +2714,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5327331225938815338}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3241,7 +3255,7 @@ MonoBehaviour:
     m_Target: {fileID: 5327331225039524823}
     m_ChainRotationWeight: 1
     m_TipRotationWeight: 1
-    m_MaxIterations: 15
+    m_MaxIterations: 50
     m_Tolerance: 0.0001
     m_MaintainTargetPositionOffset: 1
     m_MaintainTargetRotationOffset: 1
@@ -4216,7 +4230,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1597294276532840, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1740513464688192, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_Name
@@ -4244,19 +4258,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150588984283598, guid: 2db3be94a895fa54c8274114cabef5fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
