@@ -3647,6 +3647,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _empPrefab: {fileID: -454515497671310030, guid: a9d5f9b5684326143b7bade894be116d, type: 3}
+  _stunDuration: 0
 --- !u!1 &3701976469442419151
 GameObject:
   m_ObjectHideFlags: 0
@@ -4302,6 +4303,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _empPrefab: {fileID: -454515497671310030, guid: a9d5f9b5684326143b7bade894be116d, type: 3}
+  _stunDuration: 0
 --- !u!1 &3701976469669456358
 GameObject:
   m_ObjectHideFlags: 0

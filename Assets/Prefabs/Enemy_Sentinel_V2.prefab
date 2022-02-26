@@ -2351,7 +2351,6 @@ MonoBehaviour:
   _steer: {x: 0, y: 0, z: 0}
   _seperationVector: {x: 0, y: 0, z: 0}
   _seperateScaler: 0.5
-  _debugEnemiesList: []
 --- !u!114 &5327331225755552552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2376,7 +2375,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2421,7 +2420,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

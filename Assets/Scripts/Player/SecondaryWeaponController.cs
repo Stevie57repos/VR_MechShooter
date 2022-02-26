@@ -16,6 +16,8 @@ public class SecondaryWeaponController : MonoBehaviour
     private LayerMask _enemyLayerMask;
     [SerializeField]
     private PoolableObject _empPrefab;
+    [SerializeField]
+    private float _stunDuration;
 
     private void Awake()
     {
@@ -47,7 +49,7 @@ public class SecondaryWeaponController : MonoBehaviour
                 if (enemy != null && enemy.transform.gameObject.activeSelf)
                 {
                     Vector3 knockback = (enemy.transform.position - transform.position).normalized * 10;
-                    enemy.TakeDamage(0, knockback);
+                    enemy.EMPStun(0, knockback, _stunDuration);
                 }
             }
             _EMPTimeLastUsed = Time.time;

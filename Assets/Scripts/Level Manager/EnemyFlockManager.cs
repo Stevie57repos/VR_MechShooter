@@ -78,7 +78,8 @@ public class EnemyFlockManager : MonoBehaviour
         }
         else if (enemyPrefab == _sentinel)
         {
-            int lastListElement = _scoutFlockList.Count - 1;
+            //int lastListElement = _scoutFlockList.Count - 1;
+            int lastListElement = _sentinelFlockList.Count - 1;
             enemy = _sentinelFlockList[lastListElement];
             _sentinelFlockList.RemoveAt(lastListElement);
         }

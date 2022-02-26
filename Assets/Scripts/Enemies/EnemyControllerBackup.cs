@@ -108,4 +108,9 @@ public class EnemyControllerBackup : PoolableObject, IDamageable
     {
         TakeDamage(_enemyStats.HealthStats.maxHealth);
     }
+
+    bool IDamageable.TakeDamage(float damage)
+    {
+        throw new System.NotImplementedException();
+    }
 }

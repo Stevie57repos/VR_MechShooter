@@ -75,6 +75,11 @@ public class EnemyAttackController : MonoBehaviour, IEnemyAttackHandler
         }
     }
 
+    private void RestartAttack()
+    {
+        AttackTarget(_target);
+    }
+
     public void EMPStun()
     {
         StopAttack();

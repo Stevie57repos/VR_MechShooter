@@ -93,12 +93,15 @@ public class EnemyController : PoolableObject, IDamageable
         _enemyMovementHandler.FlyTowards(targetPosition, enemyList);
     }
 
-    public void TakeDamage(float damage)
+    public bool TakeDamage(float damage)
     {
         bool isAlive = _healthHandler.TakeDamage(damage);
         if (!isAlive)
         {
             _deathEventChannel.RaiseEvent(this);
+            StopAllCoroutines();
+            _attackHandler.StopAttack();
+            _enemyMovementHandler.StopMovement();
             this.gameObject.SetActive(false);
         }
         else
@@ -106,13 +109,28 @@ public class EnemyController : PoolableObject, IDamageable
             _audioSource.PlayOneShot(_takeDamageAudioClip);
             _electricalEffectsChannelSO.RaiseEvent(this.transform);
         }
+
+        return isAlive;
     }
 
     // overload for knockback option
     public void TakeDamage(float damage, Vector3 knockBack)
     {
-        TakeDamage(damage);
+        bool isAlive = TakeDamage(damage);
+        if (!isAlive) return;
         _enemyMovementHandler.KnockBack(knockBack);
+        _attackHandler.StopAttack();
+        Invoke("RestartAttack", 1f);
+    }
+
+    public void EMPStun(float damage, Vector3 knockBack, float stunDuration)
+    {
+        bool isAlive = TakeDamage(damage);
+        if (!isAlive) return;
+        _enemyMovementHandler.KnockBack(knockBack);
+        _attackHandler.StopAttack();
+        Invoke("RestartAttack", stunDuration);
+        
     }
 
     private void SetState(IEnumerator newState)
@@ -123,5 +141,12 @@ public class EnemyController : PoolableObject, IDamageable
         }
 
         _currentState = StartCoroutine(newState);
+    }
+
+    private void RestartAttack()
+    {
+        if(!_healthHandler.IsAlive()) return;
+        StopAllCoroutines();
+        BeginPlayerAttack(_target, _enemiesInWave);
     }
 }
