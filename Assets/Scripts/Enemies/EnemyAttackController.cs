@@ -50,27 +50,27 @@ public class EnemyAttackController : MonoBehaviour, IEnemyAttackHandler
             else
             {
                 PlayerController player = _target.GetComponent<PlayerController>();
+                if (!player.CheckPlayerHealthStatus()) break;
+
+                _target.GetComponent<PlayerController>().PlayerDamage(_stats.Damage);
+
+                // check if this player still alive after damage
                 if (player.CheckPlayerHealthStatus())
                 {
-                    _target.GetComponent<PlayerController>().PlayerDamage(_stats.Damage);
-
-                    // check if this attack killed the player
-                    if (player.CheckPlayerHealthStatus())
-                    {
-                        // restart attack if player alive 
-                        yield return new WaitForSeconds(3f);
-                        //_attackTimerStart = Time.time;
-                        _attackTimerEnd = Time.time + _stats.AttackChargeTime;
-                        _attackParticles.Stop();
-                        _attackParticles.Play();
-                        _soundEventChannel.RaiseEvent(_laserAttackSoundClip, this.transform);
-                    }
-                    else
-                    {
-                        // stop attacking becuase player is dead
-                        StopAllCoroutines();
-                    }
+                    // restart attack if player alive 
+                    yield return new WaitForSeconds(3f);
+                    //_attackTimerStart = Time.time;
+                    _attackTimerEnd = Time.time + _stats.AttackChargeTime;
+                    _attackParticles.Stop();
+                    _attackParticles.Play();
+                    _soundEventChannel.RaiseEvent(_laserAttackSoundClip, this.transform);
                 }
+                else
+                {
+                    // stop attacking becuase player is dead
+                    //StopAllCoroutines();
+                    break;
+                }                
             }
         }
     }

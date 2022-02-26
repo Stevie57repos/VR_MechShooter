@@ -71,5 +71,6 @@ public class EnemyManager : MonoBehaviour
     public void Stop()
     {
         StopAllCoroutines();
+        foreach (EnemyController enemy in _enemylist) enemy.StopAttack();
     }
 }

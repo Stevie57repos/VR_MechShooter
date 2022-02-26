@@ -109,7 +109,6 @@ public class EnemyController : PoolableObject, IDamageable
             _audioSource.PlayOneShot(_takeDamageAudioClip);
             _electricalEffectsChannelSO.RaiseEvent(this.transform);
         }
-
         return isAlive;
     }
 
@@ -129,8 +128,7 @@ public class EnemyController : PoolableObject, IDamageable
         if (!isAlive) return;
         _enemyMovementHandler.KnockBack(knockBack);
         _attackHandler.StopAttack();
-        Invoke("RestartAttack", stunDuration);
-        
+        Invoke("RestartAttack", stunDuration);        
     }
 
     private void SetState(IEnumerator newState)
@@ -148,5 +146,12 @@ public class EnemyController : PoolableObject, IDamageable
         if(!_healthHandler.IsAlive()) return;
         StopAllCoroutines();
         BeginPlayerAttack(_target, _enemiesInWave);
+    }
+
+    public void StopAttack()
+    {
+        _currentState = null;
+        _attackHandler.StopAttack();
+        _enemyMovementHandler.StopMovement();
     }
 }
