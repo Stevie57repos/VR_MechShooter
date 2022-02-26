@@ -2164,7 +2164,7 @@ GameObject:
   - component: {fileID: 5327331225755552553}
   - component: {fileID: 5327331225755552552}
   - component: {fileID: 5327331225755552554}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy_Sentinel_V2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2347,8 +2347,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidBody: {fileID: 5327331225755552535}
   _targetDirection: {x: 0, y: 0, z: 0}
-  _newTargetPos: {x: 0, y: 0, z: 0}
   _rotationSpeed: 100
+  _steer: {x: 0, y: 0, z: 0}
+  _seperationVector: {x: 0, y: 0, z: 0}
+  _seperateScaler: 0.5
+  _debugEnemiesList: []
 --- !u!114 &5327331225755552552
 MonoBehaviour:
   m_ObjectHideFlags: 0
