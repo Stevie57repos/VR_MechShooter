@@ -153,5 +153,6 @@ public class EnemyController : PoolableObject, IDamageable
         _currentState = null;
         _attackHandler.StopAttack();
         _enemyMovementHandler.StopMovement();
+        StopAllCoroutines();
     }
 }

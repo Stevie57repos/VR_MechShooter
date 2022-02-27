@@ -1855,6 +1855,7 @@ MonoBehaviour:
     m_Bits: 2048
   _empPrefab: {fileID: -454515497671310030, guid: a9d5f9b5684326143b7bade894be116d, type: 3}
   _stunDuration: 0
+  _yOffset: 0
 --- !u!1 &1875867884187409641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,6 +2512,7 @@ MonoBehaviour:
     m_Bits: 2048
   _empPrefab: {fileID: -454515497671310030, guid: a9d5f9b5684326143b7bade894be116d, type: 3}
   _stunDuration: 3
+  _yOffset: 0
 --- !u!1 &2153130876354496725
 GameObject:
   m_ObjectHideFlags: 0

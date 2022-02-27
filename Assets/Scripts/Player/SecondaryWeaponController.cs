@@ -18,6 +18,8 @@ public class SecondaryWeaponController : MonoBehaviour
     private PoolableObject _empPrefab;
     [SerializeField]
     private float _stunDuration;
+    [SerializeField]
+    private float _yOffset;
 
     private void Awake()
     {
@@ -71,7 +73,7 @@ public class SecondaryWeaponController : MonoBehaviour
     public void CreateEMPWave()
     {
         PoolableObject empPrefab = PoolSystem.GetNext(_empPrefab);
-        empPrefab.transform.position = Vector3.zero - new Vector3( );
+        empPrefab.transform.position = Vector3.zero - new Vector3(0, _yOffset, 0);
         empPrefab.transform.localScale = _startScale;
         empPrefab.transform.gameObject.SetActive(true);
         StartCoroutine(EMPExplosion(empPrefab));       

@@ -89,6 +89,7 @@ public class LevelManager : MonoBehaviour
     {
         _currentWave++;
 
+        // if player lost already, they wont be able to trigger the win scene
         Scene loseScene = SceneManager.GetSceneByName("Lose");
         if (loseScene.isLoaded) return;
 

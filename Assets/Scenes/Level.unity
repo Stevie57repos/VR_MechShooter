@@ -14349,6 +14349,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1083770680}
+    - target: {fileID: 964352885291714245, guid: 30856258b672f9e4c83d2eee1b13825f, type: 3}
+      propertyPath: _health
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1875867883754945625, guid: 30856258b672f9e4c83d2eee1b13825f, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -14396,6 +14400,10 @@ PrefabInstance:
     - target: {fileID: 1875867883754945627, guid: 30856258b672f9e4c83d2eee1b13825f, type: 3}
       propertyPath: m_Name
       value: VR Player Rig V2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983744819082290869, guid: 30856258b672f9e4c83d2eee1b13825f, type: 3}
+      propertyPath: _yOffset
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30856258b672f9e4c83d2eee1b13825f, type: 3}
