@@ -1,0 +1,236 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.24f1 (79c78de19888) revision 7980941'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'en' Physical Memory: 16343 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.3.24f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+E:/Unity Projects/BirdyHuntVR
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+63338
+Successfully changed project path to: E:/Unity Projects/BirdyHuntVR
+E:/Unity Projects/BirdyHuntVR
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 153.24 ms, found 6 plugins.
+Preloading 1 native plugins for Editor in 1.27 ms.
+Initialize engine version: 2020.3.24f1 (79c78de19888)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path E:/Unity Projects/BirdyHuntVR/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Radeon (TM) RX 480 Graphics (ID=0x67df)
+    Vendor:   
+    VRAM:     4075 MB
+    Driver:   30.0.14023.7007
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56096
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.24f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.006194 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 137.63 ms, found 6 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.349 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1349ms)
+		BeginReloadAssembly (139ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (1070ms)
+			LoadAssemblies (137ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (265ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (57ms)
+			SetupLoadedEditorAssemblies (400ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (138ms)
+				BeforeProcessingInitializeOnLoad (21ms)
+				ProcessInitializeOnLoadAttributes (184ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.029850 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 264.93 ms, found 6 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+[XR] OculusXRPlugin: registering subsystems
+[XR] Unable to register display lifecyle provider: [1]
+[XR] Oculus Input lifecycle provider registered.
+[XR] Unable to register input lifecyle provider: [1]
+[XR] OVRP version 1.66.0
+Mono: successfully reloaded assembly
+- Completed reload, in  5.388 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5390ms)
+		BeginReloadAssembly (262ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (4967ms)
+			LoadAssemblies (334ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1363ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (278ms)
+			SetupLoadedEditorAssemblies (2580ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (265ms)
+				BeforeProcessingInitializeOnLoad (336ms)
+				ProcessInitializeOnLoadAttributes (1931ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (11ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (16ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+Refreshing native plugins compatible for Editor in 2.38 ms, found 6 plugins.
+Preloading 1 native plugins for Editor in 0.05 ms.
+Unloading 4662 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 203.2 MB.
+System memory in use after: 203.4 MB.
+
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 5081.
+Total: 8.719700 ms (FindLiveObjects: 0.467600 ms CreateObjectMapping: 0.449700 ms MarkObjects: 7.662500 ms  DeleteObjects: 0.138100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/Level.unity
+  artifactKey: Guid(4af0459f1b969d24eb3386cf2cabbcc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level.unity using Guid(4af0459f1b969d24eb3386cf2cabbcc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e7316455e8916a1859ad08f7f891a64') in 0.029618 seconds 
+  Import took 0.038824 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 48.141672 seconds.
+  path: Assets/Models
+  artifactKey: Guid(869887b99f46d854fa6a1a69b3649edf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models using Guid(869887b99f46d854fa6a1a69b3649edf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6432cd1f6e49a5628eb06c3fa48cf9d9') in 0.009533 seconds 
+  Import took 0.020142 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14490.637035 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cda46a5f234132a7de1ee451a48fede6') in 2.666840 seconds 
+  Import took 3.514389 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.362132 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79a8a58188e0c5fdd86e97e2a4292f9c') in 0.508055 seconds 
+  Import took 0.526174 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.467399 seconds.
+  path: Assets/Materials/BuildingMaterials
+  artifactKey: Guid(672d192d3aef2744899f4276aa588b3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/BuildingMaterials using Guid(672d192d3aef2744899f4276aa588b3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2630384c4454641cf5d022a8c67a618e') in 0.011847 seconds 
+  Import took 0.027962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 193.546304 seconds.
+  path: Assets/Models/MechModel.fbx
+  artifactKey: Guid(a93e9539ccf69674f9df0c0efe3059d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/MechModel.fbx using Guid(a93e9539ccf69674f9df0c0efe3059d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4da676b0d34e2ab747d9f6458fd1fe05') in 0.234148 seconds 
+  Import took 0.253743 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.204288 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e44d08cb67293e7f739129a660727ff5') in 0.300163 seconds 
+  Import took 0.331203 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.606687 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '633627b7717d8dd817648fbc7f803969') in 0.291395 seconds 
+  Import took 0.302314 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 440.165501 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83a48c353a2518ad1bae159b489a2ea8') in 0.385925 seconds 
+  Import took 0.416092 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.727097 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59f0b33bab5119596e9b2804432e9eab') in 0.282752 seconds 
+  Import took 0.292353 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.334997 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e015a0c77ec0ebf56d9d0507b85f2d9') in 0.277505 seconds 
+  Import took 0.293386 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.035259 seconds.
+  path: Assets/Models/NeoCity.fbx
+  artifactKey: Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/NeoCity.fbx using Guid(9e2a1df546865a7439a290c2a8034426) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e9d7e96b59f9d7ca7d83fab5e06ee83') in 0.860180 seconds 
+  Import took 0.936035 seconds .
+
